@@ -12,11 +12,11 @@ public static class NumberToAngle
 			=> new(number * (MathF.PI / 180F));
 		
 		public static AngleRecord<double> deg(this double number)
-			=> new(number * (System.Math.PI / 180));
+			=> new(number * (Math.PI / 180));
 		
 		public static AngleRecord<float> turns(this float number)
 			=> new(number * 2 * MathF.PI);
 		
 		public static AngleRecord<double> turns(this double number)
-			=> new(number * 2 * System.Math.PI);
+			=> new(number * 2 * Math.PI);
 	}
