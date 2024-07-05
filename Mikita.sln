@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita.Godot", "Mikita.Godo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita.Subroutine", "Mikita.Subroutine\Mikita.Subroutine.csproj", "{8CB9E78C-83B5-432D-9095-E5C30B66A0B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita.UI", "Mikita.UI\Mikita.UI.csproj", "{35732B3F-ACD1-49B9-900B-6A77F642ADD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{8CB9E78C-83B5-432D-9095-E5C30B66A0B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CB9E78C-83B5-432D-9095-E5C30B66A0B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CB9E78C-83B5-432D-9095-E5C30B66A0B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35732B3F-ACD1-49B9-900B-6A77F642ADD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35732B3F-ACD1-49B9-900B-6A77F642ADD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35732B3F-ACD1-49B9-900B-6A77F642ADD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35732B3F-ACD1-49B9-900B-6A77F642ADD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

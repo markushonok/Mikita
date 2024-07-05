@@ -1,3 +1,5 @@
+using System;
+
 namespace Mikita.Units.Angles;
 
 public static class AngleToNumber

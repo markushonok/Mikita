@@ -10,14 +10,14 @@ public static class Prop
 		public static PropRecord<T> Of<T>(T value)
 			=> new(value);
 		
-		public static NestedReactiveProp<T> Of<T>
+		public static ReactiveProp<T> Of<T>
 			(
 				T value,
 				Action change
 			)
 			=> new(Prop.Of(value), change);
 
-		public static NestedReactiveProp<T> Of<T>
+		public static ReactiveProp<T> Of<T>
 			(
 				Prop<T> prop,
 				Action change

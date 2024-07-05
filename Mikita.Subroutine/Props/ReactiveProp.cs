@@ -1,6 +1,18 @@
 namespace Mikita.Subroutine.Props;
 
-public interface ReactiveProp<T> : Prop<T>
+public sealed class ReactiveProp<T>
+	(
+		Prop<T> origin,
+		Action changed
+	) : Prop<T>
 	{
-		event Action Changed;
+		public T Value
+			{
+				get => origin.Value;
+				set
+					{
+						origin.Value = value;
+						changed();
+					}
+			}
 	}
