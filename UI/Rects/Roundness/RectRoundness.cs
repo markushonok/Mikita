@@ -14,7 +14,7 @@ public interface RectRoundness<out T>
 		T BottomLeft { get; }
 	}
 
-public static class Roundness
+public static class RectRoundness
 	{
 		public static RectRoundnessRecord<T> WithRadii<T>(T radius)
 			where T : INumber<T>
