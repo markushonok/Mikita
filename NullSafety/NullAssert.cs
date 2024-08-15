@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace Mikita.NullSafety;
 
@@ -9,16 +10,26 @@ public static class NullAssert
 		/// </summary>
 		/// 
 		/// <returns>Non-null <paramref name="object"/>.</returns>
+		///
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if <paramref name="caller"/> is null.
+		/// </exception>
 		/// 
 		/// <exception cref="NullReferenceException">
 		/// Thrown if <paramref name="object"/> is null.
 		/// </exception>
-		[StackTraceHidden]
-		public static T NotNull<T>(this T? @object) 
+		[StackTraceHidden, DebuggerNonUserCode]
+		public static T NotNull<T>
+			(
+				this T? @object, 
+				[CallerMemberName] string? caller = null
+			) 
 			where T : class
 			{
+				if (caller is null)
+					throw new ArgumentNullException(NullCallerMessage<T>());
 				if (@object is null) 
-					throw new NullReferenceException(Message<T>());
+					throw new NullReferenceException(NullValueMessage<T>(caller));
 				return @object;
 			}
 
@@ -27,19 +38,32 @@ public static class NullAssert
 		/// </summary>
 		/// 
 		/// <returns>Non-null <paramref name="object"/>.</returns>
+		///
+		/// <exception cref="ArgumentNullException">
+		/// Thrown if <paramref name="caller"/> is null.
+		/// </exception>
 		/// 
 		/// <exception cref="NullReferenceException">
 		/// Thrown if <paramref name="object"/> is null.
 		/// </exception>
-		[StackTraceHidden]
-		public static T NotNull<T>(this T? @object) 
+		[StackTraceHidden, DebuggerNonUserCode]
+		public static T NotNull<T>
+			(
+				this T? @object, 
+				[CallerMemberName] string? caller = null
+			) 
 			where T : struct
 			{
-				if (@object is null) 
-					throw new NullReferenceException(Message<T>());
+				if (caller is null)
+					throw new ArgumentNullException(NullCallerMessage<T>());
+        if (@object is null) 
+					throw new NullReferenceException(NullValueMessage<T>(caller));
 				return @object.Value;
 			}
+		
+		private static string NullCallerMessage<T>() 
+			=> $"{nameof(T)} caller cannot be null.";
 
-		private static string Message<T>() 
-			=> $"{nameof(T)} asserted to be non-null but it's null.";
+		private static string NullValueMessage<T>(string caller) 
+			=> $"{nameof(T)} {caller} asserted to be non-null but it's null.";
 	}
