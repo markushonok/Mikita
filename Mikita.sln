@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{3573
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullSafety", "NullSafety\NullSafety.csproj", "{200E863B-B95C-4820-BC27-E8AD4980D73D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aliases", "Aliases\Aliases.csproj", "{BB0C305A-7435-4AAA-8C6F-323389DD0F30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{200E863B-B95C-4820-BC27-E8AD4980D73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{200E863B-B95C-4820-BC27-E8AD4980D73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{200E863B-B95C-4820-BC27-E8AD4980D73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0C305A-7435-4AAA-8C6F-323389DD0F30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0C305A-7435-4AAA-8C6F-323389DD0F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0C305A-7435-4AAA-8C6F-323389DD0F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0C305A-7435-4AAA-8C6F-323389DD0F30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
