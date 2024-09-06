@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Mikita.Units.Lengths;
+namespace Mikita.Measurement.Lengths;
 
 public readonly record struct LengthRecord<T>(T m)
 	: Length<T>

@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Mikita.Units.Lengths;
+namespace Mikita.Measurement.Lengths;
 
 public interface Length<out T> where T : INumber<T>
 	{

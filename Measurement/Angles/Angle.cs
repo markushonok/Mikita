@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Mikita.Units.Angles;
+namespace Mikita.Measurement.Angles;
 
 public interface Angle<out T> where T : INumber<T>
 	{

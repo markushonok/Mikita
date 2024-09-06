@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace Mikita.Units.Angles;
+namespace Mikita.Measurement.Angles;
 
 public record struct AngleRecord<T>(T rad) 
 	: Angle<T>

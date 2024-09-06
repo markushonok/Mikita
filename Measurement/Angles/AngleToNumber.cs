@@ -1,6 +1,4 @@
-using System;
-
-namespace Mikita.Units.Angles;
+namespace Mikita.Measurement.Angles;
 
 public static class AngleToNumber
 	{
