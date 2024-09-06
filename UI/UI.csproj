@@ -7,4 +7,13 @@
 		<RootNamespace>Mikita.UI</RootNamespace>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Compile Update="Rects\Thickness\RectThickness.Instances.cs">
+	    <DependentUpon>RectThickness.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Rects\Roundness\RectRoundness.Instances.cs">
+	    <DependentUpon>RectRoundness.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
