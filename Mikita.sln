@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Many", "Many\Many.csproj", "{7FA9FC5F-F42F-4A45-AE81-4F9594EA9052}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Units", "Units\Units.csproj", "{98EC2082-A890-4EC6-8CC0-B07BAAABBB87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Measurement", "Measurement\Measurement.csproj", "{98EC2082-A890-4EC6-8CC0-B07BAAABBB87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godot", "Godot\Godot.csproj", "{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}"
 EndProject
