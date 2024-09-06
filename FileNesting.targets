@@ -1,0 +1,13 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Name>FileNesting</Name>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Compile Update="**\*.Instances.cs">
+            <DependentUpon>
+                $([System.String]::Copy(%(Filename)).Replace('.Instances', '.cs'))
+            </DependentUpon>
+        </Compile>
+    </ItemGroup>
+</Project>
