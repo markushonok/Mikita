@@ -15,7 +15,7 @@ public static class NullAssert
 		///		Thrown if <paramref name="value"/> or
 		///		<paramref name="caller"/> is null.
 		/// </exception>
-		[StackTraceHidden, DebuggerNonUserCode]
+		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
 				this T? value,
@@ -38,7 +38,7 @@ public static class NullAssert
 		///		Thrown if <paramref name="value"/> or
 		///		<paramref name="caller"/> is null.
 		/// </exception>
-		[StackTraceHidden, DebuggerNonUserCode]
+		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
 				this T? value,

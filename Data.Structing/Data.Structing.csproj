@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>Mikita.Many</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Subroutine\Subroutine.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Tends\Tend.Instances.cs">
+	    <DependentUpon>Tend.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+</Project>

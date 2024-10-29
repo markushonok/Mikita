@@ -3,13 +3,12 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<RootNamespace>Mikita.Subroutine</RootNamespace>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<AssemblyName>Mikita.Observing</AssemblyName>
+		<RootNamespace>Mikita.Observing</RootNamespace>
 	</PropertyGroup>
-
 	<ItemGroup>
 	  <ProjectReference Include="..\Aliases\Aliases.csproj" />
-	  <ProjectReference Include="..\NullSafety\NullSafety.csproj" />
+	  <ProjectReference Include="..\Data.Structing\Data.Structing.csproj" />
 	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>

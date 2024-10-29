@@ -3,7 +3,8 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<RootNamespace>Mikita.UI</RootNamespace>
+		<RootNamespace>Mikita.Math</RootNamespace>
+		<AssemblyName>Mikita.Math</AssemblyName>
 	</PropertyGroup>
 
 	<Import Project="..\FileNesting.targets"/>

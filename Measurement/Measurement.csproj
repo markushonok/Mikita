@@ -5,6 +5,20 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>Mikita.Measurement</RootNamespace>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Update="Rotations\Rotation2D.Instances.cs">
+	    <DependentUpon>Rotation2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Rotations\Rotation2D.Arithmetic.cs">
+	    <DependentUpon>Rotation2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Angles\Angle.Arithmetic.cs">
+	    <DependentUpon>Angle.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Aliases\Aliases.csproj" />
+	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>
 </Project>

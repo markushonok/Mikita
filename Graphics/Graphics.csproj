@@ -3,8 +3,14 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<RootNamespace>Mikita.UI</RootNamespace>
+		<RootNamespace>Mikita.Graphics</RootNamespace>
+		<AssemblyName>Mikita.Graphics</AssemblyName>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Update="Colors\Color.Instances.cs">
+	    <DependentUpon>Color.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>
 </Project>

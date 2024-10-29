@@ -2,7 +2,15 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Angles;
 
-public interface Angle<out T> where T : INumber<T>
+public partial interface Angle<out T> 
+
+	where T
+		: INumber<T>
+		, IFloatingPointConstants<T>
+
 	{
-		T rad { get; }
+		T InRadians { get; }
+		
+		T InDegrees 
+			=> InRadians * (T.CreateChecked(180) / T.Pi);
 	}
