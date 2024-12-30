@@ -1,5 +1,5 @@
 using Godot;
-using Mikita.Observing;
+using Mikita.Observation;
 
 namespace Mikita.Godot.Nodes.Controls;
 

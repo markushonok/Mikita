@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Update="Structs\Scalars\Scalar.Splitting.cs">
+	    <DependentUpon>Scalar.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Observation\Change\Interserved.Extensions.cs">
+	    <DependentUpon>Interserved.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Graphics\" />
+	  <Folder Include="Math\" />
+	  <Folder Include="Measurement\" />
+	  <Folder Include="UI\" />
+	</ItemGroup>
+
+	<Import Project="..\FileNesting.targets"/>
+</Project>
