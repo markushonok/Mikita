@@ -3,10 +3,10 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Rotations;
 
-public record struct RotationRecord2D<T>
+public partial record struct RotationRecord2D<T>
 	(
-		Angle<T> X,
-		Angle<T> Y
+		Angle<T> Horizontal,
+		Angle<T> Vertical
 	) 
 	
 	: Rotation2D<T>

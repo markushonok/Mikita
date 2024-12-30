@@ -26,6 +26,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subroutine.Relays", "Subrou
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subroutine", "Subroutine", "{F5E34711-9881-42E4-9F5C-9CF8E4DC24C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Times", "Times\Times.csproj", "{1169B632-A130-40FD-8B15-97543BCB83CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Introspection", "Introspection\Introspection.csproj", "{2324431A-B0C7-43C3-974F-37C7DD81C154}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +84,14 @@ Global
 		{E3E2CBFB-C5F7-4408-A615-FE6E37C939C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3E2CBFB-C5F7-4408-A615-FE6E37C939C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3E2CBFB-C5F7-4408-A615-FE6E37C939C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1169B632-A130-40FD-8B15-97543BCB83CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1169B632-A130-40FD-8B15-97543BCB83CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1169B632-A130-40FD-8B15-97543BCB83CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1169B632-A130-40FD-8B15-97543BCB83CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2324431A-B0C7-43C3-974F-37C7DD81C154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2324431A-B0C7-43C3-974F-37C7DD81C154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2324431A-B0C7-43C3-974F-37C7DD81C154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2324431A-B0C7-43C3-974F-37C7DD81C154}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8CB9E78C-83B5-432D-9095-E5C30B66A0B9} = {F5E34711-9881-42E4-9F5C-9CF8E4DC24C0}

@@ -1,14 +1,14 @@
-using Mikita.Math.Points;
+using Mikita.Math.Vectors;
 using System.Numerics;
 
 namespace Mikita.Math.Shapes.Quads;
 
 public record struct QuadRecord<T>
 	(
-		Point2D<T> TopLeft,
-		Point2D<T> TopRight,
-		Point2D<T> BottomLeft,
-		Point2D<T> BottomRight
+		Vector2D<T> TopLeft,
+		Vector2D<T> TopRight,
+		Vector2D<T> BottomLeft,
+		Vector2D<T> BottomRight
 	) 
 	: Quad<T> 
-	where T : INumber<T>;
+	where T : INumber<T>, IRootFunctions<T>;

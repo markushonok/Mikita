@@ -2,10 +2,10 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Angles;
 
-public record struct AngleRecord<T>(T InRadians)
+public partial record struct AngleRecord<T>(T InRadians)
 
 	: Angle<T>
 
-	where T 
+	where T
 		: INumber<T>
 		, IFloatingPointConstants<T>;

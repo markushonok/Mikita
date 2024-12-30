@@ -11,13 +11,3 @@ public partial interface Rotation2D<out T>
 					T.Zero.rad()
 				);
 	}
-	
-public partial interface Rotation2D
-	{
-		new static Rotation2D No
-			=> Rotation.Of
-				(
-					0f.rad(), 
-					0f.rad()
-				);
-	}

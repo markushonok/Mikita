@@ -6,6 +6,56 @@
 		<RootNamespace>Mikita.Math</RootNamespace>
 		<AssemblyName>Mikita.Math</AssemblyName>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Update="Points\Point2D.Arithmetic.cs">
+	    <DependentUpon>Point2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector2D.Arithmetic.cs">
+	    <DependentUpon>Vector2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector2D.Instances.cs">
+	    <DependentUpon>Vector2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector2D.Properties.cs">
+	    <DependentUpon>Vector2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\VectorRecord2D.Properties.cs">
+	    <DependentUpon>VectorRecord2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector.PointingTo.cs">
+	    <DependentUpon>Vector.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector.Middle.cs">
+	    <DependentUpon>Vector.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector.Length.cs">
+	    <DependentUpon>Vector.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Numbers\Number.Stepping.cs">
+	    <DependentUpon>Number.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector.Sign.cs">
+	    <DependentUpon>Vector.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Numbers\Number.Sign.cs">
+	    <DependentUpon>Number.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector.Normal.cs">
+	    <DependentUpon>Vector.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector3D.Arithmetic.cs">
+	    <DependentUpon>Vector3D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector3D.Properties.cs">
+	    <DependentUpon>Vector3D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Vectors\Vector3D.Instances.cs">
+	    <DependentUpon>Vector3D.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Aliases\Aliases.csproj" />
+	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>
 </Project>

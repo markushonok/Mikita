@@ -8,7 +8,13 @@ public static class RectRoundness
 			where T : INumber<T>
 			=> new(radius, radius, radius, radius);
 		
-		public static RectRoundnessRecord<T> WithRadii<T>(T a, T b, T c, T d)
+		public static RectRoundnessRecord<T> WithRadii<T>
+			(
+				T topLeft, 
+				T topRight, 
+				T bottomRight,
+				T bottomLeft
+			)
 			where T : INumber<T>
-			=> new(a, b, c, d);
+			=> new(topLeft, topRight, bottomRight, bottomLeft);
 	}

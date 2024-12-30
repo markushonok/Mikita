@@ -1,4 +1,3 @@
-using Mikita.Aliases;
 using Mikita.Measurement.Angles;
 using System.Numerics;
 
@@ -11,12 +10,7 @@ public partial interface Rotation2D<out T>
 		, IFloatingPointConstants<T>
 
 	{
-		Angle<T> X { get; }
+		Angle<T> Horizontal { get; }
 		
-		Angle<T> Y { get; }
+		Angle<T> Vertical { get; }
 	}
-	
-public partial interface Rotation2D 
-	
-	: Rotation2D<float>
-	, Alias<Rotation2D<float>, Rotation2D>;

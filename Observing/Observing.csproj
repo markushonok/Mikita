@@ -10,6 +10,11 @@
 	  <ProjectReference Include="..\Aliases\Aliases.csproj" />
 	  <ProjectReference Include="..\Data.Structing\Data.Structing.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Observation\Interserved.Extensions.cs">
+	    <DependentUpon>Interserved.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>
 </Project>

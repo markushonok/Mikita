@@ -1,6 +1,9 @@
+using Mikita.Subroutine.Actions;
+
 namespace Mikita.Many.Scalars;
 
-public interface Scalar<T>
+public partial interface Scalar<T>
 	{
 		public T Value { get; set; }
+
 	}

@@ -1,4 +1,4 @@
-using Mikita.Math.Points;
+using Mikita.Math.Vectors;
 
 namespace Mikita.Math.Shapes.Quads;
 
@@ -6,10 +6,10 @@ public partial interface Quad<out T>
 	{
 		static QuadRecord<T> WithVertices
 			(
-				Point2D<T> topLeft,
-				Point2D<T> topRight,
-				Point2D<T> bottomLeft,
-				Point2D<T> bottomRight
+				Vector2D<T> topLeft,
+				Vector2D<T> topRight,
+				Vector2D<T> bottomLeft,
+				Vector2D<T> bottomRight
 			)
 			=> new(topLeft, topRight, bottomLeft, bottomRight);
 	}

@@ -13,7 +13,9 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Graphics\Graphics.csproj" />
+	  <ProjectReference Include="..\Math\Math.csproj" />
 	  <ProjectReference Include="..\Measurement\Measurement.csproj" />
+	  <ProjectReference Include="..\Observing\Observing.csproj" />
 	  <ProjectReference Include="..\Subroutine\Subroutine.csproj" />
 	</ItemGroup>
 

@@ -7,9 +7,9 @@ namespace Mikita.Subroutine.Relays;
 public static partial class Relay
 	{
 		public static T To<T>(Func<T> function)
-			where T : class
+			where T: class
 			{
-				if (Constructors.TryGetValue(typeof(T), out var @object)) 
+				if (Constructors.TryGetValue(typeof(T), out var @object))
 					return ((RelayConstructor<T>) @object)(function);
 
 				var implementation = TypeCreation.Create<T>();

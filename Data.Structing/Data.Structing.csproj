@@ -8,12 +8,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Subroutine.Relays\Subroutine.Relays.csproj" />
 	  <ProjectReference Include="..\Subroutine\Subroutine.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Tends\Tend.Instances.cs">
 	    <DependentUpon>Tend.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scalars\Scalar.Instances.cs">
+	    <DependentUpon>Scalar.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scalars\Scalar.Splitting.cs">
+	    <DependentUpon>Scalar.cs</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
