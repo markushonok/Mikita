@@ -14,7 +14,7 @@ public static class VectorStepping3D
 			where T : INumber<T>, IRootFunctions<T>
 			{
 				var local = to - from;
-				var length = local.Length;
+				var length = local.Length();
 				if (length == T.Zero) return to;
 				var normal = local / length;
 				return from.StepTo(to, normal * by);
@@ -33,9 +33,9 @@ public static class VectorStepping3D
 			{
 				return Vector.PointingTo
 					(
-						x: from.X.StepTo(to.X, by.X),
-						y: from.Y.StepTo(to.Y, by.Y),
-						z: from.Z.StepTo(to.Z, by.Z)
+						x: from.X.Stepped(to.X, by.X),
+						y: from.Y.Stepped(to.Y, by.Y),
+						z: from.Z.Stepped(to.Z, by.Z)
 					);
 			}
 	}

@@ -2,7 +2,7 @@ using System;
 
 namespace Mikita.Observation.Change;
 
-public sealed class ObservedSource<T>
+public sealed partial class ObservedSource<T>
 	(
 		T source,
 		Action changing,

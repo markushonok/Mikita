@@ -1,26 +1,29 @@
 using Mikita.Measurement.Angles;
+using Mikita.Measurement.Rotations.EulerAngles;
 using System.Numerics;
 
 namespace Mikita.Measurement.Rotations;
 
 public static class Rotation
 	{
-		public static RotationRecord2D<T> Of<T>
+		public static EulerAngle<T> Of<T>
 			(
-				Angle<T> horizontal, 
-				Angle<T> vertical
+				Angle<T> x,
+				Angle<T> y,
+				Angle<T> z,
+				EulerOrder order
 			)
 		
 			where T 
 				: INumber<T>
 				, IFloatingPointConstants<T>
 		
-			=> new(horizontal, vertical);
+			=> new(x, y, z, order);
 		
-		public static RotationRecord2D<T> Min<T>
+		public static EulerAngle<T> Min<T>
 			(
-				Rotation2D<T> left, 
-				Rotation2D<T> right
+				IEulerAngle<T> left,
+				IEulerAngle<T> right
 			)
 
 			where T 
@@ -29,14 +32,16 @@ public static class Rotation
 		
 			=> new
 				(
-					Angle.Min(left.Horizontal, right.Horizontal),
-					Angle.Min(left.Vertical, right.Vertical)
+					Angle.Min(left.X, right.X),
+					Angle.Min(left.Y, right.Y),
+					Angle.Min(left.Z, right.Z),
+					left.Order
 				);
 		
-		public static RotationRecord2D<T> Max<T>
+		public static EulerAngle<T> Max<T>
 			(
-				Rotation2D<T> left, 
-				Rotation2D<T> right
+				IEulerAngle<T> left,
+				IEulerAngle<T> right
 			)
 
 			where T 
@@ -45,7 +50,9 @@ public static class Rotation
 		
 			=> new
 				(
-					Angle.Max(left.Horizontal, right.Horizontal),
-					Angle.Max(left.Vertical, right.Vertical)
+					Angle.Max(left.X, right.X),
+					Angle.Max(left.Y, right.Y),
+					Angle.Max(left.Z, right.Z),
+					left.Order
 				);
 	}

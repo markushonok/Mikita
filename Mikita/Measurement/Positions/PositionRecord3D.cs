@@ -5,9 +5,9 @@ namespace Mikita.Measurement.Positions;
 
 public record struct PositionRecord3D<T>
 	(
-		Length<T> X, 
-		Length<T> Y,
-		Length<T> Z
+		ILength<T> X, 
+		ILength<T> Y,
+		ILength<T> Z
 	) 
 	: Position3D<T>
 	where T : INumber<T>;

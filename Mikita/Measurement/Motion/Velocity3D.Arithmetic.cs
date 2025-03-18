@@ -1,6 +1,9 @@
+using Mikita.Measurement.Positions;
+using System;
+
 namespace Mikita.Measurement.Motion;
 
-public partial interface Velocity3D<T>
+public partial interface Velocity3D<out T>
 	{
 		static VelocityRecord3D<T> operator +
 			(
@@ -37,29 +40,17 @@ public partial interface Velocity3D<T>
 					multiplicand.Y * multiplier,
 					multiplicand.Z * multiplier
 				);
-		
-		static Velocity3D<T> operator *
+
+		public static Position3D<T> operator *
 			(
-				Velocity3D<T> multiplicand,
-				Speed<T> multiplier
+				Velocity3D<T> velocity,
+				TimeSpan duration
 			)
-			=> Velocity.Of
+			=> Position.At
 				(
-					multiplicand.X * multiplier, 
-					multiplicand.Y * multiplier,
-					multiplicand.Z * multiplier
-				);
-		
-		static Velocity3D<T> operator *
-			(
-				Velocity3D<T> multiplicand, 
-				Velocity3D<T> multiplier
-			)
-			=> Velocity.Of
-				(
-					multiplicand.X * multiplier.X, 
-					multiplicand.Y * multiplier.Y,
-					multiplicand.Z * multiplier.Z
+					velocity.X * duration,
+					velocity.Y * duration,
+					velocity.Z * duration
 				);
 		
 		static Velocity3D<T> operator /
@@ -72,29 +63,5 @@ public partial interface Velocity3D<T>
 					dividend.X / divisor,
 					dividend.Y / divisor,
 					dividend.Z / divisor
-				);
-		
-		static Velocity3D<T> operator /
-			(
-				Velocity3D<T> dividend, 
-				Speed<T> divisor
-			)
-			=> Velocity.Of
-				(
-					dividend.X / divisor,
-					dividend.Y / divisor,
-					dividend.Z / divisor
-				);
-		
-		static Velocity3D<T> operator /
-			(
-				Velocity3D<T> dividend, 
-				Velocity3D<T> divisor
-			)
-			=> Velocity.Of
-				(
-					dividend.X / divisor.X,
-					dividend.Y / divisor.Y,
-					dividend.Z / divisor.Z
 				);
 	}

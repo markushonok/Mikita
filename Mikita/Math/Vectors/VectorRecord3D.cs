@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Mikita.Math.Vectors;
 
-public record struct VectorRecord3D<T>
+public readonly record struct VectorRecord3D<T>
 	(
 		T X, 
 		T Y, 

@@ -5,11 +5,11 @@ namespace Mikita.Math.Vectors;
 
 public static partial class Vector
 	{
-		internal static VectorRecord2D<T> Sign<T>(this Vector2D<T> vector)
+		public static VectorRecord2D<T> Sign<T>(this Vector2D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
 			=> Vector.SignOf(vector.X, vector.Y);
 		
-		internal static VectorRecord3D<T> Sign<T>(this Vector3D<T> vector)
+		public static VectorRecord3D<T> Sign<T>(this Vector3D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
 			=> Vector.SignOf(vector.X, vector.Y, vector.Z);
 		

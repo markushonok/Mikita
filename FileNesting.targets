@@ -21,5 +21,11 @@
 				$([System.String]::Copy(%(Filename)).Replace('.Comparison', '.cs'))
 			</DependentUpon>
 		</Compile>
+
+		<Compile Update="**\*.Comparison.cs">
+			<DependentUpon>
+				$([System.String]::Copy(%(Filename)).Replace('.Extensions', '.cs'))
+			</DependentUpon>
+		</Compile>
 	</ItemGroup>
 </Project>

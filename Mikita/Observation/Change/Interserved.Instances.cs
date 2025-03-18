@@ -1,6 +1,6 @@
 namespace Mikita.Observation.Change;
 
-public static class ManagedChangeOf
+public static partial class Interserved
 	{
 		public static ObservedSource<T> Observed<T>
 			(

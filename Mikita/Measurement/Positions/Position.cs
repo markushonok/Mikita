@@ -7,17 +7,17 @@ public static partial class Position
 	{
 		public static PositionRecord2D<T> At<T>
 			(
-				Length<T> x, 
-				Length<T> y
+				ILength<T> x, 
+				ILength<T> y
 			)
 			where T : INumber<T>
 			=> new(x, y);
 		
 		public static PositionRecord3D<T> At<T>
 			(
-				Length<T> x, 
-				Length<T> y,
-				Length<T> z
+				ILength<T> x, 
+				ILength<T> y,
+				ILength<T> z
 			)
 			where T : INumber<T>
 			=> new(x, y, z);

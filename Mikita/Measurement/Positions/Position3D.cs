@@ -6,9 +6,9 @@ namespace Mikita.Measurement.Positions;
 public partial interface Position3D<out T>
 	where T : INumber<T>
 	{
-		Length<T> X { get; }
+		ILength<T> X { get; }
 		
-		Length<T> Y { get; }
+		ILength<T> Y { get; }
 		
-		Length<T> Z { get; }
+		ILength<T> Z { get; }
 	}

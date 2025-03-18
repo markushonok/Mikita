@@ -23,31 +23,10 @@ public sealed partial record VelocityRecord3D<T>
 			)
 			=> (Velocity3D<T>) multiplicand * multiplier;
 		
-		public static Velocity3D<T> operator *
-			(
-				VelocityRecord3D<T> multiplicand, 
-				Velocity3D<T> multiplier
-			)
-			=> (Velocity3D<T>) multiplicand * multiplier;
-		
 		public static Velocity3D<T> operator /
 			(
 				VelocityRecord3D<T> dividend, 
 				T divisor
-			)
-			=> (Velocity3D<T>) dividend / divisor;
-		
-		public static Velocity3D<T> operator /
-			(
-				VelocityRecord3D<T> dividend, 
-				Speed<T> divisor
-			)
-			=> (Velocity3D<T>) dividend / divisor;
-		
-		public static Velocity3D<T> operator /
-			(
-				VelocityRecord3D<T> dividend, 
-				Velocity3D<T> divisor
 			)
 			=> (Velocity3D<T>) dividend / divisor;
 	}

@@ -1,4 +1,3 @@
-using Mikita.Many.Scalars;
 using Mikita.Math.Numbers;
 using Mikita.Structs.Scalars;
 using System.Numerics;
@@ -14,9 +13,7 @@ public static class AngleStepping
 				Angle<T> by
 			)
 			where T: INumber<T>, IFloatingPointConstants<T>
-			{
-				from.Value = from.Value.SteppedTo(to, by);
-			}
+			=> from.Value = from.Value.SteppedTo(to, by);
 
 		public static Angle<T> SteppedTo<T>
 			(
@@ -26,8 +23,10 @@ public static class AngleStepping
 			)
 			where T: INumber<T>, IFloatingPointConstants<T>
 			{
-				return from.InRadians
-					.StepTo(to.InRadians, by.InRadians)
-					.AsAngleInRadians();
+				var number = from.InRadians.Stepped(
+					to.InRadians,
+					by.InRadians);
+
+				return Angle.Radians(number);
 			}
 	}

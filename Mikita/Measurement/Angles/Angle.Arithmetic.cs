@@ -7,40 +7,40 @@ public partial interface Angle<out T>
 				Angle<T> left, 
 				Angle<T> right
 			)
-			=> (left.InRadians + right.InRadians).AsAngleInRadians();
+			=> Angle.Radians(left.InRadians + right.InRadians);
 		
 		static AngleRecord<T> operator -
 			(
 				Angle<T> left, 
 				Angle<T> right
 			)
-			=> (left.InRadians - right.InRadians).AsAngleInRadians();
+			=> Angle.Radians(left.InRadians - right.InRadians);
 		
 		static AngleRecord<T> operator *
 			(
 				Angle<T> left,
 				T right
 			)
-			=> left * right.AsAngleInRadians();
+			=> Angle.Radians(left.InRadians * right);
 		
 		static AngleRecord<T> operator *
 			(
 				Angle<T> left, 
 				Angle<T> right
 			)
-			=> (left.InRadians * right.InRadians).AsAngleInRadians();
+			=> Angle.Radians(left.InRadians * right.InRadians);
 		
 		static AngleRecord<T> operator /
 			(
 				Angle<T> left,
 				T right
 			)
-			=> left / right.AsAngleInRadians();
+			=> Angle.Radians(left.InRadians / right);
 		
 		static AngleRecord<T> operator /
 			(
 				Angle<T> left, 
 				Angle<T> right
 			)
-			=> (left.InRadians / right.InRadians).AsAngleInRadians();
+			=> Angle.Radians(left.InRadians / right.InRadians);
 	}

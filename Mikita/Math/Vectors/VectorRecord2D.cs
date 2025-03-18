@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Mikita.Math.Vectors;
 
-public readonly partial record struct VectorRecord2D<T>
+public readonly record struct VectorRecord2D<T>
 	(
 		T X,
 		T Y

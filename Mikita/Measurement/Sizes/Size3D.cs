@@ -3,11 +3,11 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Sizes;
 
-public interface Size3D<out T> where T : INumber<T>
-	{
-		Length<T> Width { get; }
-		
-		Length<T> Height { get; }
-		
-		Length<T> Depth { get; }
-	}
+public sealed record Size3D<T>
+	(
+		ILength<T> Width,
+		ILength<T> Height,
+		ILength<T> Depth
+	)
+	: ISize3D<T>
+	where T : INumber<T>;

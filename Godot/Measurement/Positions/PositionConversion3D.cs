@@ -7,14 +7,14 @@ namespace Mikita.Godot.Measurement.Positions;
 public static class PositionConversion3D
 	{
 		public static Vector3 ToGodot<T>
-			
-			(this Position3D<T> position) 
+			(
+				this Position3D<T> position
+			)
 			where T: INumber<T>
-		
 			=> new
 				(
-					float.CreateChecked(position.X.InMeters), 
-					float.CreateChecked(position.Y.InMeters), 
-					float.CreateChecked(position.Z.InMeters)
+					float.CreateChecked(position.X.Meters()),
+					float.CreateChecked(position.Y.Meters()),
+					float.CreateChecked(position.Z.Meters())
 				);
 	}

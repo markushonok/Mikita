@@ -3,9 +3,10 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Sizes;
 
-public interface Size2D<out T> where T : INumber<T>
-	{
-		Length<T> Width { get; }
-		
-		Length<T> Height { get; }
-	}
+public sealed record Size2D<T>
+	(
+		ILength<T> Width,
+		ILength<T> Height
+	)
+	: ISize2D<T>
+	where T : INumber<T>;

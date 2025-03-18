@@ -4,11 +4,11 @@ namespace Mikita.Math.Vectors;
 
 public static partial class Vector
 	{
-		internal static T Length<T>(this Vector2D<T> vector)
+		public static T Length<T>(this Vector2D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
 			=> Vector.LengthTo(vector.X, vector.Y);
 		
-		internal static T Length<T>(this Vector3D<T> vector)
+		public static T Length<T>(this Vector3D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
 			=> Vector.LengthTo(vector.X, vector.Y, vector.Z);
 		

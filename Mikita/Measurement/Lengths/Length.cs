@@ -2,8 +2,10 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Lengths;
 
-public partial interface Length<out T> 
+public sealed class Length<T>(T meters)
+	: ILength<T>
 	where T : INumber<T>
 	{
-		T InMeters { get; }
+		public T Meters()
+			=> meters;
 	}

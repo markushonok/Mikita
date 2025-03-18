@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Angles;
 
-public static class Angle
+public static partial class Angle
 	{
 		public static Angle<T> Min<T>
 			(

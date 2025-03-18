@@ -25,7 +25,7 @@ public static class NullAssert
 			where T : class
 			{
 				if (caller is null) throw NullCallerException<T>();
-				if (value  is null) throw NullValueException <T>(caller);
+				if (value is null) throw NullValueException<T>(caller);
 				return value;
 			}
 
@@ -48,7 +48,7 @@ public static class NullAssert
 			where T : struct
 			{
 				if (caller is null) throw NullCallerException<T>();
-				if (value  is null) throw NullValueException <T>(caller);
+				if (value is null) throw NullValueException<T>(caller);
 				return value.Value;
 			}
 

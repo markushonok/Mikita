@@ -12,6 +12,6 @@ public static class MouseEnterToggle
 			=> EventToggle.From
 				(
 					reaction => control.MouseEntered += reaction,
-					reaction => control.MouseExited -= reaction
+					reaction => control.MouseExited += reaction
 				);
 	}

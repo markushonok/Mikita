@@ -7,8 +7,8 @@ public partial interface Position3D<out T>
 		static PositionRecord3D<T> Zero
 			=> new
 				(
-					Length<T>.Zero,
-					Length<T>.Zero,
-					Length<T>.Zero
+					ZeroLength<T>.Reference,
+					ZeroLength<T>.Reference,
+					ZeroLength<T>.Reference
 				);
 	}

@@ -5,8 +5,8 @@ namespace Mikita.Measurement.Positions;
 
 public record struct PositionRecord2D<T>
 	(
-		Length<T> X, 
-		Length<T> Y
+		ILength<T> X, 
+		ILength<T> Y
 	) 
 	: Position2D<T> 
 	where T : INumber<T>;

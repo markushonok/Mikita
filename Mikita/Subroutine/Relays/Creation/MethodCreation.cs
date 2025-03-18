@@ -49,13 +49,19 @@ public static class MethodCreation
 				il.Emit(OpCodes.Ldarg_0);
 				il.Emit(OpCodes.Ldfld, field);
 				il.EmitCall(OpCodes.Callvirt, typeof(Func<T>).GetMethod("Invoke").NotNull(), optionalParameterTypes: null);
+
+				var parameterCount = reference.GetParameters().Length;
+
+				for (var i = 0; i < parameterCount; i++)
+					il.Emit(OpCodes.Ldarg, i + 1);
+
 				il.EmitCall(OpCodes.Callvirt, reference, optionalParameterTypes: null);
 				il.Emit(OpCodes.Ret);
 			}
 
 		public const MethodAttributes RelayMethodAttributes 
-			= MethodAttributes.Public 
-			| MethodAttributes.HideBySig 
+			= MethodAttributes.Public
+			| MethodAttributes.HideBySig
 			| MethodAttributes.Final 
 			| MethodAttributes.Virtual;
 	}

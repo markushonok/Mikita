@@ -1,10 +1,20 @@
+using Mikita.Structs.Scalars;
 using System.Numerics;
 
 namespace Mikita.Measurement.Motion;
 
 public static class VelocityStepping3D
 	{
-		public static Velocity3D<T> NormalStepTo<T>
+		public static void NormalStepTo<T>
+			(
+				this Scalar<Velocity3D<T>> scalar,
+				Velocity3D<T> to,
+				Speed<T> by
+			)
+			where T: INumber<T>, IRootFunctions<T>
+			=> scalar.Value = scalar.Value.NormalSteppedTo(to, by);
+
+		public static Velocity3D<T> NormalSteppedTo<T>
 			(
 				this Velocity3D<T> from,
 				Velocity3D<T> to,
@@ -13,13 +23,13 @@ public static class VelocityStepping3D
 			where T: INumber<T>, IRootFunctions<T>
 			{
 				var local = to - from;
-				var length = local.Speed;
+				var length = local.Speed();
 				if (length.Equals(Speed<T>.Zero)) return to;
-				var normal = local / length;
-				return from.StepTo(to, normal * by);
+				var normal = local / length.InMetersPerSecond;
+				return from.SteppedTo(to, normal * by.InMetersPerSecond);
 			}
 		
-		public static VelocityRecord3D<T> StepTo<T>
+		public static VelocityRecord3D<T> SteppedTo<T>
 			(
 				this Velocity3D<T> from,
 				Velocity3D<T> to,

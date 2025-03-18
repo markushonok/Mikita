@@ -16,9 +16,9 @@ public static class SpeedStepping
 				INumber<T>, 
 				IRootFunctions<T>
 		
-			=> Speed.InMetersPerSecond
+			=> Speed.FromMetersPerSecond
 				(
-					from.InMetersPerSecond.StepTo
+					from.InMetersPerSecond.Stepped
 						(
 							to.InMetersPerSecond, 
 							by.InMetersPerSecond

@@ -17,7 +17,14 @@ public static partial class Scalar
 			(
 				T value
 			)
-			=> Reference.To(value).AsScalar;
+			=> Reference.To(value).AsScalar();
+
+		public static BackCallingScalar<T> WithCallback<T>
+			(
+				this Scalar<T> origin,
+				Action<Scalar<T>> callback
+			)
+			=> new(origin, () => callback(origin));
 
 		public static BackCallingScalar<T> WithCallback<T>
 			(

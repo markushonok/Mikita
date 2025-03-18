@@ -21,7 +21,7 @@ public partial interface Vector2D<out T>
 				Vector2D<T> vector,
 				T scalar
 			)
-			=> vector * Vector.PointingTo(scalar, scalar);
+			=> vector * Vector.PointingTo(x: scalar, y: scalar);
 		
 		static Vector2D<T> operator *
 			(
@@ -35,7 +35,7 @@ public partial interface Vector2D<out T>
 				Vector2D<T> vector,
 				T scalar
 			)
-			=> vector / Vector.PointingTo(scalar, scalar);
+			=> vector / Vector.PointingTo(x: scalar, y: scalar);
 		
 		static Vector2D<T> operator /
 			(

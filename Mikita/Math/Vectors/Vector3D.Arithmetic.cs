@@ -31,7 +31,7 @@ public partial interface Vector3D<out T>
 				Vector3D<T> vector,
 				T scalar
 			)
-			=> vector * Vector.PointingTo(scalar, scalar, scalar);
+			=> vector * Vector.PointingTo(x: scalar, y: scalar, z: scalar);
 		
 		static Vector3D<T> operator *
 			(
@@ -50,7 +50,7 @@ public partial interface Vector3D<out T>
 				Vector3D<T> vector,
 				T scalar
 			)
-			=> vector / Vector.PointingTo(scalar, scalar, scalar);
+			=> vector / Vector.PointingTo(x: scalar, y: scalar, z: scalar);
 		
 		static Vector3D<T> operator /
 			(

@@ -4,14 +4,14 @@ using System;
 
 namespace Mikita.Structs.Scalars;
 
-public partial interface Scalar<T>
-	{
-		public Assign<T> WriteOnly
-			=> value => Value = value;
-	}
-
 public static partial class Scalar
 	{
+		public static Assign<T> WriteOnly<T>
+			(
+				this Scalar<T> scalar
+			)
+			=> value => scalar.Value = value;
+
 		public static T ReadOnly<T>
 			(
 				this Scalar<T> scalar

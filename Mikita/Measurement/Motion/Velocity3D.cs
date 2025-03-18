@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Motion;
 
-public partial interface Velocity3D<T> 
+public partial interface Velocity3D<out T>
 	where T : INumber<T>, IRootFunctions<T>
 	{
 		Speed<T> X { get; }

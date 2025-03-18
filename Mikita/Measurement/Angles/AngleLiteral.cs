@@ -13,7 +13,7 @@ public static class AngleLiteral
 			: INumber<T>
 			, IFloatingPointConstants<T>
 
-			=> number.AsAngleInRadians();
+			=> Angle.Radians(number);
 
 
 		/// <summary>
@@ -25,7 +25,7 @@ public static class AngleLiteral
 			: INumber<T>
 			, IFloatingPointConstants<T>
 
-			=> number.ToAngleInDegrees();
+			=> Angle.Degrees(number);
 
 
 		/// <summary>
@@ -37,5 +37,5 @@ public static class AngleLiteral
 			: INumber<T>
 			, IFloatingPointConstants<T>
 
-			=> number.ToAngleInTurns();
+			=> Angle.Turns(number);
 	}

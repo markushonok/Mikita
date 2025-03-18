@@ -12,6 +12,6 @@ public static class FocusEnterToggle
 			=> EventToggle.From
 				(
 					reaction => control.FocusEntered += reaction,
-					reaction => control.FocusExited -= reaction
+					reaction => control.FocusExited += reaction
 				);
 	}

@@ -4,15 +4,15 @@ namespace Mikita.Measurement.Lengths;
 
 public static class LengthToNumber
 	{
-		internal static T InKilometers<T>(this Length<T> length)
-			where T : INumber<T>
-			=> length.InMeters * T.CreateChecked(0.001);
+		public static T InKilometers<T>(this ILength<T> length)
+			where T : struct, INumber<T>
+			=> length.Meters() * T.CreateChecked(0.001);
 		
-		internal static T InCentimeters<T>(this Length<T> length)
-			where T : INumber<T>
-			=> length.InMeters * T.CreateChecked(100);
+		public static T InCentimeters<T>(this ILength<T> length)
+			where T : struct, INumber<T>
+			=> length.Meters() * T.CreateChecked(100);
 		
-		internal static T InMillimeters<T>(this Length<T> length)
-			where T : INumber<T>
-			=> length.InMeters * T.CreateChecked(1000);
+		public static T InMillimeters<T>(this ILength<T> length)
+			where T : struct, INumber<T>
+			=> length.Meters() * T.CreateChecked(1000);
 	}

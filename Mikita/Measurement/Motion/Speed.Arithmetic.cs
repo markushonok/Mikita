@@ -1,101 +1,62 @@
-using System.Numerics;
+using Mikita.Measurement.Lengths;
+using System;
 
 namespace Mikita.Measurement.Motion;
 
-public partial interface Speed<out T>
+partial interface Speed<out T>
 	{
-		public static Speed<T> operator +
+		static Speed<T> operator +
 			(
 				Speed<T> augend,
 				Speed<T> addend
 			)
-			=> Speed.InMetersPerSecond
+			=> Speed.FromMetersPerSecond
 				(
 					augend.InMetersPerSecond 
 					+ addend.InMetersPerSecond
 				);
 		
-		public static Speed<T> operator -
+		static Speed<T> operator -
 			(
 				Speed<T> minuend,
 				Speed<T> subtrahend
 			)
-			=> Speed.InMetersPerSecond
+			=> Speed.FromMetersPerSecond
 				(
 					minuend.InMetersPerSecond 
 					- subtrahend.InMetersPerSecond
 				);
 		
-		public static Speed<T> operator *
+		static Speed<T> operator *
 			(
 				Speed<T> multiplicand,
 				T multiplier
 			)
-			=> Speed.InMetersPerSecond
+			=> Speed.FromMetersPerSecond
 				(
 					multiplicand.InMetersPerSecond 
 					* multiplier
 				);
 		
-		public static Speed<T> operator *
-			(
-				Speed<T> multiplicand,
-				Speed<T> multiplier
-			)
-			=> Speed.InMetersPerSecond
-				(
-					multiplicand.InMetersPerSecond 
-					* multiplier.InMetersPerSecond
-				);
-		
-		public static Speed<T> operator /
+		static Speed<T> operator /
 			(
 				Speed<T> dividend,
 				T divisor
 			)
-			=> Speed.InMetersPerSecond
+			=> Speed.FromMetersPerSecond
 				(
 					dividend.InMetersPerSecond 
 					/ divisor
 				);
-		
-		public static Speed<T> operator /
+
+		static Length<T> operator *
 			(
-				Speed<T> dividend,
-				Speed<T> divisor
+				Speed<T> speed,
+				TimeSpan time
 			)
-			=> Speed.InMetersPerSecond
+			=> Length.FromMeters
 				(
-					dividend.InMetersPerSecond 
-					/ divisor.InMetersPerSecond
-				);
-	}
-	
-public static partial class Speed
-	{
-		public static Speed<T> Sqrt<T>
-			(
-				Speed<T> speed
-			)
-		
-			where T: 
-				INumber<T>, 
-				IRootFunctions<T>
-		
-			=> Speed.RootN(speed, 2);
-		
-		public static Speed<T> RootN<T>
-			(
-				Speed<T> speed, 
-				int n
-			)
-		
-			where T: 
-				INumber<T>, 
-				IRootFunctions<T>
-		
-			=> Speed.InMetersPerSecond
-				(
-					T.RootN(speed.InMetersPerSecond, n)
+					speed.InMetersPerSecond
+						* T.CreateChecked(time.TotalSeconds)
 				);
 	}
