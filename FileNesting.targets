@@ -1,31 +1,39 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 	<PropertyGroup>
 		<Name>FileNesting</Name>
+		<EnableAutoFileNesting Condition="'$(EnableAutoFileNesting)' == ''">true</EnableAutoFileNesting>
+		<MSBuildTasksAssemblyPath Condition="'$(MSBuildTasksAssemblyPath)' == ''">$(MSBuildThisFileDirectory)MSBuild.Targets\bin\Debug\net9.0\MSBuild.Targets.dll</MSBuildTasksAssemblyPath>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Compile Update="**\*.Instances.cs">
-			<DependentUpon>
-				$([System.String]::Copy(%(Filename)).Replace('.Instances', '.cs'))
-			</DependentUpon>
-		</Compile>
+	<!-- Явная ошибка если DLL не существует -->
+	<Target Name="FailIfMissingTaskDll"
+	        BeforeTargets="CoreCompile"
+	        Condition="'$(EnableAutoFileNesting)' == 'true' And !Exists('$(MSBuildTasksAssemblyPath)')">
+		<Error Text="Не найден файл с задачей автонестинга: $(MSBuildTasksAssemblyPath)" />
+	</Target>
 
-		<Compile Update="**\*.Arithmetic.cs">
-			<DependentUpon>
-				$([System.String]::Copy(%(Filename)).Replace('.Arithmetic', '.cs'))
-			</DependentUpon>
-		</Compile>
+	<!-- Явная ошибка если авто-вложение отключено -->
+	<Target Name="FailIfFeatureDisabled"
+	        BeforeTargets="CoreCompile"
+	        Condition="'$(EnableAutoFileNesting)' != 'true'">
+		<Error Text="Автоматическое вложение файлов отключено, сборка невозможна!" />
+	</Target>
 
-		<Compile Update="**\*.Comparison.cs">
-			<DependentUpon>
-				$([System.String]::Copy(%(Filename)).Replace('.Comparison', '.cs'))
-			</DependentUpon>
-		</Compile>
+	<UsingTask
+			TaskName="AutoFileNestTask"
+			AssemblyFile="$(MSBuildTasksAssemblyPath)"
+			Condition="'$(EnableAutoFileNesting)' == 'true' And Exists('$(MSBuildTasksAssemblyPath)')" />
 
-		<Compile Update="**\*.Comparison.cs">
-			<DependentUpon>
-				$([System.String]::Copy(%(Filename)).Replace('.Extensions', '.cs'))
-			</DependentUpon>
-		</Compile>
-	</ItemGroup>
+	<Target
+			Name="ApplyAutoFileNesting"
+			BeforeTargets="CoreCompile"
+			Condition="'$(EnableAutoFileNesting)' == 'true' And Exists('$(MSBuildTasksAssemblyPath)')">
+		<AutoFileNestTask Files="@(Compile)">
+			<Output TaskParameter="UpdatedFiles" ItemName="_NestingProcessedFiles" />
+		</AutoFileNestTask>
+		<ItemGroup>
+			<Compile Remove="@(Compile)" />
+			<Compile Include="@(_NestingProcessedFiles)" />
+		</ItemGroup>
+	</Target>
 </Project>

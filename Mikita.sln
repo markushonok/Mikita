@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godot", "Godot\Godot.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita", "Mikita\Mikita.csproj", "{223FF6ED-71BD-4045-B0EB-C2079854D9A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuild.Targets", "MSBuild.Targets\MSBuild.Targets.csproj", "{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +20,10 @@ Global
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection

@@ -1,46 +1,46 @@
 namespace Mikita.Measurement.Rotations.EulerAngles;
 
-public partial record struct EulerAngle<T>
+public partial record EulerAngle<T>
 	{
 		public static IEulerAngle<T> operator +
 			(
-				EulerAngle<T> left,
-				IEulerAngle<T> right
+				EulerAngle<T> augend,
+				IEulerAngle<T> addend
 			)
-			=> (IEulerAngle<T>) left + right;
+			=> (IEulerAngle<T>) augend + addend;
 		
 		public static IEulerAngle<T> operator -
 			(
-				EulerAngle<T> left,
-				IEulerAngle<T> right
+				EulerAngle<T> minuend,
+				IEulerAngle<T> subtrahend
 			)
-			=> (IEulerAngle<T>) left - right;
+			=> (IEulerAngle<T>) minuend - subtrahend;
 
 		public static IEulerAngle<T> operator *
 			(
-				EulerAngle<T> left,
-				T right
+				EulerAngle<T> multiplicand,
+				T multiplier
 			)
-			=> (IEulerAngle<T>) left * right;
+			=> (IEulerAngle<T>) multiplicand * multiplier;
 		
 		public static IEulerAngle<T> operator *
 			(
-				EulerAngle<T> left,
-				IEulerAngle<T> right
+				EulerAngle<T> multiplicand,
+				IEulerAngle<T> multiplier
 			)
-			=> (IEulerAngle<T>) left * right;
+			=> (IEulerAngle<T>) multiplicand * multiplier;
 		
 		public static IEulerAngle<T> operator /
 			(
-				EulerAngle<T> left,
-				T right
+				EulerAngle<T> dividend,
+				T divisor
 			)
-			=> (IEulerAngle<T>) left / right;
+			=> (IEulerAngle<T>) dividend / divisor;
 		
 		public static IEulerAngle<T> operator /
 			(
-				EulerAngle<T> left,
-				IEulerAngle<T> right
+				EulerAngle<T> dividend,
+				IEulerAngle<T> divisor
 			)
-			=> (IEulerAngle<T>) left / right;
+			=> (IEulerAngle<T>) dividend / divisor;
 	}

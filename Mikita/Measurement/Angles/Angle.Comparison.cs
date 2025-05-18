@@ -4,15 +4,15 @@ public partial interface Angle<out T>
 	{
 		static bool operator <
 			(
-				Angle<T> left,
-				Angle<T> right
+				Angle<T> comparandum,
+				Angle<T> comparatum
 			)
-			=> left.InRadians < right.InRadians;
+			=> comparandum.InRadians < comparatum.InRadians;
 
 		static bool operator >
 			(
-				Angle<T> left, 
-				Angle<T> right
+				Angle<T> comparandum,
+				Angle<T> comparatum
 			)
-			=> left.InRadians > right.InRadians;
+			=> comparandum.InRadians > comparatum.InRadians;
 	}

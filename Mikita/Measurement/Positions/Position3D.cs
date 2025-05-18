@@ -3,12 +3,11 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Positions;
 
-public partial interface Position3D<out T>
-	where T : INumber<T>
-	{
-		ILength<T> X { get; }
-		
-		ILength<T> Y { get; }
-		
-		ILength<T> Z { get; }
-	}
+public sealed partial record Position3D<T>
+	(
+		ILength<T> X, 
+		ILength<T> Y,
+		ILength<T> Z
+	) 
+	: IPosition3D<T>
+	where T : INumber<T>;

@@ -3,89 +3,16 @@
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Update="Structs\Scalars\Scalar.Splitting.cs">
-	    <DependentUpon>Scalar.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\Interserved.Extensions.cs">
-	    <DependentUpon>Interserved.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Positions\Position.Motion.cs">
-	    <DependentUpon>Position.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Motion\Velocity.Extensions.cs">
-	    <DependentUpon>Velocity.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Motion\Velocity3D.Extensions.cs">
-	    <DependentUpon>Velocity3D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\ObservedSource.Extensions.cs">
-	    <DependentUpon>ObservedSource.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\Interserved.Scalar.cs">
-	    <DependentUpon>Interserved.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Vectors\Vector.Length.cs">
-	    <DependentUpon>Vector.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Vectors\Vector.Middle.cs">
-	    <DependentUpon>Vector.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Vectors\Vector.Normal.cs">
-	    <DependentUpon>Vector.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Vectors\Vector.PointingTo.cs">
-	    <DependentUpon>Vector.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Vectors\Vector.Sign.cs">
-	    <DependentUpon>Vector.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Events\Event.Instances.cs">
-	    <DependentUpon>Event.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Numbers\Number.Sign.cs">
-	    <DependentUpon>Number.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Numbers\Number.Stepping.cs">
-	    <DependentUpon>Number.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Math\Numbers\Number.Equality.cs">
-	    <DependentUpon>Number.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Positions\Position3D.Arithmetic.cs">
-	    <DependentUpon>Position3D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Structs\Scalars\Scalar.Conversion.cs">
-	    <DependentUpon>Scalar.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Structs\Scalars\Scalar.Bool.cs">
-	    <DependentUpon>Scalar.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Subroutine\Relays\Relay.Namespace.cs">
-	    <DependentUpon>Relay.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Rotations\EulerAngles\IEulerAngle2.Comparison.cs">
-	    <DependentUpon>EulerAngle2.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Rotations\EulerAngle\IEulerAngle.Comparison.cs">
-	    <DependentUpon>IEulerAngle2.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Angles\AngleRecord.Comparison.cs">
-	    <DependentUpon>AngleRecord.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Angles\Angle.Comparison.cs">
-	    <DependentUpon>Angle.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Angles\Angle.Functions.cs">
-	    <DependentUpon>Angle.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Rotations\EulerAngles\IEulerAngle.Comparison.cs">
-	    <DependentUpon>IEulerAngle.cs</DependentUpon>
-	  </Compile>
-	</ItemGroup>
+	
 	<ItemGroup>
 	  <Folder Include="Graphics\" />
 	  <Folder Include="UI\" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Update="Measurement\Sizes\Size2D.Instances.cs">
+	    <DependentUpon>Size2D.cs</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>

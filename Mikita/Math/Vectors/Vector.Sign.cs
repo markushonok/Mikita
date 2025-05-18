@@ -7,17 +7,17 @@ public static partial class Vector
 	{
 		public static VectorRecord2D<T> Sign<T>(this Vector2D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
-			=> Vector.SignOf(vector.X, vector.Y);
+			=> SignOf(vector.X, vector.Y);
 		
-		public static VectorRecord3D<T> Sign<T>(this Vector3D<T> vector)
+		public static Vector3D<T> Sign<T>(this IVector3D<T> vector)
 			where T : INumber<T>, IRootFunctions<T>
-			=> Vector.SignOf(vector.X, vector.Y, vector.Z);
-		
+			=> SignOf(vector.X, vector.Y, vector.Z);
+
 		public static VectorRecord2D<T> SignOf<T>(T x, T y)
 			where T : INumber<T>, IRootFunctions<T>
-			=> Vector.PointingTo(x.Sign(), y.Sign());
-		
-		public static VectorRecord3D<T> SignOf<T>(T x, T y, T z)
+			=> PointingTo(x.Sign(), y.Sign());
+
+		public static Vector3D<T> SignOf<T>(T x, T y, T z)
 			where T : INumber<T>, IRootFunctions<T>
-			=> Vector.PointingTo(x.Sign(), y.Sign(), z.Sign());
+			=> PointingTo(x.Sign(), y.Sign(), z.Sign());
 	}

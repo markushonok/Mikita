@@ -5,10 +5,10 @@ namespace Mikita.Math.Vectors;
 
 public static class VectorStepping3D
 	{
-		public static Vector3D<T> NormalStepTo<T>
+		public static IVector3D<T> NormalStepTo<T>
 			(
-				this Vector3D<T> from,
-				Vector3D<T> to,
+				this IVector3D<T> from,
+				IVector3D<T> to,
 				T by
 			)
 			where T : INumber<T>, IRootFunctions<T>
@@ -20,11 +20,11 @@ public static class VectorStepping3D
 				return from.StepTo(to, normal * by);
 			}
 		
-		public static VectorRecord3D<T> StepTo<T>
+		public static Vector3D<T> StepTo<T>
 			(
-				this Vector3D<T> from,
-				Vector3D<T> to,
-				Vector3D<T> by
+				this IVector3D<T> from,
+				IVector3D<T> to,
+				IVector3D<T> by
 			)
 			where T: 
 				INumber<T>, 

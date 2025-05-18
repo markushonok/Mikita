@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 
+/// <summary>
+/// Represents Euler angles for rotation in 3D space.
+/// </summary>
 public partial interface IEulerAngle<out T>
 
 	where T:
@@ -15,6 +18,4 @@ public partial interface IEulerAngle<out T>
 		Angle<T> Y { get; }
 
 		Angle<T> Z { get; }
-
-		EulerOrder Order { get; }
 	}

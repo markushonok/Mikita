@@ -4,15 +4,15 @@ public partial record struct AngleRecord<T>
 	{
 		public static bool operator <
 			(
-				AngleRecord<T> left,
-				Angle<T> right
+				AngleRecord<T> comparandum,
+				Angle<T> comparatum
 			)
-			=> (Angle<T>) left < right;
+			=> (Angle<T>) comparandum < comparatum;
 
 		public static bool operator >
 			(
-				AngleRecord<T> left, 
-				Angle<T> right
+				AngleRecord<T> comparandum,
+				Angle<T> comparatum
 			)
-			=> (Angle<T>) left > right;
+			=> (Angle<T>) comparandum > comparatum;
 	}

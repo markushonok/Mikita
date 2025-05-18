@@ -4,79 +4,73 @@ public partial interface IEulerAngle<out T>
 	{
 		static IEulerAngle<T> operator +
 			(
-				IEulerAngle<T> left,
-				IEulerAngle<T> right
+				IEulerAngle<T> augend,
+				IEulerAngle<T> addend
 			)
 			=> Rotation.Of
 				(
-					left.X + right.X,
-					left.Y + right.Y,
-					left.Z + right.Z,
-					left.Order
+					augend.X + addend.X,
+					augend.Y + addend.Y,
+					augend.Z + addend.Z
 				);
 		
 		static IEulerAngle<T> operator -
 			(
-				IEulerAngle<T> left,
-				IEulerAngle<T> right
+				IEulerAngle<T> minuend,
+				IEulerAngle<T> subtrahend
 			)
 			=> Rotation.Of
 				(
-					left.X - right.X,
-					left.Y - right.Y,
-					left.Z - right.Z,
-					left.Order
+					minuend.X - subtrahend.X,
+					minuend.Y - subtrahend.Y,
+					minuend.Z - subtrahend.Z
 				);
 
 		static IEulerAngle<T> operator *
 			(
-				IEulerAngle<T> left,
-				T right
+				IEulerAngle<T> multiplicand,
+				T multiplier
 			)
 			=> Rotation.Of
 				(
-					left.X * right,
-					left.Y * right,
-					left.Z * right,
-					left.Order
+					multiplicand.X * multiplier,
+					multiplicand.Y * multiplier,
+					multiplicand.Z * multiplier
 				);
 		
 		static IEulerAngle<T> operator *
 			(
-				IEulerAngle<T> left,
-				IEulerAngle<T> right
+				IEulerAngle<T> multiplicand,
+				IEulerAngle<T> multiplier
 			)
 			=> Rotation.Of
 				(
-					left.X * right.X,
-					left.Y * right.Y,
-					left.Z * right.Z,
-					left.Order
+					multiplicand.X * multiplier.X,
+					multiplicand.Y * multiplier.Y,
+					multiplicand.Z * multiplier.Z
 				);
 		
 		static IEulerAngle<T> operator /
 			(
-				IEulerAngle<T> left,
-				T right
+				IEulerAngle<T> dividend,
+				T divisor
 			)
 			=> Rotation.Of
 				(
-					left.X / right,
-					left.Y / right,
-					left.Z / right,
-					left.Order
+					dividend.X / divisor,
+					dividend.Y / divisor,
+					dividend.Z / divisor
 				);
 		
 		static IEulerAngle<T> operator /
 			(
-				IEulerAngle<T> left,
-				IEulerAngle<T> right
+				IEulerAngle<T> dividend,
+				IEulerAngle<T> divisor
 			)
 			=> Rotation.Of
 				(
-					left.X / right.X, 
-					left.Y / right.Y,
-					left.Z / right.Z,
-					left.Order
+					dividend.X / divisor.X, 
+					dividend.Y / divisor.Y,
+					dividend.Z / divisor.Z
 				);
 	}

@@ -1,5 +1,4 @@
 ## IntelliJ Platform
-
 # User specific
 **/.idea/**/workspace.xml
 **/.idea/**/tasks.xml
@@ -20,6 +19,8 @@
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
 
+## Extensions
+.qodo
 
 ## CSharp
 *.suo
@@ -50,11 +51,9 @@ mono_crash.*.json
 
 
 ## OS
-
 # Windows
 Thumbs.db
 Desktop.ini
 
 # macOS
 .DS_Store
-.qodo

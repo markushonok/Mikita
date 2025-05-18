@@ -2,13 +2,13 @@ using Mikita.Measurement.Lengths;
 
 namespace Mikita.Measurement.Positions;
 
-public partial interface Position3D<out T>
+sealed partial record Position3D<T>
 	{
-		static PositionRecord3D<T> Zero
+		public static Position3D<T> Zero
 			=> new
 				(
-					ZeroLength<T>.Reference,
-					ZeroLength<T>.Reference,
-					ZeroLength<T>.Reference
+					Length<T>.Zero,
+					Length<T>.Zero,
+					Length<T>.Zero
 				);
 	}

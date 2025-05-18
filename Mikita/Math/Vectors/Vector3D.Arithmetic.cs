@@ -1,66 +1,46 @@
 namespace Mikita.Math.Vectors;
 
-public partial interface Vector3D<out T>
+sealed partial record Vector3D<T>
 	{
-		static Vector3D<T> operator +
+		public static IVector3D<T> operator +
 			(
-				Vector3D<T> left,
-				Vector3D<T> right
+				Vector3D<T> addend,
+				IVector3D<T> augend
 			)
-			=> Vector.PointingTo
-				(
-					left.X + right.X, 
-					left.Y + right.Y,
-					left.Z + right.Z
-				);
-		
-		static Vector3D<T> operator -
-			(
-				Vector3D<T> left,
-				Vector3D<T> right
-			)
-			=> Vector.PointingTo
-				(
-					left.X - right.X, 
-					left.Y - right.Y,
-					left.Z - right.Z
-				);
+			=> (IVector3D<T>) addend + augend;
 
-		static Vector3D<T> operator *
+		public static IVector3D<T> operator -
 			(
-				Vector3D<T> vector,
-				T scalar
+				Vector3D<T> minuend,
+				IVector3D<T> subtrahend
 			)
-			=> vector * Vector.PointingTo(x: scalar, y: scalar, z: scalar);
-		
-		static Vector3D<T> operator *
+			=> (IVector3D<T>) minuend - subtrahend;
+
+		public static IVector3D<T> operator *
 			(
-				Vector3D<T> left,
-				Vector3D<T> right
+				Vector3D<T> multiplicand,
+				T multiplier
 			)
-			=> Vector.PointingTo
-				(
-					left.X * right.X, 
-					left.Y * right.Y,
-					left.Z * right.Z
-				);
-		
-		static Vector3D<T> operator /
+			=> (IVector3D<T>) multiplicand * multiplier;
+
+		public static IVector3D<T> operator *
 			(
-				Vector3D<T> vector,
-				T scalar
+				Vector3D<T> multiplicand,
+				IVector3D<T> multiplier
 			)
-			=> vector / Vector.PointingTo(x: scalar, y: scalar, z: scalar);
-		
-		static Vector3D<T> operator /
+			=> (IVector3D<T>) multiplicand * multiplier;
+
+		public static IVector3D<T> operator /
 			(
-				Vector3D<T> left,
-				Vector3D<T> right
+				Vector3D<T> dividend,
+				T divisor
 			)
-			=> Vector.PointingTo
-				(
-					left.X / right.X, 
-					left.Y / right.Y,
-					left.Z / right.Z
-				);
+			=> (IVector3D<T>) dividend / divisor;
+
+		public static IVector3D<T> operator /
+			(
+				Vector3D<T> dividend,
+				IVector3D<T> divisor
+			)
+			=> (IVector3D<T>) dividend / divisor;
 	}

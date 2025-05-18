@@ -1,7 +1,10 @@
+using System.Numerics;
+
 namespace Mikita.Math.Vectors;
 
-public partial interface Vector3D<out T>
+public static class Vector3D
 	{
-		public static VectorRecord3D<T> Zero
-			=> Vector.PointingTo(T.Zero, T.Zero, T.Zero);
+		public static Vector3D<T> Of<T>(T number)
+			where T: INumber<T>, IRootFunctions<T>
+			=> Vector.PointingTo(number, number, number);
 	}

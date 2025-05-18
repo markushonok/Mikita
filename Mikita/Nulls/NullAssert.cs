@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Mikita.Assertion;
+namespace Mikita.Nulls;
 
 public static class NullAssert
 	{

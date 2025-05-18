@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Sizes;
 
-public sealed record Size2D<T>
+public sealed partial record Size2D<T>
 	(
 		ILength<T> Width,
 		ILength<T> Height

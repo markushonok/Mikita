@@ -3,16 +3,14 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 
-public partial record struct EulerAngle<T>
+public partial record EulerAngle<T>
 	(
 		Angle<T> X,
 		Angle<T> Y,
-		Angle<T> Z,
-		EulerOrder Order
-	) 
-	
+		Angle<T> Z
+	)
 	: IEulerAngle<T>
-	
-	where T 
-		: INumber<T>
-		, IFloatingPointConstants<T>;
+
+	where T:
+		INumber<T>,
+		IFloatingPointConstants<T>;

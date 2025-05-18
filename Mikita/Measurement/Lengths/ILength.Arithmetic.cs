@@ -4,29 +4,29 @@ public partial interface ILength<out T>
 	{
 		static Length<T> operator +
 			(
-				ILength<T> left,
-				ILength<T> right
+				ILength<T> augend,
+				ILength<T> addend
 			)
-			=> new(left.Meters() + right.Meters());
-		
+			=> new(augend.Meters() + addend.Meters());
+
 		static Length<T> operator -
 			(
-				ILength<T> left,
-				ILength<T> right
+				ILength<T> minuend,
+				ILength<T> subtrahend
 			)
-			=> new(left.Meters() - right.Meters());
-		
+			=> new(minuend.Meters() - subtrahend.Meters());
+
 		static Length<T> operator *
 			(
-				ILength<T> left,
-				T right
+				ILength<T> multiplicand,
+				T multiplier
 			)
-			=> Length.FromMeters(left.Meters() * right);
+			=> Length.FromMeters(multiplicand.Meters() * multiplier);
 
 		static Length<T> operator /
 			(
-				ILength<T> left,
-				T right
+				ILength<T> dividend,
+				T divisor
 			)
-			=> Length.FromMeters(left.Meters() / right);
+			=> Length.FromMeters(dividend.Meters() / divisor);
 	}

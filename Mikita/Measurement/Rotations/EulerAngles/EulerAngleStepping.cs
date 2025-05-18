@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 
-public static class Angle2Stepping
+public static class EulerAngleStepping
 	{
 		public static void NormalStepTo<T>
 			(
@@ -13,7 +13,10 @@ public static class Angle2Stepping
 				IEulerAngle<T> target,
 				Angle<T> by
 			)
-			where T: INumber<T>, IRootFunctions<T>
+			where T:
+				struct,
+				INumber<T>,
+				IRootFunctions<T>
 			=> current.Value = current.Value.NormalSteppedTo(target, by);
 
 		public static IEulerAngle<T> NormalSteppedTo<T>
@@ -22,7 +25,10 @@ public static class Angle2Stepping
 				IEulerAngle<T> to,
 				Angle<T> by
 			)
-			where T: INumber<T>, IRootFunctions<T>
+			where T:
+				struct,
+				INumber<T>,
+				IRootFunctions<T>
 			{
 				var local = to - from;
 				var length = local.ToRadianVector().Length();
@@ -38,14 +44,15 @@ public static class Angle2Stepping
 				IEulerAngle<T> to,
 				IEulerAngle<T> by
 			)
-			where T: 
-				INumber<T>, 
+			where T:
+				INumber<T>,
 				IFloatingPointConstants<T>
 			{
 				return Rotation.Of
 					(
-						from.Yaw.SteppedTo(to.Horizontal, by.Horizontal),
-						from.Vertical.SteppedTo(to.Vertical, by.Vertical)
+						from.X.SteppedTo(to.X, by.X),
+						from.Y.SteppedTo(to.Y, by.Y),
+						from.Z.SteppedTo(to.Z, by.Z)
 					);
 			}
 	}

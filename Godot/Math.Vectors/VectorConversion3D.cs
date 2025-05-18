@@ -7,7 +7,7 @@ namespace Mikita.Godot.Math.Vectors;
 
 public static class VectorConversion3D
 	{
-		public static Vector3D<float> ToMikita
+		public static IVector3D<float> ToMikita
 			(
 				this Vector3 vector
 			)
@@ -15,7 +15,7 @@ public static class VectorConversion3D
 
 		public static Vector3 ToGodot<T>
 			(
-				this Vector3D<T> vector
+				this IVector3D<T> vector
 			)
 			where T : INumber<T>, IRootFunctions<T>
 			=> new

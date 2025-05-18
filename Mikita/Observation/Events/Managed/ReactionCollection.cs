@@ -2,19 +2,19 @@ using System.Collections.Generic;
 
 namespace Mikita.Observation.Events.Managed;
 
-public sealed class ReactionCollection<T>
+public sealed partial class ReactionCollection<T>
 	(
-		T invoke,
-		ICollection<T> reactions
+		ICollection<T> reactions,
+		T invoke
 	) 
 	: ManagedEvent<T>
 	{
-		public T Invoke
-			=> invoke;
-
 		public void Add(T reaction)
 			=> reactions.Add(reaction);
 
 		public void Remove(T reaction)
 			=> reactions.Remove(reaction);
+
+		public T Invoke
+			=> invoke;
 	}

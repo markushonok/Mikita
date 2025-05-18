@@ -1,46 +1,62 @@
 namespace Mikita.Math.Vectors;
 
-public partial interface Vector2D<out T>
+partial interface Vector2D<out T>
 	{
 		static Vector2D<T> operator +
 			(
-				Vector2D<T> left,
-				Vector2D<T> right
+				Vector2D<T> augend,
+				Vector2D<T> addend
 			)
-			=> Vector.PointingTo(left.X + right.X, left.Y + right.Y);
-		
+			=> Vector.PointingTo
+				(
+					augend.X + addend.X,
+					augend.Y + addend.Y
+				);
+
 		static Vector2D<T> operator -
 			(
-				Vector2D<T> left,
-				Vector2D<T> right
+				Vector2D<T> minuend,
+				Vector2D<T> subtrahend
 			)
-			=> Vector.PointingTo(left.X - right.X, left.Y - right.Y);
-		
+			=> Vector.PointingTo
+				(
+					minuend.X - subtrahend.X,
+					minuend.Y - subtrahend.Y
+				);
+
 		static Vector2D<T> operator *
 			(
-				Vector2D<T> vector,
-				T scalar
+				Vector2D<T> multiplicand,
+				T multiplier
 			)
-			=> vector * Vector.PointingTo(x: scalar, y: scalar);
-		
+			=> multiplicand * Vector.PointingTo(x: multiplier, y: multiplier);
+
 		static Vector2D<T> operator *
 			(
-				Vector2D<T> left,
-				Vector2D<T> right
+				Vector2D<T> multiplicand,
+				Vector2D<T> multiplier
 			)
-			=> Vector.PointingTo(left.X * right.X, left.Y * right.Y);
-		
+			=> Vector.PointingTo
+				(
+					multiplicand.X * multiplier.X,
+					multiplicand.Y * multiplier.Y
+				);
+
 		static Vector2D<T> operator /
 			(
-				Vector2D<T> vector,
-				T scalar
+				Vector2D<T> dividend,
+				T divisor
 			)
-			=> vector / Vector.PointingTo(x: scalar, y: scalar);
-		
+			=> dividend / Vector.PointingTo(x: divisor, y: divisor);
+
 		static Vector2D<T> operator /
 			(
-				Vector2D<T> left,
-				Vector2D<T> right
+				Vector2D<T> dividend,
+				Vector2D<T> divisor
 			)
-			=> Vector.PointingTo(left.X / right.X, left.Y / right.Y);
+			=> Vector.PointingTo
+				(
+					dividend.X / divisor.X,
+					dividend.Y / divisor.Y
+				);
 	}

@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Lengths;
 
-public sealed class Length<T>(T meters)
+public sealed partial class Length<T>(T meters)
 	: ILength<T>
 	where T : INumber<T>
 	{

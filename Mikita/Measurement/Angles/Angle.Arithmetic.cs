@@ -4,43 +4,43 @@ public partial interface Angle<out T>
 	{
 		static AngleRecord<T> operator +
 			(
-				Angle<T> left, 
-				Angle<T> right
+				Angle<T> augend, 
+				Angle<T> addend
 			)
-			=> Angle.Radians(left.InRadians + right.InRadians);
+			=> Angle.Radians(augend.InRadians + addend.InRadians);
 		
 		static AngleRecord<T> operator -
 			(
-				Angle<T> left, 
-				Angle<T> right
+				Angle<T> minuend, 
+				Angle<T> subtrahend
 			)
-			=> Angle.Radians(left.InRadians - right.InRadians);
+			=> Angle.Radians(minuend.InRadians - subtrahend.InRadians);
 		
 		static AngleRecord<T> operator *
 			(
-				Angle<T> left,
-				T right
+				Angle<T> multiplicand,
+				T multiplier
 			)
-			=> Angle.Radians(left.InRadians * right);
+			=> Angle.Radians(multiplicand.InRadians * multiplier);
 		
 		static AngleRecord<T> operator *
 			(
-				Angle<T> left, 
-				Angle<T> right
+				Angle<T> multiplicand, 
+				Angle<T> multiplier
 			)
-			=> Angle.Radians(left.InRadians * right.InRadians);
+			=> Angle.Radians(multiplicand.InRadians * multiplier.InRadians);
 		
 		static AngleRecord<T> operator /
 			(
-				Angle<T> left,
-				T right
+				Angle<T> dividend,
+				T divisor
 			)
-			=> Angle.Radians(left.InRadians / right);
+			=> Angle.Radians(dividend.InRadians / divisor);
 		
 		static AngleRecord<T> operator /
 			(
-				Angle<T> left, 
-				Angle<T> right
+				Angle<T> dividend, 
+				Angle<T> divisor
 			)
-			=> Angle.Radians(left.InRadians / right.InRadians);
+			=> Angle.Radians(dividend.InRadians / divisor.InRadians);
 	}

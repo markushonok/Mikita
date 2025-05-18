@@ -29,6 +29,13 @@ public static partial class Scalar
 		public static BackCallingScalar<T> WithCallback<T>
 			(
 				this Scalar<T> origin,
+				Action<T> callback
+			)
+			=> new(origin, () => callback(origin.Value));
+
+		public static BackCallingScalar<T> WithCallback<T>
+			(
+				this Scalar<T> origin,
 				Action callback
 			)
 			=> new(origin, callback);

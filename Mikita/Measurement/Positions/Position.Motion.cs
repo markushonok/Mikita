@@ -10,7 +10,7 @@ public static partial class Position
 	{
 		public static void MoveWith<T>
 			(
-				this Interserved<Position3D<T>> position,
+				this Interserved<IPosition3D<T>> position,
 				Velocity3D<T> velocity,
 				TimeSpan duration
 			)
@@ -19,7 +19,7 @@ public static partial class Position
 
 		public static void MoveWith<T>
 			(
-				this Scalar<Position3D<T>> position,
+				this Scalar<IPosition3D<T>> position,
 				Velocity3D<T> velocity,
 				TimeSpan duration
 			)

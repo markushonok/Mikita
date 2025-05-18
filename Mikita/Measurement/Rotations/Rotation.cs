@@ -10,49 +10,48 @@ public static class Rotation
 			(
 				Angle<T> x,
 				Angle<T> y,
-				Angle<T> z,
-				EulerOrder order
+				Angle<T> z
 			)
 		
-			where T 
-				: INumber<T>
-				, IFloatingPointConstants<T>
+			where T:
+				INumber<T>,
+				IFloatingPointConstants<T>
 		
-			=> new(x, y, z, order);
+			=> new(x, y, z);
 		
-		public static EulerAngle<T> Min<T>
+		public static ValueEulerAngle<T> Min<T>
 			(
 				IEulerAngle<T> left,
 				IEulerAngle<T> right
 			)
 
-			where T 
-				: INumber<T>
-				, IFloatingPointConstants<T>
+			where T:
+				struct,
+				INumber<T>,
+				IFloatingPointConstants<T>
 		
 			=> new
 				(
 					Angle.Min(left.X, right.X),
 					Angle.Min(left.Y, right.Y),
-					Angle.Min(left.Z, right.Z),
-					left.Order
+					Angle.Min(left.Z, right.Z)
 				);
 		
-		public static EulerAngle<T> Max<T>
+		public static ValueEulerAngle<T> Max<T>
 			(
 				IEulerAngle<T> left,
 				IEulerAngle<T> right
 			)
 
-			where T 
-			: INumber<T>
-			, IFloatingPointConstants<T>
+			where T:
+				struct,
+				INumber<T>,
+				IFloatingPointConstants<T>
 		
 			=> new
 				(
 					Angle.Max(left.X, right.X),
 					Angle.Max(left.Y, right.Y),
-					Angle.Max(left.Z, right.Z),
-					left.Order
+					Angle.Max(left.Z, right.Z)
 				);
 	}

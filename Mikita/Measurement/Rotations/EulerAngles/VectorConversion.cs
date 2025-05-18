@@ -7,7 +7,7 @@ namespace Mikita.Measurement.Rotations.EulerAngles;
 
 public static class VectorConversion
 	{
-		public static Vector2D<T> ToRadianVector<T>
+		public static IVector3D<T> ToRadianVector<T>
 			
 			(this IEulerAngle<T> rotation)
 		
@@ -17,21 +17,24 @@ public static class VectorConversion
 		
 			=> Vector.PointingTo
 				(
-					rotation.Horizontal.InRadians, 
-					rotation.Vertical.InRadians
+					rotation.X.InRadians,
+					rotation.Y.InRadians,
+					rotation.Z.InRadians
 				);
 		
 		public static IEulerAngle<T> ToRotationInRadians<T>
 			
-			(this Vector2D<T> vector) 
+			(this IVector3D<T> vector)
 		
-			where T: 
-				INumber<T>, 
+			where T:
+				struct,
+				INumber<T>,
 				IRootFunctions<T>
 		
 			=> Rotation.Of
 				(
-					horizontal: Angle.Radians(vector.X),
-					vertical: Angle.Radians(vector.Y)
+					x: Angle.Radians(vector.X),
+					y: Angle.Radians(vector.Y),
+					z: Angle.Radians(vector.Z)
 				);
 	}

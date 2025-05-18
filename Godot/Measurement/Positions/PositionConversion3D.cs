@@ -8,7 +8,7 @@ public static class PositionConversion3D
 	{
 		public static Vector3 ToGodot<T>
 			(
-				this Position3D<T> position
+				this IPosition3D<T> position
 			)
 			where T: INumber<T>
 			=> new
