@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -12,6 +13,18 @@
 	<ItemGroup>
 	  <Compile Update="Measurement\Sizes\Size2D.Instances.cs">
 	    <DependentUpon>Size2D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Measurement\Positions\ValuePosition3D.Arithmetic.cs">
+	    <DependentUpon>ValuePosition3D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Observation\Change\Managed.Instances.cs">
+	    <DependentUpon>Managed.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Observation\Change\Managed.Scalar.cs">
+	    <DependentUpon>Managed.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Observation\Change\Observed.Instances.cs">
+	    <DependentUpon>Observed.cs</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

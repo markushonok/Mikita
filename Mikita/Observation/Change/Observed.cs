@@ -1,10 +1,21 @@
+using Mikita.Observation.Events;
 using System;
 
 namespace Mikita.Observation.Change;
 
-public interface Observed<out T>
+public sealed class Observed<T>
+	(
+		Event<Action> changed,
+		Func<T> current
+	)
+	: IObserved<T>
 	{
-		event Action Changed;
+		public event Action Changed
+			{
+				add => changed.Add(value);
+				remove => changed.Remove(value);
+			}
 
-		T Current { get; }
+		public T Current
+			=> current();
 	}

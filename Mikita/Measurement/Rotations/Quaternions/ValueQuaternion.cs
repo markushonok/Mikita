@@ -1,6 +1,6 @@
 namespace Mikita.Measurement.Rotations.Quaternions;
 
-public readonly record struct Quaternion<T>
+public readonly record struct ValueQuaternion<T>
 	(
 		T W,
 		T X,

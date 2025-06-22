@@ -1,6 +1,6 @@
 namespace Mikita.Observation.Events;
 
-public interface Event<in T>
+public partial interface Event<in T>
 	{
 		void Add(T reaction);
 

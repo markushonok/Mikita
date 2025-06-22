@@ -1,7 +1,7 @@
 namespace Mikita.Observation.Change;
 
-public partial interface Interserved<T>
-	: Observed<T>
+public interface IManaged<T>
+	: IObserved<T>
 	{
 		new T Current { get; set; }
 	}

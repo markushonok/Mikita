@@ -6,7 +6,7 @@ namespace Mikita.Measurement.Positions;
 
 public static partial class Position
 	{
-		public static PositionRecord2D<T> At<T>
+		public static Position2D<T> At<T>
 			(
 				ILength<T> x, 
 				ILength<T> y

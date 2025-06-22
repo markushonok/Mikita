@@ -2,7 +2,7 @@ using System;
 
 namespace Mikita.Observation.Events;
 
-public class EventVerbatim<T>
+public class EventPattern<T>
 	(
 		Action<T> add,
 		Action<T> remove

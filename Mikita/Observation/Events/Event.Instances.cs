@@ -1,13 +1,27 @@
 using Mikita.Observation.Events.Managed;
-using Mikita.Structs.Enumerables;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using static System.Collections.Specialized.NotifyCollectionChangedAction;
 
 namespace Mikita.Observation.Events;
 
+partial interface Event<in T>
+	{
+		public static ReactionCollection<T> Empty
+			=> Event.With<T>([]);
+	}
+
 public static class Event
 	{
-		public static EventVerbatim<T> WithPattern<T>
+		public static BackCallingEvent<T> WithCallback<T>
+			(
+				this IManagedEvent<T> @event,
+				Action callback
+			)
+			=> new(@event, callback);
+
+		public static EventPattern<T> Pattern<T>
 			(
 				Action<T> add,
 				Action<T> remove
@@ -15,32 +29,17 @@ public static class Event
 			=> new(add, remove);
 
 		public static ReactionCollection<Action> Empty
-			=> With([]);
-
-		public static ReactionCollection<Action> With
-			(
-				Action reaction
-			)
-			=> With([reaction]);
-
-		public static ReactionCollection<Action> With
-			(
-				ICollection<Action> reactions
-			)
-			=> new
-				(
-					reactions,
-					() => reactions.ForEachDo(r => r())
-				);
+			=> Event.With<Action>([]);
 
 		public static ReactionCollection<T> With<T>
 			(
-				ICollection<T> reactions,
-				T invoke
+				T reaction
 			)
-			=> new
-				(
-					reactions,
-					invoke
-				);
+			=> Event.With([reaction]);
+
+		public static ReactionCollection<T> With<T>
+			(
+				ICollection<T> reactions
+			)
+			=> new(reactions);
 	}

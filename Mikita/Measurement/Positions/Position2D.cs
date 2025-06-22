@@ -3,10 +3,10 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Positions;
 
-public partial interface Position2D<out T>
-	where T : INumber<T>
-	{
-		ILength<T> X { get; }
-		
-		ILength<T> Y { get; }
-	}
+public record struct Position2D<T>
+	(
+		ILength<T> X, 
+		ILength<T> Y
+	) 
+	: IPosition2D<T>
+	where T : INumber<T>;
