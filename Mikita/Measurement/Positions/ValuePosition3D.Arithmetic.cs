@@ -2,7 +2,7 @@ using Mikita.Measurement.Sizes;
 
 namespace Mikita.Measurement.Positions;
 
-partial record struct ValuePosition3D<T>
+partial struct ValuePosition3D<T>
 	{
 		public static Position3D<T> operator +
 			(

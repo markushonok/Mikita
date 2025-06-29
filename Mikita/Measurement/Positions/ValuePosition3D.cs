@@ -1,17 +1,19 @@
 using Mikita.Measurement.Lengths;
+using System;
 using System.Numerics;
 
 namespace Mikita.Measurement.Positions;
 
-public readonly partial record struct ValuePosition3D<T>
+public readonly partial struct ValuePosition3D<T>
 	(
-		ValueLength<T> X,
-		ValueLength<T> Y,
-		ValueLength<T> Z
+		ValueLength<T> x,
+		ValueLength<T> y,
+		ValueLength<T> z
 	)
 	: IPosition3D<T>
 	where T: struct, INumber<T>
 	{
+
 		ILength<T> IPosition3D<T>.X
 			=> X;
 
@@ -20,4 +22,10 @@ public readonly partial record struct ValuePosition3D<T>
 
 		ILength<T> IPosition3D<T>.Z
 			=> Z;
+
+		public ValueLength<T> X => x;
+
+		public ValueLength<T> Y => y;
+
+		public ValueLength<T> Z => z;
 	}

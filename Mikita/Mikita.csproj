@@ -26,6 +26,21 @@
 	  <Compile Update="Observation\Change\Observed.Instances.cs">
 	    <DependentUpon>Observed.cs</DependentUpon>
 	  </Compile>
+	  <Compile Update="Measurement\Lengths\ValueLength.Comparison.cs">
+	    <DependentUpon>ValueLength.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Measurement\Positions\ValuePosition3D.Comparison.cs">
+	    <DependentUpon>ValuePosition3D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Measurement\Rotations\Quaternions\ValueQuaternion.Comparison.cs">
+	    <DependentUpon>ValueQuaternion.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Measurement\Positions\Position3D.Comparison.cs">
+	    <DependentUpon>Position3D.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Measurement\Rotations\Quaternions\Quaternion.Comparison.cs">
+	    <DependentUpon>Quaternion.cs</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>
