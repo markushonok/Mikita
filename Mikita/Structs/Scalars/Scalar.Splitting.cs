@@ -1,5 +1,5 @@
+using Mikita.Evaluation.Liveness;
 using Mikita.Subroutine.Actions;
-using Mikita.Subroutine.Relays;
 using System;
 
 namespace Mikita.Structs.Scalars;
@@ -17,7 +17,7 @@ public static partial class Scalar
 				this Scalar<T> scalar
 			)
 			where T: class
-			=> Relay.To(scalar.ToFunc());
+			=> scalar.Live(x => x.Value);
 
 		public static Func<T> ToFunc<T>
 			(

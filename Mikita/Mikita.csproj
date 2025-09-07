@@ -6,6 +6,7 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
+	  <Folder Include="Evaluation\Laziness\" />
 	  <Folder Include="Graphics\" />
 	  <Folder Include="UI\" />
 	</ItemGroup>
@@ -41,6 +42,16 @@
 	  <Compile Update="Measurement\Rotations\Quaternions\Quaternion.Comparison.cs">
 	    <DependentUpon>Quaternion.cs</DependentUpon>
 	  </Compile>
+	  <Compile Update="Files\Paths\Path.Concat.cs">
+	    <DependentUpon>Path.cs</DependentUpon>
+	  </Compile>
+	  <Compile Update="Files\Systems\FileSystem.Instances.cs">
+	    <DependentUpon>FileSystem.cs</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="System.Linq.Async" Version="6.0.3" />
 	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>

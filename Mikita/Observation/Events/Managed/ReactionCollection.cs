@@ -17,5 +17,5 @@ public sealed partial class ReactionCollection<T>
 			=> reactions.Remove(reaction);
 
 		public void Raise(Action<T> arouse)
-			=> reactions.ForEachDo(arouse);
+			=> reactions.ForEach(arouse);
 	}

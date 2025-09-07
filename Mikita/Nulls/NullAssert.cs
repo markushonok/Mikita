@@ -22,7 +22,6 @@ public static class NullAssert
 				this T? value,
 				[CallerMemberName] string? caller = null
 			)
-			where T : class
 			{
 				if (caller is null) throw NullCallerException<T>();
 				if (value is null) throw NullValueException<T>(caller);
@@ -45,7 +44,7 @@ public static class NullAssert
 				this T? value,
 				[CallerMemberName] string? caller = null
 			)
-			where T : struct
+			where T: struct
 			{
 				if (caller is null) throw NullCallerException<T>();
 				if (value is null) throw NullValueException<T>(caller);
