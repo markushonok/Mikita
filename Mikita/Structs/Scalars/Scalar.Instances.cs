@@ -1,5 +1,5 @@
+using Mikita.Actions.Assignment;
 using Mikita.Many.Scalars;
-using Mikita.Subroutine.Actions;
 using System;
 
 namespace Mikita.Structs.Scalars;
@@ -12,6 +12,10 @@ public static partial class Scalar
 				Assign<T> assigns
 			)
 			=> new(returns, assigns);
+
+		public static RelayScalar<T?> Null<T>()
+			where T: class
+			=> Scalar.With<T?>(null);
 
 		public static RelayScalar<T> With<T>
 			(

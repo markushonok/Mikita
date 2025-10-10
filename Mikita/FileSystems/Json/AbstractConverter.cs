@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Mikita.Files.Json;
+namespace Mikita.FileSystems.Json;
 
 public class AbstractConverter<TAbstraction, TImplementation>
 	: JsonConverter<TAbstraction>

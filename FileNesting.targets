@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<Name>FileNesting</Name>
 		<EnableAutoFileNesting Condition="'$(EnableAutoFileNesting)' == ''">true</EnableAutoFileNesting>
-		<MSBuildTasksAssemblyPath Condition="'$(MSBuildTasksAssemblyPath)' == ''">$(MSBuildThisFileDirectory)MSBuild.Targets\bin\Debug\net9.0\MSBuild.Targets.dll</MSBuildTasksAssemblyPath>
+		<MSBuildTasksAssemblyPath Condition="'$(MSBuildTasksAssemblyPath)' == ''">$(MSBuildThisFileDirectory)Mikita.MSBuild.Targets\bin\Debug\net9.0\Mikita.MSBuild.Targets.dll</MSBuildTasksAssemblyPath>
 	</PropertyGroup>
 
 	<!-- Явная ошибка если DLL не существует -->

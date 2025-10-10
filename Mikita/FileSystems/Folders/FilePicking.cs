@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mikita.FileSystems.Folders;
 
-public static class EntryEnumeration
+public static class FilePicking
 	{
 		public static IAsyncEnumerable<IFile> Files
 			(
@@ -14,11 +14,17 @@ public static class EntryEnumeration
 				.Select(x => x.AsFile)
 				.Where(x => x.Exists);
 
-		public static IAsyncEnumerable<IFolder> SubFolders
+		public static bool ContainsFileWithName
 			(
-				this IFolder folder
+				this IFolder folder,
+				string name
 			)
-			=> folder.Entries
-				.Select(x => x.AsFolder)
-				.Where(x => x.Exists);
+			=> folder.FileWithName(name).Exists;
+
+		public static IFile FileWithName
+			(
+				this IFolder folder,
+				string name
+			)
+			=> folder.EntryWithName(name).AsFile;
 	}

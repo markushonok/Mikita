@@ -1,22 +1,17 @@
-using Mikita.FileSystems.Files;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Mikita.FileSystems.Folders;
 
-public static class EntryPicking
+public static class SubFolderPicking
 	{
-		public static bool ContainsFileWithName
+		public static IAsyncEnumerable<IFolder> SubFolders
 			(
-				this IFolder folder,
-				string name
+				this IFolder folder
 			)
-			=> folder.FileWithName(name).Exists;
-
-		public static IFile FileWithName
-			(
-				this IFolder folder,
-				string name
-			)
-			=> folder.EntryWithName(name).AsFile;
+			=> folder.Entries
+				.Select(x => x.AsFolder)
+				.Where(x => x.Exists);
 
 		public static bool ContainsSubFolderWithName
 			(

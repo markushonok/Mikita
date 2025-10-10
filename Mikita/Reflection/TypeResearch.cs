@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mikita.Reflection;
 
-public static class TypeReflection
+public static class TypeResearch
 	{
 		public static IEnumerable<Type> AncestralInterfaces(this Type type)
 			{
