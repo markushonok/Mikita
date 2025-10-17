@@ -1,6 +1,6 @@
 using Mikita.Graphics.Colors;
 
-namespace Mikita.Godot.Graphics.Colors;
+namespace Mikita.Godot.Graphics;
 
 using GodotColor = global::Godot.Color;
 

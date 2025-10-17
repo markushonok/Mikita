@@ -28,7 +28,7 @@ public static class Event
 			)
 			=> new(add, remove);
 
-		public static ReactionCollection<Action> Empty
+		public static ReactionCollection<Action> New
 			=> Event.With<Action>([]);
 
 		public static ReactionCollection<T> With<T>
