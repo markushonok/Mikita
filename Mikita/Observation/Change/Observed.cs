@@ -5,7 +5,7 @@ namespace Mikita.Observation.Change;
 
 public sealed class Observed<T>
 	(
-		Event<Action> changed,
+		IEvent<Action> changed,
 		Func<T> current
 	)
 	: IObserved<T>

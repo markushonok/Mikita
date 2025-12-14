@@ -2,56 +2,19 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
-	  <Folder Include="Evaluation\Laziness\" />
-	  <Folder Include="Graphics\" />
-	  <Folder Include="UI\" />
+		<Folder Include="Evaluation\Laziness\"/>
+		<Folder Include="Graphics\"/>
+		<Folder Include="UI\"/>
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <Compile Update="Measurement\Sizes\Size2D.Instances.cs">
-	    <DependentUpon>Size2D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Positions\ValuePosition3D.Arithmetic.cs">
-	    <DependentUpon>ValuePosition3D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\Managed.Instances.cs">
-	    <DependentUpon>Managed.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\Managed.Scalar.cs">
-	    <DependentUpon>Managed.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Observation\Change\Observed.Instances.cs">
-	    <DependentUpon>Observed.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Lengths\ValueLength.Comparison.cs">
-	    <DependentUpon>ValueLength.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Positions\ValuePosition3D.Comparison.cs">
-	    <DependentUpon>ValuePosition3D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Rotations\Quaternions\ValueQuaternion.Comparison.cs">
-	    <DependentUpon>ValueQuaternion.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Positions\Position3D.Comparison.cs">
-	    <DependentUpon>Position3D.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Measurement\Rotations\Quaternions\Quaternion.Comparison.cs">
-	    <DependentUpon>Quaternion.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Files\Paths\Path.Concat.cs">
-	    <DependentUpon>Path.cs</DependentUpon>
-	  </Compile>
-	  <Compile Update="Files\Systems\FileSystem.Instances.cs">
-	    <DependentUpon>FileSystem.cs</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <PackageReference Include="System.Linq.Async" Version="6.0.3" />
+		<PackageReference Include="System.Linq.Async" Version="6.0.3"/>
+		<ProjectReference
+				Include="..\Mikita.Generation\Mikita.Generation.csproj"
+				OutputItemType="Analyzer" />
 	</ItemGroup>
 
 	<Import Project="..\FileNesting.targets"/>

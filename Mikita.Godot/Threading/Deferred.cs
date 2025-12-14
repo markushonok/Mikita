@@ -2,11 +2,13 @@ using Godot;
 
 namespace Mikita.Godot.Threading;
 
+// todo добавить отмену
 public static class Deferred
 	{
 		public static Task<T> ResultOf<T>
 			(
-				Func<T> action
+				Func<T> action,
+				CancellationToken cancellation = default
 			)
 			{
 				var completion = new TaskCompletionSource<T>(
@@ -31,7 +33,8 @@ public static class Deferred
 
 		public static Task<T> ResultOf<T>
 			(
-				Func<Task<T>> action
+				Func<Task<T>> action,
+				CancellationToken cancellation = default
 			)
 			{
 				var completion = new TaskCompletionSource<T>(
@@ -57,7 +60,8 @@ public static class Deferred
 
 		public static Task Do
 			(
-				Action action
+				Action action,
+				CancellationToken cancellation = default
 			)
 			{
 				var completion = new TaskCompletionSource(
@@ -83,7 +87,8 @@ public static class Deferred
 
 		public static Task Do
 			(
-				Func<Task> action
+				Func<Task> action,
+				CancellationToken cancellation = default
 			)
 			{
 				var completion = new TaskCompletionSource(

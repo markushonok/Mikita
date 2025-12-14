@@ -7,21 +7,36 @@ public static class DeferredOn
 		public static Task<T> Deferred<TTarget, T>
 			(
 				this TTarget target,
-				Func<TTarget, T> function
+				Func<TTarget, T> function,
+				CancellationToken cancellation = default
 			)
-			=> TDeferred.ResultOf(() => function(target));
+			=> TDeferred.ResultOf
+				(
+					() => function(target),
+					cancellation
+				);
 
 		public static Task<T> Deferred<TTarget, T>
 			(
 				this TTarget target,
-				Func<TTarget, Task<T>> function
+				Func<TTarget, Task<T>> function,
+				CancellationToken cancellation = default
 			)
-			=> TDeferred.ResultOf(() => function(target));
+			=> TDeferred.ResultOf
+				(
+					() => function(target),
+					cancellation
+				);
 
 		public static Task Defer<T>
 			(
 				this T target,
-				Action<T> action
+				Action<T> action,
+				CancellationToken cancellation = default
 			)
-			=> TDeferred.Do(() => action(target));
+			=> TDeferred.Do
+				(
+					() => action(target),
+					cancellation
+				);
 	}

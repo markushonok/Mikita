@@ -1,0 +1,13 @@
+using System.Runtime.CompilerServices;
+using Mikita.Generation.Broadcasting;
+
+namespace Mikita.Generation.Broadcasting;
+
+internal static class Initialization
+	{
+		[ModuleInitializer]
+		public static void Initialize()
+		{
+{{BODY}}
+		}
+	}

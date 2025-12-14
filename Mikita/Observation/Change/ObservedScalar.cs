@@ -7,7 +7,7 @@ namespace Mikita.Observation.Change;
 public sealed partial class ObservedScalar<T>
 	(
 		Scalar<T> current,
-		Event<Action> changed
+		IEvent<Action> changed
 	) 
 	: IManaged<T>
 	{

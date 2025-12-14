@@ -1,0 +1,12 @@
+using System.Collections.Generic;
+
+namespace Mikita.Generation.Broadcasting;
+
+internal sealed class {{NAME}}Broadcast
+	(
+		IEnumerable<{{INTERFACE}}> listeners
+	)
+	: {{INTERFACE}}
+	{
+{{BODY}}
+	}

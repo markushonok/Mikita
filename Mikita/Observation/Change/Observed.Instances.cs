@@ -9,7 +9,7 @@ public static class Observed
 		public static ObservedScalar<T> With<T>
 			(
 				this Scalar<T> current,
-				Event<Action> changed
+				IEvent<Action> changed
 			)
 			=> new(current, changed);
 	}

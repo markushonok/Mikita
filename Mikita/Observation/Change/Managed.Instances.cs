@@ -10,7 +10,7 @@ partial class Managed
 				this T value
 			)
 			{
-				var changed = Event.New;
+				var changed = Event.NewEmpty;
 
 				var scalar = Scalar
 					.With(value)

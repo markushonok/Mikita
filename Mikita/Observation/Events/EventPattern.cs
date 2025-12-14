@@ -7,7 +7,7 @@ public class EventPattern<T>
 		Action<T> add,
 		Action<T> remove
 	)
-	: Event<T>
+	: IEvent<T>
 	{
 		public void Add(T reaction)
 			=> add(reaction);

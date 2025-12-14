@@ -1,6 +1,6 @@
 using System;
 
-namespace Mikita.Actions.Assignment;
+namespace Mikita.Routines.Assignment;
 
 public class Assignment<T>
 	(
