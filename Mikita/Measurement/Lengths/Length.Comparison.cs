@@ -21,7 +21,7 @@ partial class Length<T>
 				|| @object is ILength<T> length && Equals(length);
 
 		public bool Equals(ILength<T>? other)
-			=> other != null && Meters().Equals(other.Meters());
+			=> other != null && Meters.Equals(other.Meters);
 
 		public override int GetHashCode()
 			=> meters.GetHashCode();

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Mikita\Mikita.csproj" />
+		<ProjectReference
+				Include="..\\Mikita.Generation\Mikita.Generation.csproj"
+				OutputItemType="Analyzer"
+				ReferenceOutputAssembly="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Mikita.targets.json" />
+	</ItemGroup>
+
+</Project>

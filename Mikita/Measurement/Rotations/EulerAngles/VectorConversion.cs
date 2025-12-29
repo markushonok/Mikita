@@ -1,4 +1,5 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Angles;
 using System.Numerics;
 using Vector = Mikita.Math.Vectors.Vector;
@@ -15,7 +16,7 @@ public static class VectorConversion
 				INumber<T>, 
 				IRootFunctions<T>
 		
-			=> Vector.PointingTo
+			=> Math.Vectors.Vector.PointingTo
 				(
 					rotation.X.InRadians,
 					rotation.Y.InRadians,

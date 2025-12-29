@@ -1,81 +1,72 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using System.Numerics;
 
 namespace Mikita.Math.Aabbs;
 
 public static class AabbCovering
 	{
-		public static bool NotCovers<T>
-			(
-				this IAabb3D<T> outer,
-				IAabb3D<T> inner
-			)
-			where T : INumber<T>, IRootFunctions<T>
-			=> !outer.Covers(inner);
-
-		public static bool Covers<T>
-			(
-				this IAabb3D<T> outer,
-				IAabb3D<T> inner
-			)
-			where T: INumber<T>, IRootFunctions<T>
+		extension<T>(IAabb3D<T> outer) where T : INumber<T>, IRootFunctions<T>
 			{
-				var isAInside
-					=  inner.Min.X >= outer.Min.X
-					&& inner.Min.Y >= outer.Min.Y
-					&& inner.Min.Z >= outer.Min.Z;
+				public bool NotCovers
+					(
+						IAabb3D<T> inner
+					)
+					=> !outer.Covers(inner);
 
-				var isBInside
-					=  inner.Max.X <= outer.Max.X
-					&& inner.Max.Y <= outer.Max.Y
-					&& inner.Max.Z <= outer.Max.Z;
+				public bool Covers
+					(
+						IAabb3D<T> inner
+					)
+					{
+						var isAInside
+							=  inner.Min.X >= outer.Min.X
+							&& inner.Min.Y >= outer.Min.Y
+							&& inner.Min.Z >= outer.Min.Z;
 
-				return isAInside && isBInside;
+						var isBInside
+							=  inner.Max.X <= outer.Max.X
+							&& inner.Max.Y <= outer.Max.Y
+							&& inner.Max.Z <= outer.Max.Z;
+
+						return isAInside && isBInside;
+					}
+
+				public bool NotCovers
+					(
+						IVector3D<T> point
+					)
+					=> !outer.Covers(point);
+
+				public bool Covers
+					(
+						IVector3D<T> point
+					)
+					{
+						var isGreaterThanA
+							=  point.X >= outer.Min.X
+							&& point.Y >= outer.Min.Y
+							&& point.Z >= outer.Min.Z;
+
+						var isLessThanB
+							=  point.X <= outer.Max.X
+							&& point.Y <= outer.Max.Y
+							&& point.Z <= outer.Max.Z;
+
+						return isGreaterThanA && isLessThanB;
+					}
+
+				public T MaxLength
+					{
+						get
+							{
+								var size = outer.Size;
+								return T.Max(size.X, T.Max(size.Y, size.Z));
+							}
+					}
+
+				public IVector3D<T> Size
+					=> outer.Max - outer.Min;
 			}
-
-		public static bool NotCovers<T>
-			(
-				this IAabb3D<T> aabb,
-				IVector3D<T> point
-			)
-			where T : INumber<T>, IRootFunctions<T>
-			=> !aabb.Covers(point);
-
-		public static bool Covers<T>
-			(
-				this IAabb3D<T> aabb,
-				IVector3D<T> point
-			)
-			where T : INumber<T>, IRootFunctions<T>
-			{
-				var isGreaterThanA
-					=  point.X >= aabb.Min.X
-					&& point.Y >= aabb.Min.Y
-					&& point.Z >= aabb.Min.Z;
-
-				var isLessThanB
-					=  point.X <= aabb.Max.X
-					&& point.Y <= aabb.Max.Y
-					&& point.Z <= aabb.Max.Z;
-
-				return isGreaterThanA && isLessThanB;
-			}
-
-		public static T MaxLength<T>
-			(
-				this IAabb3D<T> aabb
-			)
-			where T: INumber<T>, IRootFunctions<T>
-			{
-				var size = aabb.Size();
-				return T.Max(size.X, T.Max(size.Y, size.Z));
-			}
-
-		public static IVector3D<T> Size<T>
-			(
-				this IAabb3D<T> aabb
-			)
-			where T: INumber<T>, IRootFunctions<T>
-			=> aabb.Max - aabb.Min;
 
 	}

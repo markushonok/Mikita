@@ -12,8 +12,8 @@ public static class PositionCaching
 			where T: struct, INumber<T>
 			=> new
 				(
-					position.X.Snapshot(),
-					position.Y.Snapshot(),
-					position.Z.Snapshot()
+					position.X.Snapshot,
+					position.Y.Snapshot,
+					position.Z.Snapshot
 				);
 	}

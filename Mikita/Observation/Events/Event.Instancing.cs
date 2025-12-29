@@ -33,11 +33,3 @@ public static class Event
 			where T: class
 			=> new(reactions);
 	}
-
-public static class TestClass
-	{
-		public static void TestMethod()
-			{
-				var a = Event<IStep>.NewEmpty;
-			}
-	}

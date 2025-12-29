@@ -1,0 +1,7 @@
+[
+  {
+    "name": "global::Mikita.Generation.Sample.IInterfaceA",
+    "arity": 0,
+    "products": ["broadcast"]
+  }
+]

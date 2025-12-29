@@ -1,4 +1,5 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Sizes;
 using System.Numerics;
 using Vector = Mikita.Math.Vectors.Vector;
@@ -9,7 +10,7 @@ public static class Aabb
 	{
 		public static Aabb3D<T> With<T>(ISize3D<T> size)
 			where T: INumber<T>, IRootFunctions<T>
-			=> Aabb.WithSize(Vector.WithAxes(size));
+			=> Aabb.WithSize(Vectors.Vector.WithAxes(size));
 
 		public static Aabb3D<T> WithSize<T>(IVector3D<T> size)
 			where T: INumber<T>, IRootFunctions<T>

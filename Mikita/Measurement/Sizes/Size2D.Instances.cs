@@ -15,11 +15,7 @@ partial record Size2D<T>
 
 public static class Size2D
 	{
-		public static Size2D<T> Of<T>(ILength<T> length)
+		public static Size2D<T> Of<T>(ILength<T> width)
 			where T : INumber<T>
-			=> new
-				(
-					Width: length,
-					Height: length
-				);
+			=> new(width, width);
 	}

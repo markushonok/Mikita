@@ -7,26 +7,26 @@ public partial interface ILength<out T>
 				ILength<T> comparandum,
 				ILength<T> comparatum
 			)
-			=> comparandum.Meters() < comparatum.Meters();
+			=> comparandum.Meters < comparatum.Meters;
 
 		static bool operator <=
 			(
 				ILength<T> comparandum,
 				ILength<T> comparatum
 			)
-			=> comparandum.Meters() <= comparatum.Meters();
+			=> comparandum.Meters <= comparatum.Meters;
 
 		static bool operator >
 			(
 				ILength<T> comparandum,
 				ILength<T> comparatum
 			)
-			=> comparandum.Meters() > comparatum.Meters();
+			=> comparandum.Meters > comparatum.Meters;
 
 		static bool operator >=
 			(
 				ILength<T> comparandum,
 				ILength<T> comparatum
 			)
-			=> comparandum.Meters() >= comparatum.Meters();
+			=> comparandum.Meters >= comparatum.Meters;
 	}

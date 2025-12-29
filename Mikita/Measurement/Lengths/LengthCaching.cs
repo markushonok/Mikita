@@ -4,10 +4,10 @@ namespace Mikita.Measurement.Lengths;
 
 public static class LengthCaching
 	{
-		public static ValueLength<T> Snapshot<T>
-			(
-				this ILength<T> length
-			)
+		extension<T>(ILength<T> length)
 			where T: struct, INumber<T>
-			=> new(length.Meters());
+			{
+				public ValueLength<T> Snapshot
+					=> new(length.Meters);
+			}
 	}

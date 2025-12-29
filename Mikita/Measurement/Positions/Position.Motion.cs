@@ -1,4 +1,5 @@
 using Mikita.Measurement.Motion;
+using Mikita.Measurement.Motion.Velocities3D;
 using Mikita.Observation.Change;
 using Mikita.Structs.Scalars;
 using System;
@@ -11,7 +12,7 @@ public static partial class Position
 		public static void MoveWith<T>
 			(
 				this IManaged<IPosition3D<T>> position,
-				Velocity3D<T> velocity,
+				IVelocity3D<T> velocity,
 				TimeSpan duration
 			)
 			where T: INumber<T>, IRootFunctions<T>
@@ -20,7 +21,7 @@ public static partial class Position
 		public static void MoveWith<T>
 			(
 				this Scalar<IPosition3D<T>> position,
-				Velocity3D<T> velocity,
+				IVelocity3D<T> velocity,
 				TimeSpan duration
 			)
 			where T: INumber<T>, IRootFunctions<T>

@@ -1,4 +1,5 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Lengths;
 using System.Numerics;
 

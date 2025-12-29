@@ -18,14 +18,14 @@ public static class AabbDivision
 					{
 						var center = aabb.Center();
 
-						var a = ValueVector.To
+						var a = ValueVector.PointingTo
 							(
 								x == 0 ? aabb.Min.X : center.X,
 								y == 0 ? aabb.Min.Y : center.Y,
 								z == 0 ? aabb.Min.Z : center.Z
 							);
 
-						var b = ValueVector.To
+						var b = ValueVector.PointingTo
 							(
 								x == 0 ? center.X : aabb.Max.X,
 								y == 0 ? center.Y : aabb.Max.Y,

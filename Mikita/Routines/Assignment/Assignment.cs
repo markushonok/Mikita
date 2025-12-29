@@ -2,7 +2,7 @@ using System;
 
 namespace Mikita.Routines.Assignment;
 
-public class Assignment<T>
+public sealed class Assignment<T>
 	(
 		Action<T> action
 	)

@@ -1,4 +1,5 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using System.Numerics;
 using Vector = Mikita.Math.Vectors.Vector;
 using Vector3 = Godot.Vector3;
@@ -11,7 +12,7 @@ public static class VectorConversion3D
 			(
 				this Vector3 vector
 			)
-			=> Vector.PointingTo(vector.X, vector.Y, vector.Z);
+			=> Mikita.Math.Vectors.Vector.PointingTo(vector.X, vector.Y, vector.Z);
 
 		public static Vector3 ToGodot<T>
 			(

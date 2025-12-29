@@ -25,7 +25,8 @@ public static partial class Number
 			{
 				if (from < to) return T.Min(from + by, to);
 				if (from > to) return T.Max(from + by, to);
-				if (from == to) return to;
-				throw new ArgumentException($"Cannot step from {from} to {to}");
+				return from == to
+					? to
+					: throw new ArgumentException($"Cannot step from {from} to {to}");
 			}
 	}

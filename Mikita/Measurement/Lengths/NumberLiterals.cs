@@ -4,19 +4,19 @@ namespace Mikita.Measurement.Lengths;
 
 public static class NumberLiterals
 	{
-		public static ValueLength<T> km<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(meters: number * T.CreateChecked(1000));
-		
-		public static ValueLength<T> m<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(meters: number);
+		extension<T>(T number)
+			where T: struct, INumber<T>
+			{
+				public ValueLength<T> km
+					=> new(meters: number * T.CreateChecked(1000));
 
-		public static ValueLength<T> cm<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(meters: number / T.CreateChecked(100));
-		
-		public static ValueLength<T> mm<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(meters: number / T.CreateChecked(1000));
+				public ValueLength<T> m
+					=> new(meters: number);
+
+				public ValueLength<T> cm
+					=> new(meters: number / T.CreateChecked(100));
+
+				public ValueLength<T> mm
+					=> new(meters: number / T.CreateChecked(1000));
+			}
 	}

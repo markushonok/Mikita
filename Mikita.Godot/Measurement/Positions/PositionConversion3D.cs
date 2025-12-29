@@ -13,8 +13,8 @@ public static class PositionConversion3D
 			where T: INumber<T>
 			=> new
 				(
-					float.CreateChecked(position.X.Meters()),
-					float.CreateChecked(position.Y.Meters()),
-					float.CreateChecked(position.Z.Meters())
+					float.CreateChecked(position.X.Meters),
+					float.CreateChecked(position.Y.Meters),
+					float.CreateChecked(position.Z.Meters)
 				);
 	}

@@ -1,4 +1,5 @@
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Angles;
 using Mikita.Structs.Scalars;
 using System.Numerics;
@@ -31,7 +32,7 @@ public static class EulerAngleStepping
 				IRootFunctions<T>
 			{
 				var local = to - from;
-				var length = local.ToRadianVector().Length();
+				var length = local.ToRadianVector().Length;
 				if (length == T.Zero) return to;
 				var normal = local / length;
 				return from.SteppedTo(to, normal * by.InRadians);

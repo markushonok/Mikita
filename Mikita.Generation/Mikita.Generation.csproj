@@ -22,11 +22,32 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.3.0"/>
 	</ItemGroup>
 
+	<PropertyGroup>
+		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" PrivateAssets="all" GeneratePathProperty="true" />
+		<None Include="$(PkgNewtonsoft_Json)\lib\netstandard2.0\*.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
+	
+	<Target Name="GetDependencyTargetPaths">
+		<ItemGroup>
+			<TargetPathWithTargetPlatformMoniker
+					Include="$(PKGNewtonsoft_Json)\lib\netstandard2.0\Newtonsoft.Json.dll"
+					IncludeRuntimeDependency="false" />
+		</ItemGroup>
+	</Target>
+
 	<ItemGroup>
 	  <EmbeddedResource 
 				Include="Broadcasting\Broadcast.cs.txt"
 				WithCulture="false"/>
 		
-	  <EmbeddedResource Include="Broadcasting\Initialization.cs.txt" WithCulture="false" />
+	  <EmbeddedResource Include="Broadcasting\BroadcastInit.cs.txt" WithCulture="false" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Inference\" />
 	</ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 using Godot;
 using Mikita.Math.Vectors;
+using Mikita.Math.Vectors.Planar;
 
 namespace Mikita.Godot.Math.Vectors;
 
@@ -9,5 +10,5 @@ public static class VectorConversion2D
 			(
 				this Vector2 vector
 			)
-			=> Vector.PointingTo(vector.X, vector.Y);
+			=> Mikita.Math.Vectors.Vector.PointingTo(vector.X, vector.Y);
 	}

@@ -4,15 +4,16 @@ namespace Mikita.Measurement.Masses;
 
 public static class MassLiterals
 	{
-		public static ValueMass<T> t<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(kilograms: number * T.CreateChecked(1000));
-		
-		public static ValueMass<T> kg<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(kilograms: number);
+		extension<T>(T number) where T : struct, INumber<T>
+			{
+				public ValueMass<T> t
+					=> new(kilograms: number * T.CreateChecked(1000));
 
-		public static ValueMass<T> g<T>(this T number)
-			where T : struct, INumber<T>
-			=> new(kilograms: number / T.CreateChecked(1000));
+				public ValueMass<T> kg
+					=> new(kilograms: number);
+
+				public ValueMass<T> g
+					=> new(kilograms: number / T.CreateChecked(1000));
+			}
+
 	}
