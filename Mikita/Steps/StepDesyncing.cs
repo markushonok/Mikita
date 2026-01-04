@@ -6,7 +6,7 @@ public static class StepDesyncing
 	{
 		extension(IStep step)
 			{
-				public IAsyncStep AsAsync
+				public AsyncStep AsAsync
 					=> Step.That
 						(
 							@do: cancellation => Task.Run(step.Do, cancellation),

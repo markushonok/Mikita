@@ -1,7 +1,6 @@
 namespace Mikita.Observation.Change;
 
-public interface IManaged<T>
-	: IObserved<T>
+public interface IShown<T>: IObserved<T>
 	{
 		new T Current { get; set; }
 	}

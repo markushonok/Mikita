@@ -1,23 +1,23 @@
 using System;
 
-namespace Mikita.Structs.Scalars;
+namespace Mikita.Structs.Referring;
 
-public sealed class BackCallingScalar<T>
+public sealed class BackCallingRef<T>
 	(
-		Scalar<T> origin,
+		IRef<T> source,
 		Action callback
 	)
-	: Scalar<T>
+	: IRef<T>
 	{
 		public T Value
 			{
-				get => origin.Value;
+				get => source.Value;
 				set => BackCallingAssign(value);
 			}
 
 		private void BackCallingAssign(T value)
 			{
-				origin.Value = value;
+				source.Value = value;
 				callback();
 			}
 	}

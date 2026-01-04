@@ -1,7 +1,7 @@
 using Mikita.Math.Vectors;
 using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Angles;
-using Mikita.Structs.Scalars;
+using Mikita.Structs.Referring;
 using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
@@ -10,7 +10,7 @@ public static class EulerAngleStepping
 	{
 		public static void NormalStepTo<T>
 			(
-				this Scalar<IEulerAngle<T>> current,
+				this IRef<IEulerAngle<T>> current,
 				IEulerAngle<T> target,
 				Angle<T> by
 			)

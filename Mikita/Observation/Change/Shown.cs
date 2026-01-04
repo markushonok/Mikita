@@ -1,15 +1,15 @@
 using Mikita.Observation.Events;
-using Mikita.Structs.Scalars;
+using Mikita.Structs.Referring;
 using System;
 
 namespace Mikita.Observation.Change;
 
-public sealed partial class ObservedScalar<T>
+public sealed class Shown<T>
 	(
-		Scalar<T> current,
+		IRef<T> current,
 		IEvent<Action> changed
-	) 
-	: IManaged<T>
+	)
+	: IShown<T>
 	{
 		public T Current
 			{

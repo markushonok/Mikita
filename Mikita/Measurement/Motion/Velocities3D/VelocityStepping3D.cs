@@ -1,6 +1,6 @@
 using Mikita.Measurement.Motion.Speeds;
 using Mikita.Measurement.Motion.Velocities2D;
-using Mikita.Structs.Scalars;
+using Mikita.Structs.Referring;
 using System.Numerics;
 
 namespace Mikita.Measurement.Motion.Velocities3D;
@@ -9,12 +9,12 @@ public static class VelocityStepping3D
 	{
 		public static void NormalStep<T>
 			(
-				this Scalar<IVelocity3D<T>> scalar,
+				this IRef<IVelocity3D<T>> reference,
 				IVelocity3D<T> to,
 				Speed<T> by
 			)
 			where T: INumber<T>, IRootFunctions<T>
-			=> scalar.Value = scalar.Value.NormalSteppedTo(to, by);
+			=> reference.Value = reference.Value.NormalSteppedTo(to, by);
 
 		public static IVelocity3D<T> NormalSteppedTo<T>
 			(

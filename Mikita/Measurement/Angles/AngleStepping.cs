@@ -1,5 +1,5 @@
 using Mikita.Math.Numbers;
-using Mikita.Structs.Scalars;
+using Mikita.Structs.Referring;
 using System.Numerics;
 
 namespace Mikita.Measurement.Angles;
@@ -8,7 +8,7 @@ public static class AngleStepping
 	{
 		public static void StepTo<T>
 			(
-				this Scalar<Angle<T>> from,
+				this IRef<Angle<T>> from,
 				Angle<T> to,
 				Angle<T> by
 			)

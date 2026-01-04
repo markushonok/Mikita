@@ -4,13 +4,16 @@ namespace Mikita.Observation.Events.Subscriptions;
 
 public static class SubscriptionStep
 	{
-		public static Step AsStep
-			(
-				this ISubscription subscription
-			)
-			=> new
-				(
-					subscription.Activate,
-					subscription.Deactivate
-				);
+		extension(ISubscription subscription)
+			{
+				public AsyncStep AsAsyncStep
+					=> subscription.AsStep.AsAsync;
+
+				public Step AsStep
+					=> new
+						(
+							subscription.Activate,
+							subscription.Deactivate
+						);
+			}
 	}

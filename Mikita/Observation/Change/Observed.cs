@@ -5,17 +5,17 @@ namespace Mikita.Observation.Change;
 
 public sealed class Observed<T>
 	(
-		IEvent<Action> changed,
-		Func<T> current
+		Func<T> current,
+		IEvent<Action> changed
 	)
 	: IObserved<T>
 	{
+		public T Current
+			=> current();
+
 		public event Action Changed
 			{
 				add => changed.Add(value);
 				remove => changed.Remove(value);
 			}
-
-		public T Current
-			=> current();
 	}

@@ -1,14 +1,14 @@
 using Mikita.Routines.Assignment;
 using System;
 
-namespace Mikita.Structs.Scalars;
+namespace Mikita.Structs.Referring;
 
-public sealed class RelayScalar<T>
+public sealed class RelayRef<T>
 	(
 		Func<T> @return,
 		Assign<T> assign
 	)
-	: Scalar<T>
+	: IRef<T>
 	{
 		public T Value
 			{

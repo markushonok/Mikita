@@ -1,4 +1,4 @@
-using Mikita.Structs.Scalars;
+using Mikita.Structs.Referring;
 using System;
 using System.Numerics;
 
@@ -8,12 +8,12 @@ public static partial class Number
 	{
 		public static void Step<T>
 			(
-				this Scalar<T> scalar,
+				this IRef<T> reference,
 				T to,
 				T by
 			)
 			where T : INumber<T>
-			=> scalar.Value = scalar.Value.Stepped(to, by);
+			=> reference.Value = reference.Value.Stepped(to, by);
 
 		public static T Stepped<T>
 			(
