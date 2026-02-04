@@ -1,3 +1,4 @@
+using Mikita.Math.Points;
 using Mikita.Math.Vectors.Planar;
 using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Positions;
@@ -33,6 +34,12 @@ public static class VectorInstancing
 							y: size.Height.Meters,
 							z: size.Depth.Meters
 						);
+
+				public static Vector2D<T> To<T>
+					(
+						IPoint2D<T> point
+					)
+					=> new(point.X, point.Y);
 
 				public static Vector2D<T> PointingTo<T>
 					(

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using static System.Reflection.TypeAttributes;
@@ -15,21 +16,40 @@ public static class TypeCreation
 			}
 
 		public static TypeBuilder Define<T>()
-			{
-				return LiveModule.Builder.DefineType
-					(
-						MakeUpFullNameFor<T>(),
-						Attributes,
-						parent: typeof(object),
-						interfaces: [typeof(T)]
-					);
-			}
+			=> LiveModule.Builder.DefineType
+				(
+					FullNameFor<T>(),
+					Attributes,
+					parent: typeof(object),
+					interfaces: [typeof(T)]
+				);
 
-		public static string MakeUpFullNameFor<T>()
-			=> MakeUpFullNameFor(typeof(T));
+		public static string FullNameFor<T>()
+			=> FullNameFor(typeof(T));
 		
-		public static string MakeUpFullNameFor(Type type)
-			=> $"{Live.Namespace}.Relay_{type.Name}";
+		public static string FullNameFor(Type type)
+			=> $"{Live.Namespace}.Live_{NameFor(type)}";
+
+		private static string NameFor(Type type)
+			{
+				if (type.IsGenericType)
+					{
+						var genericName = type.GetGenericTypeDefinition().Name;
+						var tickIndex = genericName.IndexOf('`');
+						if (tickIndex >= 0)
+							genericName = genericName[..tickIndex];
+
+						var args = type.GetGenericArguments()
+							.Select(NameFor);
+
+						return $"{genericName}_{string.Join("_", args)}";
+					}
+
+				return type.IsArray
+					? $"{NameFor(type.GetElementType()!)}_Array{type.GetArrayRank()}"
+					: type.Name.Replace('+', '_');
+
+			}
 
 		public static TypeAttributes Attributes
 			=> Public

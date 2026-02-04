@@ -12,17 +12,17 @@ public static class VectorConversion3D
 			(
 				this Vector3 vector
 			)
-			=> Mikita.Math.Vectors.Vector.PointingTo(vector.X, vector.Y, vector.Z);
+			=> Vector.PointingTo(vector.X, vector.Y, vector.Z);
 
 		public static Vector3 ToGodot<T>
 			(
 				this IVector3D<T> vector
 			)
-			where T : INumber<T>, IRootFunctions<T>
+			where T: INumber<T>, IRootFunctions<T>
 			=> new
 				(
-					float.CreateChecked(vector.X), 
-					float.CreateChecked(vector.Y), 
+					float.CreateChecked(vector.X),
+					float.CreateChecked(vector.Y),
 					float.CreateChecked(vector.Z)
 				);
 	}

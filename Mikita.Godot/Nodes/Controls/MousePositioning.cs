@@ -8,5 +8,5 @@ public static class MousePositioning
 			(
 				this Control control
 			)
-			=> control.GetGlobalMousePosition() - control.GlobalCenterPosition();
+			=> control.GetGlobalMousePosition() - control.GlobalCenterPosition;
 	}

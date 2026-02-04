@@ -7,33 +7,32 @@ namespace Mikita.Evaluation.Liveness.Creation.Properties;
 
 public static class AccessorCreation
 	{
-		public static void CreateAccessorFor
-			(
-				this TypeBuilder type,
-				PropertyBuilder property,
-				FieldInfo field
-			)
+		extension(TypeBuilder type)
 			{
-				var method = type.DefineAccessorFor(property);
-				method.ImplementAccessorWith(field);
-				property.SetGetMethod(method);
+				public void CreateAccessorFor
+					(
+						PropertyBuilder property,
+						FieldInfo field
+					)
+					{
+						var method = type.DefineAccessorFor(property);
+						method.ImplementAccessorWith(field);
+						property.SetGetMethod(method);
+					}
+
+				public MethodBuilder DefineAccessorFor
+					(
+						PropertyBuilder property
+					)
+					=> type.DefineMethod
+						(
+							"get_" + property.Name,
+							PropertyCreation.MethodAttributes,
+							property.PropertyType,
+							parameterTypes: []
+						);
 			}
 
-		public static MethodBuilder DefineAccessorFor
-			(
-				this TypeBuilder type,
-				PropertyBuilder property
-			)
-			{
-				return type.DefineMethod
-					(
-						"get_" + property.Name, 
-						PropertyCreation.MethodAttributes,
-						property.PropertyType,
-						parameterTypes: []
-					);
-			}
-		
 		public static void ImplementAccessorWith
 			(
 				this MethodBuilder method,

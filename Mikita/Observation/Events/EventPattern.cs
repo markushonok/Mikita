@@ -2,7 +2,7 @@ using System;
 
 namespace Mikita.Observation.Events;
 
-public class EventPattern<T>
+public sealed class EventPattern<T>
 	(
 		Action<T> add,
 		Action<T> remove

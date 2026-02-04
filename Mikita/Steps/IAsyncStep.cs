@@ -7,11 +7,11 @@ public interface IAsyncStep
 	{
 		Task Do
 			(
-				CancellationToken cancellation
+				CancellationToken cancellation = default
 			);
 
 		Task Undo
 			(
-				CancellationToken cancellation
+				CancellationToken cancellation = default
 			);
 	}

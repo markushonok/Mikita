@@ -12,7 +12,7 @@ public static class EulerAngleStepping
 			(
 				this IRef<IEulerAngle<T>> current,
 				IEulerAngle<T> target,
-				Angle<T> by
+				IAngle<T> by
 			)
 			where T:
 				struct,
@@ -24,7 +24,7 @@ public static class EulerAngleStepping
 			(
 				this IEulerAngle<T> from,
 				IEulerAngle<T> to,
-				Angle<T> by
+				IAngle<T> by
 			)
 			where T:
 				struct,

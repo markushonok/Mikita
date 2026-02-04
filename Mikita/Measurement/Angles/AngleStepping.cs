@@ -8,18 +8,18 @@ public static class AngleStepping
 	{
 		public static void StepTo<T>
 			(
-				this IRef<Angle<T>> from,
-				Angle<T> to,
-				Angle<T> by
+				this IRef<IAngle<T>> from,
+				IAngle<T> to,
+				IAngle<T> by
 			)
 			where T: INumber<T>, IFloatingPointConstants<T>
 			=> from.Value = from.Value.SteppedTo(to, by);
 
-		public static Angle<T> SteppedTo<T>
+		public static IAngle<T> SteppedTo<T>
 			(
-				this Angle<T> from,
-				Angle<T> to,
-				Angle<T> by
+				this IAngle<T> from,
+				IAngle<T> to,
+				IAngle<T> by
 			)
 			where T: INumber<T>, IFloatingPointConstants<T>
 			{

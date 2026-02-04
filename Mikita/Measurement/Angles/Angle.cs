@@ -1,16 +1,9 @@
-using System.Numerics;
-
 namespace Mikita.Measurement.Angles;
 
-public partial interface Angle<out T> 
+public record struct Angle<T>
+	(
+		T InRadians
+	)
+	: IAngle<T>;
 
-	where T
-		: INumber<T>
-		, IFloatingPointConstants<T>
-
-	{
-		T InRadians { get; }
-		
-		T InDegrees 
-			=> InRadians * (T.CreateChecked(180) / T.Pi);
-	}
+public static class Angle;

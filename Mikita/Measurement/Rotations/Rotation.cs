@@ -8,9 +8,9 @@ public static class Rotation
 	{
 		public static EulerAngle<T> Of<T>
 			(
-				Angle<T> x,
-				Angle<T> y,
-				Angle<T> z
+				IAngle<T> x,
+				IAngle<T> y,
+				IAngle<T> z
 			)
 		
 			where T:

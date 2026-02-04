@@ -41,7 +41,7 @@ public static class Deferred
 					TaskCreationOptions.RunContinuationsAsynchronously);
 
 				Callable
-					.From(async () =>
+					.From(async void () =>
 						{
 							try
 								{
@@ -95,7 +95,7 @@ public static class Deferred
 					TaskCreationOptions.RunContinuationsAsynchronously);
 
 				Callable
-					.From(async () =>
+					.From(async void () =>
 						{
 							try
 								{

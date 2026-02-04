@@ -1,4 +1,5 @@
 using Mikita.Math.Numbers;
+using Mikita.Math.Sizes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,19 +8,6 @@ namespace Mikita.Math.Vectors.Planar;
 
 public static class VectorMath2D
 	{
-		extension<T>(IVector2D<T> vector)
-			where T: INumber<T>, IRootFunctions<T>
-			{
-				public Vector2D<T> LimitLengthTo(T limit)
-					=> vector.Normal * T.Min(vector.Length, limit);
-
-				public Vector2D<T> Normal
-					=> vector / vector.Length;
-
-				public T Length
-					=> T.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
-			}
-
 		extension(Vector)
 			{
 				public static Vector2D<T> InMiddleBetween<T>
@@ -40,15 +28,15 @@ public static class VectorMath2D
 			}
 
 		extension<T>(IVector2D<T> vector)
+			where T: INumber<T>, IRootFunctions<T>
+			{
+				public Vector2D<T> LimitLengthTo(T limit)
+					=> vector.Normal * T.Min(vector.Length, limit);
+			}
+
+		extension<T>(IVector2D<T> vector)
 			where T: INumber<T>
 			{
-				public Vector2D<T> Sign
-					=> Vector.PointingTo
-						(
-							vector.X.TSign,
-							vector.Y.TSign
-						);
-
 				public static Vector2D<T> operator +
 					(
 						IVector2D<T> augend,
@@ -95,6 +83,13 @@ public static class VectorMath2D
 						T divisor
 					)
 					=> dividend / Vector.PointingTo(x: divisor, y: divisor);
+
+				public static Vector2D<T> operator /
+					(
+						IVector2D<T> dividend,
+						ISize2D<T> divisor
+					)
+					=> dividend / divisor.AsVector;
 
 				public static Vector2D<T> operator /
 					(

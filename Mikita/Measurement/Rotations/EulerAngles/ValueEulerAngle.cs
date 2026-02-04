@@ -3,11 +3,11 @@ using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 
-public partial record struct ValueEulerAngle<T>
+public record struct ValueEulerAngle<T>
 	(
-		Angle<T> X,
-		Angle<T> Y,
-		Angle<T> Z
+		IAngle<T> X,
+		IAngle<T> Y,
+		IAngle<T> Z
 	)
 	: IEulerAngle<T>
 

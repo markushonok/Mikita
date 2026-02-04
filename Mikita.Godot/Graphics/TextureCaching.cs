@@ -4,9 +4,9 @@ namespace Mikita.Godot.Graphics;
 
 public static class TextureCaching
 	{
-		public static ImageTexture Snapshot
-			(
-				this Texture2D texture
-			)
-			=> ImageTexture.CreateFromImage(texture.GetImage());
+		extension(Texture2D texture)
+			{
+				public ImageTexture Snapshot
+					=> ImageTexture.CreateFromImage(texture.GetImage());
+			}
 	}

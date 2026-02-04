@@ -10,5 +10,5 @@ public static class VectorConversion2D
 			(
 				this Vector2 vector
 			)
-			=> Mikita.Math.Vectors.Vector.PointingTo(vector.X, vector.Y);
+			=> Vector.PointingTo(vector.X, vector.Y);
 	}

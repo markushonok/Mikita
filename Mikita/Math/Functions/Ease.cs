@@ -8,7 +8,5 @@ public static class Ease
 
 		public static T OutCubic<T>(T x)
 			where T: INumber<T>, IFloatingPointIeee754<T>
-			{
-				return T.One - T.Pow(T.One - x, T.CreateChecked(3));
-			}
+			=> T.One - T.Pow(T.One - x, T.CreateChecked(3));
 	}

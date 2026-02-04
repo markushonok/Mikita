@@ -6,16 +6,11 @@ namespace Mikita.Measurement.Rotations.EulerAngles;
 /// <summary>
 /// Represents Euler angles for rotation in 3D space.
 /// </summary>
-public partial interface IEulerAngle<out T>
-
-	where T:
-		INumber<T>,
-		IFloatingPointConstants<T>
-
+public interface IEulerAngle<out T>
 	{
-		Angle<T> X { get; }
+		IAngle<T> X { get; }
 
-		Angle<T> Y { get; }
+		IAngle<T> Y { get; }
 
-		Angle<T> Z { get; }
+		IAngle<T> Z { get; }
 	}

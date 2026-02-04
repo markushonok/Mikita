@@ -15,16 +15,4 @@ public static class RefConversion
 							assign: value => shown.Current = value
 						);
 			}
-
-		extension<T>(IRef<T> reference)
-			{
-				public Shown<T> Observed
-					=> reference.With(Event.NewEmpty);
-
-				public Shown<T> With
-					(
-						IEvent<Action> changed
-					)
-					=> new(reference, changed);
-			}
 	}

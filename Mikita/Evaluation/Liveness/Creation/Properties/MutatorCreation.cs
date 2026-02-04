@@ -7,33 +7,32 @@ namespace Mikita.Evaluation.Liveness.Creation.Properties;
 
 public static class MutatorCreation
 	{
-		public static void CreateMutatorFor
-			(
-				this TypeBuilder type,
-				PropertyBuilder property,
-				FieldInfo field
-			)
+		extension(TypeBuilder type)
 			{
-				var method = type.DefineMutatorFor(property);
-				method.ImplementMutatorWith(field);
-				property.SetSetMethod(method);
+				public void CreateMutatorFor
+					(
+						PropertyBuilder property,
+						FieldInfo field
+					)
+					{
+						var method = type.DefineMutatorFor(property);
+						method.ImplementMutatorWith(field);
+						property.SetSetMethod(method);
+					}
+
+				public MethodBuilder DefineMutatorFor
+					(
+						PropertyBuilder property
+					)
+					=> type.DefineMethod
+						(
+							"set_" + property.Name,
+							PropertyCreation.MethodAttributes,
+							property.PropertyType,
+							parameterTypes: []
+						);
 			}
 
-		public static MethodBuilder DefineMutatorFor
-			(
-				this TypeBuilder type,
-				PropertyBuilder property
-			)
-			{
-				return type.DefineMethod
-					(
-						"set_" + property.Name, 
-						PropertyCreation.MethodAttributes,
-						property.PropertyType,
-						parameterTypes: []
-					);
-			}
-		
 		public static void ImplementMutatorWith
 			(
 				this MethodBuilder method,

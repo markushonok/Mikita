@@ -4,33 +4,22 @@ namespace Mikita.Godot.Nodes.Controls;
 
 public static class ControlPositioning
 	{
-		public static Vector2 GlobalCenterPosition
-			(
-				this Control control
-			)
-			=> control.GlobalPosition + control.Size / 2;
-		
-		public static Vector2 TopLeftCornerOffset
-			(
-				this Control control
-			)
-			=> -control.Size / 2;
-		
-		public static Vector2 TopRightCornerOffset
-			(
-				this Control control
-			)
-			=> new(control.Size.X / 2, -control.Size.Y / 2);
+		extension(Control control)
+			{
+				public Vector2 GlobalCenterPosition
+					=> control.GlobalPosition + control.Size / 2;
 
-		public static Vector2 BottomRightCornerOffset
-			(
-				this Control control
-			)
-			=> control.Size / 2;
-		
-		public static Vector2 BottomLeftCornerOffset
-			(
-				this Control control
-			)
-			=> new(-control.Size.X / 2, control.Size.Y / 2);
+				public Vector2 TopLeftCornerOffset
+					=> -control.Size / 2;
+
+				public Vector2 TopRightCornerOffset
+					=> new(control.Size.X / 2, -control.Size.Y / 2);
+
+				public Vector2 BottomRightCornerOffset
+					=> control.Size / 2;
+
+				public Vector2 BottomLeftCornerOffset
+					=> new(-control.Size.X / 2, control.Size.Y / 2);
+			}
+
 	}

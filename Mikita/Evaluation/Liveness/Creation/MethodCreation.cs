@@ -8,34 +8,35 @@ namespace Mikita.Evaluation.Liveness.Creation;
 
 public static class MethodCreation
 	{
-		public static void CreateMethodWith<T>
-			(
-				this TypeBuilder type,
-				MethodInfo reference,
-				FieldInfo field
-			)
+		extension(TypeBuilder type)
 			{
-				type
-					.DefineMethodBasedOn(reference)
-					.ImplementWith<T>(reference, field);
-			}
-
-		public static MethodBuilder DefineMethodBasedOn
-			(
-				this TypeBuilder type,
-				MethodInfo reference
-			)
-			{
-				return type.DefineMethod
+				public void CreateMethodWith<T>
 					(
-						reference.Name,
-						RelayMethodAttributes,
-						reference.ReturnType,
-						parameterTypes: reference
-							.GetParameters()
-							.Select(x => x.ParameterType)
-							.ToArray()
-					);
+						MethodInfo reference,
+						FieldInfo field
+					)
+					{
+						type
+							.DefineMethodBasedOn(reference)
+							.ImplementWith<T>(reference, field);
+					}
+
+				public MethodBuilder DefineMethodBasedOn
+					(
+						MethodInfo reference
+					)
+					{
+						return type.DefineMethod
+							(
+								reference.Name,
+								RelayMethodAttributes,
+								reference.ReturnType,
+								parameterTypes: reference
+									.GetParameters()
+									.Select(x => x.ParameterType)
+									.ToArray()
+							);
+					}
 			}
 
 		public static void ImplementWith<T>

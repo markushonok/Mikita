@@ -4,35 +4,36 @@ namespace Mikita.Observation.Events.Subscriptions;
 
 public static class SubscriptionInstancing
 	{
-		public static Subscription PreparingBy
-			(
-				this ISubscription source,
-				Action action
-			)
-			=> new
-				(
-					activate: () =>
-						{
-							action();
-							source.Activate();
-						},
-					source.Deactivate
-				);
+		extension(ISubscription source)
+			{
+				public Subscription PreparingBy
+					(
+						Action action
+					)
+					=> new
+						(
+							activate: () =>
+								{
+									action();
+									source.Activate();
+								},
+							source.Deactivate
+						);
 
-		public static Subscription ReleasedBy
-			(
-				this ISubscription source,
-				Action action
-			)
-			=> new
-				(
-					source.Activate,
-					deactivate: () =>
-						{
-							action();
-							source.Deactivate();
-						}
-				);
+				public Subscription ReleasedBy
+					(
+						Action action
+					)
+					=> new
+						(
+							source.Activate,
+							deactivate: () =>
+								{
+									action();
+									source.Deactivate();
+								}
+						);
+			}
 
 		public static Subscription SubscriptionOf<T>
 			(

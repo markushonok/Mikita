@@ -18,16 +18,6 @@ public static class ForwardStepping
 							undo: delegate {}
 						);
 
-				public static AsyncStep Forward
-					(
-						CancellableTask @do
-					)
-					=> new
-						(
-							@do,
-							undo: cancellation => Task.CompletedTask
-						);
-
 				public Step AsForward
 					=> new
 						(

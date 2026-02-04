@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Mikita.Steps;
 
-public sealed partial class Walk
+public sealed class Walk
 	(
 		IEnumerable<IStep> steps
 	)

@@ -5,9 +5,9 @@ namespace Mikita.Measurement.Rotations.EulerAngles;
 
 public partial record EulerAngle<T>
 	(
-		Angle<T> X,
-		Angle<T> Y,
-		Angle<T> Z
+		IAngle<T> X,
+		IAngle<T> Y,
+		IAngle<T> Z
 	)
 	: IEulerAngle<T>
 

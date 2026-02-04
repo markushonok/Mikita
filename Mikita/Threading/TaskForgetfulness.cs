@@ -30,25 +30,23 @@ public static class TaskForgetfulness
 				task.AsTask().Forget();
 			}
 
-		[DebuggerStepThrough]
-		public static void Forget
-			(
-				this Task task
-			)
+		extension(Task task)
 			{
-				if (task.IsCompletedSuccessfully)
-					return;
+				[DebuggerStepThrough]
+				public void Forget()
+					{
+						if (task.IsCompletedSuccessfully)
+							return;
 
-				task.ContinueWith
-					(
-						TouchException,
-						OnlyOnFaulted | ExecuteSynchronously
-					);
+						task.ContinueWith
+							(
+								TouchException,
+								OnlyOnFaulted | ExecuteSynchronously
+							);
+					}
+
+				public void TouchException()
+					=> _ = task.Exception!;
 			}
 
-		public static void TouchException
-			(
-				this Task task
-			)
-			=> _ = task.Exception!;
 	}

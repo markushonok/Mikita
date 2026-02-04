@@ -17,6 +17,4 @@
 				Include="..\Mikita.Generation\Mikita.Generation.csproj"
 				OutputItemType="Analyzer" />
 	</ItemGroup>
-
-	<Import Project="..\FileNesting.targets"/>
 </Project>
