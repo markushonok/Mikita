@@ -13,4 +13,10 @@ public static class Cancellation
 				CancellationToken cancellation
 			)
 			=> source.WithCancellation(cancellation);
+
+		extension(CancellationToken cancel)
+			{
+				public void ThrowIfRequested()
+					=> cancel.ThrowIfCancellationRequested();
+			}
 	}
