@@ -1,3 +1,4 @@
+using Mikita.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps;
@@ -9,8 +10,18 @@ public static class StepDesyncing
 				public AsyncStep AsAsync
 					=> Step.That
 						(
-							@do: cancellation => Task.Run(step.Do, cancellation),
-							undo: cancellation => Task.Run(step.Undo, cancellation)
+							@do: cancel =>
+								{
+									cancel.ThrowIfRequested();
+									step.Do();
+									return Task.CompletedTask;
+								},
+							undo: cancel =>
+								{
+									cancel.ThrowIfRequested();
+									step.Undo();
+									return Task.CompletedTask;
+								}
 						);
 			}
 	}

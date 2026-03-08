@@ -1,5 +1,6 @@
 using Mikita.Routines.Assignment;
 using System;
+using System.Text.Json.Nodes;
 
 namespace Mikita.Structs.Referring;
 
@@ -19,6 +20,13 @@ public static class RefInstancing
 						T referent
 					)
 					=> new(referent);
+
+				public static JsonObjectRef<T> To<T>
+					(
+						JsonObject container,
+						string path
+					)
+					=> new(container, path);
 			}
 
 		extension<T>(IRef<T> reference)
@@ -46,7 +54,7 @@ public static class RefInstancing
 		extension<T>(Ref<T>)
 			where T: struct
 			{
-				public static Ref<T?> Default
-					=> Ref.To<T?>(null);
+				public static Ref<T> Default
+					=> Ref.To<T>(default);
 			}
 	}

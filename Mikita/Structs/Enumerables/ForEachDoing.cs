@@ -25,10 +25,7 @@ public static class ForEachDoing
 					)
 					{
 						foreach (var element in enumerable)
-							{
-								await action(element)
-									.ConfigureAwait(continueOnCapturedContext: false);
-							}
+							await action(element);
 					}
 
 				public async Task ForEachAsync
@@ -45,8 +42,7 @@ public static class ForEachDoing
 								foreach (var element in enumerable)
 									{
 										cancellation.ThrowIfCancellationRequested();
-										await action(element)
-											.ConfigureAwait(continueOnCapturedContext: false);
+										await action(element);
 										processed.Push(element);
 									}
 							}
@@ -54,9 +50,7 @@ public static class ForEachDoing
 							{
 								var exceptions = new List<Exception>();
 
-								await processed
-									.RollbackEachAsync(counteraction, exceptions)
-									.ConfigureAwait(continueOnCapturedContext: false);
+								await processed.RollbackEachAsync(counteraction, exceptions);
 
 								if (exceptions is []) throw;
 
@@ -77,8 +71,7 @@ public static class ForEachDoing
 					{
 						try
 							{
-								await counteraction(processed.Pop())
-									.ConfigureAwait(continueOnCapturedContext: false);
+								await counteraction(processed.Pop());
 							}
 						catch (Exception exception)
 							{

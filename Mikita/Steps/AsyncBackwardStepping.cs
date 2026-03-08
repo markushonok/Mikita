@@ -1,0 +1,30 @@
+using Mikita.Routines;
+using System;
+using System.Threading.Tasks;
+
+namespace Mikita.Steps;
+
+public static class AsyncBackwardStepping
+	{
+		extension(Step)
+			{
+				public static AsyncStep Backward
+					(
+						CancellableTask undo
+					)
+					=> new
+						(
+							@do: cancel => Task.CompletedTask,
+							undo
+						);
+			}
+		
+		extension(AsyncStep)
+			{
+				public static AsyncStep Backward
+					(
+						Action undo
+					)
+					=> Step.Backward(undo).AsAsync;
+			}
+	}
