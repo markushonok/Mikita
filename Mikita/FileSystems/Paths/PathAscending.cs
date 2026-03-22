@@ -4,14 +4,20 @@ namespace Mikita.FileSystems.Paths;
 
 public static class PathAscending
 	{
-		public static Path BaseAscendedBy
-			(
-				this IPath path,
-				int steps
-			)
-			=> new
-				(
-					path.Elements.ToArray(),
-					path.Ascends + steps
-				);
+		extension(IPath path)
+			{
+				public Path HigherBy(int steps)
+					=> new
+						(
+							path.Elements.ToArray()[..^steps],
+							path.Ascends
+						);
+
+				public Path BaseHigherBy(int steps)
+					=> new
+						(
+							path.Elements.ToArray(),
+							path.Ascends + steps
+						);
+			}
 	}

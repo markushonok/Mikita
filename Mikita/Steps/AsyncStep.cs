@@ -1,4 +1,5 @@
 using Mikita.Routines;
+using Mikita.Threading;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,13 +14,13 @@ public sealed class AsyncStep
 	{
 		public Task Do
 			(
-				CancellationToken cancellation
+				CancellationToken cancel
 			)
-			=> @do(cancellation);
+			=> @do(cancel);
 
 		public Task Undo
 			(
-				CancellationToken cancellation
+				CancellationToken cancel
 			)
-			=> undo(cancellation);
+			=> undo(cancel);
 	}

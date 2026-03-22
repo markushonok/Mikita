@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Mikita.FileSystems.Paths.Formats;
 
-public sealed partial class PathFormat
+public sealed class PathFormat
 	(
 		string separator
 	)

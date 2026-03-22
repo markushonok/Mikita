@@ -1,3 +1,4 @@
+using Mikita.Threading;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,11 +8,11 @@ public interface IAsyncStep
 	{
 		Task Do
 			(
-				CancellationToken cancellation = default
+				CancellationToken cancel = default
 			);
 
 		Task Undo
 			(
-				CancellationToken cancellation = default
+				CancellationToken cancel = default
 			);
 	}

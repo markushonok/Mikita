@@ -1,3 +1,4 @@
+using Mikita.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ public static class ForEachDoing
 					(
 						Func<T, Task> action,
 						Func<T, Task> counteraction,
-						CancellationToken cancellation = default
+						CancellationToken cancel = default
 					)
 					{
 						var processed = new Stack<T>();
@@ -41,7 +42,7 @@ public static class ForEachDoing
 							{
 								foreach (var element in enumerable)
 									{
-										cancellation.ThrowIfCancellationRequested();
+										cancel.ThrowIfCancellationRequested();
 										await action(element);
 										processed.Push(element);
 									}

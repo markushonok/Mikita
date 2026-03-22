@@ -14,25 +14,25 @@ public sealed class AsyncWalk
 	{
 		public Task Do
 			(
-				CancellationToken cancellation
+				CancellationToken cancel
 			)
 			=> steps.ForEachAsync
 				(
-					action: x => x.Do(cancellation),
-					counteraction: x => x.Undo(cancellation),
-					cancellation
+					action: x => x.Do(cancel),
+					counteraction: x => x.Undo(cancel),
+					cancel
 				);
 
 		public Task Undo
 			(
-				CancellationToken cancellation
+				CancellationToken cancel
 			)
 			=> steps
 				.Reverse()
 				.ForEachAsync
 					(
-						action: x => x.Undo(cancellation),
-						counteraction: x => x.Do(cancellation),
-						cancellation
+						action: x => x.Undo(cancel),
+						counteraction: x => x.Do(cancel),
+						cancel
 					);
 	}
