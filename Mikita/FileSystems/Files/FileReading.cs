@@ -1,24 +1,25 @@
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Files;
 
 public static class FileReading
 	{
-		public static string String
-			(
-				this IFile file
-			)
-			=> file.String(Encoding.UTF8);
-
-		public static string String
-			(
-				this IFile file,
-				Encoding encoding
-			)
+		extension(IFile file)
 			{
-				using var stream = file.Stream;
-				using var reader = new StreamReader(stream, encoding);
-				return reader.ReadToEnd();
+				public Task<string> String
+					()
+					=> file.String(Encoding.UTF8);
+
+				public async Task<string> String
+					(
+						Encoding encoding
+					)
+					{
+						await using var stream = await file.Open();
+						using var reader = new StreamReader(stream, encoding);
+						return await reader.ReadToEndAsync();
+					}
 			}
 	}

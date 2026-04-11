@@ -1,4 +1,5 @@
 using Mikita.Routines.Assignment;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
@@ -22,5 +23,14 @@ public static class RefAssignment
 						T value
 					)
 					=> reference.Value = value;
+			}
+
+		extension<T>(IRef<T?> reference)
+			{
+				public void PullOut(out T? value)
+					{
+						value = reference.Value;
+						reference.SetTo(default);
+					}
 			}
 	}

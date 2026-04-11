@@ -12,6 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="NetFabric.Hyperlinq" Version="3.0.0-beta48" />
 		<PackageReference Include="System.Linq.Async" Version="6.0.3"/>
 		<PackageReference Include="Tomlyn" Version="1.2.0" />
 		<ProjectReference

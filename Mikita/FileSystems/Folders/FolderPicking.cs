@@ -1,4 +1,4 @@
-using Mikita.FileSystems.Files;
+using Mikita.FileSystems.Paths;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Folders;
 
-public static class FilePicking
+public static class FolderPicking
 	{
 		extension(IFolder folder)
 			{
-				public IAsyncEnumerable<IFile> Files
+				public IAsyncEnumerable<IFolder> SubFolders
 					(
-						CancellationToken cancel = default
+						CancellationToken cancel
 					)
 					=> folder.Entries
-						.Select(x => x.AsFile)
+						.Select(x => x.AsFolder)
 						.WhereAwait(async x => await x.Exists(cancel));
 
-				public Task<bool> ContainsFileWithName
+				public Task<bool> ContainsSubFolderWithName
 					(
 						string name,
-						CancellationToken cancel = default
+						CancellationToken cancel
 					)
 					=> folder
-						.FileWithName(name)
+						.SubFolderWithName(name)
 						.Exists(cancel);
 
-				public IFile FileWithName
+				public IFolder SubFolderWithName
 					(
 						string name
 					)
 					=> folder
 						.EntryWithName(name)
-						.AsFile;
+						.AsFolder;
 			}
 	}

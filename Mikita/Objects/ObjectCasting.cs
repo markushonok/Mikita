@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Mikita.Objects;
 
 public static class ObjectCasting

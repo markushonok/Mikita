@@ -73,7 +73,7 @@ public static class NullAssert
 			)
 			=> new
 				(
-					$"{typeof(T).Name} {expression} asserted"
+					$"{typeof(T).Name} `{expression}` asserted"
 					+ $" to be non-null but it's null."
 				);
 	}

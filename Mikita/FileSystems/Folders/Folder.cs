@@ -5,34 +5,57 @@ using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Folders;
 
-public sealed partial class Folder
+public sealed class Folder
 	(
 		IPath path
 	)
 	: IFolder
 	{
-		public IUnspecifiedEntry EntryWithName(string name)
-			=> new Entry(path / name);
+		public IUnspecifiedEntry EntryAt(IPath subpath)
+			=> new Entry(path / subpath);
 
 		public IAsyncEnumerable<IUnspecifiedEntry> Entries
 			=> Directory
 				.EnumerateFileSystemEntries(PathString)
 				.Select(System.IO.Path.GetFileName)
 				.WhereNotNull()
-				.Select(EntryWithName)
+				.Select(this.EntryWithName)
 				.ToAsyncEnumerable();
 
-		public void Create()
-			=> Directory.CreateDirectory(PathString);
+		public Task Create
+			(
+				CancellationToken cancel = default
+			)
+			=> Task.Run
+				(
+					() => Directory.CreateDirectory(PathString),
+					cancel
+				);
 
-		public void Delete()
-			=> Directory.Delete(PathString, recursive: true);
+		public Task Delete
+			(
+				CancellationToken cancel = default
+			)
+			=> Task.Run
+				(
+					() => Directory.Delete(PathString, recursive: true),
+					cancel
+				);
 
-		public bool Exists
-			=> Directory.Exists(PathString);
+		public Task<bool> Exists
+			(
+				CancellationToken cancel = default
+			)
+			=> Task.Run
+				(
+					() => Directory.Exists(PathString),
+					cancel
+				);
 
 		public IPath Path
 			=> path;

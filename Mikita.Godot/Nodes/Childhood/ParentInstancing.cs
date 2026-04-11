@@ -6,7 +6,7 @@ public static class ParentInstancing
 	{
 		extension(Node node)
 			{
-				public Parent AsParent
-					=> new(() => node);
+				public IParent AsParent
+					=> new Parent(() => node);
 			}
 	}

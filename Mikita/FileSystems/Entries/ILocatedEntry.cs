@@ -1,15 +1,26 @@
 using Mikita.FileSystems.Paths;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Entries;
 
 public interface ILocatedEntry
 	{
-		void Create();
+		Task Create
+			(
+				CancellationToken cancel = default
+			);
 
-		void Delete();
+		Task Delete
+			(
+				CancellationToken cancel = default
+			);
 
-		bool Exists { get; }
+		Task<bool> Exists
+			(
+				CancellationToken cancel = default
+			);
 
 		IPath Path { get; }
 	}
