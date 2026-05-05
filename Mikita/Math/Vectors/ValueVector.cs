@@ -1,5 +1,4 @@
 using Mikita.Math.Vectors.Spatial;
-using System.Numerics;
 
 namespace Mikita.Math.Vectors;
 

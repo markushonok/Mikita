@@ -1,4 +1,3 @@
-using Mikita.Measurement.Motion;
 using Mikita.Measurement.Motion.Velocities3D;
 using Mikita.Observation.Change;
 using Mikita.Structs.Referring;

@@ -1,5 +1,4 @@
 using Mikita.Measurement.Angles;
-using System.Numerics;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 

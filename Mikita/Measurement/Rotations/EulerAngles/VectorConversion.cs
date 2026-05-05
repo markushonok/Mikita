@@ -2,7 +2,6 @@ using Mikita.Math.Vectors;
 using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Angles;
 using System.Numerics;
-using Vector = Mikita.Math.Vectors.Vector;
 
 namespace Mikita.Measurement.Rotations.EulerAngles;
 

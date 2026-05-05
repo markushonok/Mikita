@@ -1,5 +1,4 @@
 using Mikita.Math.Indices;
-using TSize = Mikita.Math.Sizes.Size;
 
 namespace Mikita.Structs.Arrays;
 

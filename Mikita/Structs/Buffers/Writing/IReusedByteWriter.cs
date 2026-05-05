@@ -1,5 +1,3 @@
-using System;
-
 namespace Mikita.Structs.Buffers.Writing;
 
 public interface IReusedByteWriter: IByteWriter

@@ -1,4 +1,3 @@
-using Mikita.Math.Vectors;
 using Mikita.Math.Vectors.Spatial;
 using Mikita.Measurement.Lengths;
 using Mikita.Measurement.Motion.Velocities2D;

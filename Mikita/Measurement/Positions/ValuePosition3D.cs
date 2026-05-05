@@ -1,5 +1,4 @@
 using Mikita.Measurement.Lengths;
-using System;
 using System.Numerics;
 
 namespace Mikita.Measurement.Positions;

@@ -1,7 +1,5 @@
 using Mikita.Math.Indices;
 using Mikita.Math.Sizes;
-using System;
-using Index = Mikita.Math.Indices.Index;
 
 namespace Mikita.Structs.Arrays;
 

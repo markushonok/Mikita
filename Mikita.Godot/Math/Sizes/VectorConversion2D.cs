@@ -1,6 +1,5 @@
 using Godot;
 using Mikita.Math.Sizes;
-using Mikita.Math.Vectors.Planar;
 
 namespace Mikita.Godot.Math.Sizes;
 
