@@ -47,14 +47,17 @@ public static class RefInstancing
 		extension<T>(Ref<T>)
 			where T: class
 			{
-				public static Ref<T?> Null
+				public static IRef<T> Required
+					=> Ref<T>.Null.NotNull();
+
+				public static IRef<T?> Null
 					=> Ref.To<T?>(null);
 			}
 
 		extension<T>(Ref<T>)
 			where T: struct
 			{
-				public static Ref<T> Default
+				public static IRef<T> Default
 					=> Ref.To<T>(default);
 			}
 	}

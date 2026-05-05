@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace Mikita.Nulls;
 
@@ -17,6 +18,18 @@ public static class NullAssert
 		///		<paramref name="expression"/> is null.
 		/// </exception>
 		[StackTraceHidden, DebuggerHidden]
+		public static async Task<T> NotNull<T>
+			(
+				this Task<T?> value,
+				[CallerArgumentExpression("value")] string? expression = null
+			)
+			{
+				if (expression is null) throw NullExpressionException<T>();
+				return await value ?? throw NullValueException<T>(expression);
+			}
+
+		/// <inheritdoc cref="NotNull{T}(System.Threading.Tasks.Task{T?},string?)" />
+		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
 				this T? value,
@@ -24,20 +37,10 @@ public static class NullAssert
 			)
 			{
 				if (expression is null) throw NullExpressionException<T>();
-				if (value is null) throw NullValueException<T>(expression);
-				return value;
+				return value ?? throw NullValueException<T>(expression);
 			}
 
-		/// <summary>
-		///		Asserts that <paramref name="value"/> is not null.
-		/// </summary>
-		/// 
-		/// <returns>Non-null <paramref name="value"/>.</returns>
-		///
-		/// <exception cref="ArgumentNullException">
-		///		Thrown if <paramref name="value"/> or
-		///		<paramref name="expression"/> is null.
-		/// </exception>
+		/// <inheritdoc cref="NotNull{T}(T?,string?)" />
 		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
@@ -47,8 +50,7 @@ public static class NullAssert
 			where T: struct
 			{
 				if (expression is null) throw NullExpressionException<T>();
-				if (value is null) throw NullValueException<T>(expression);
-				return value.Value;
+				return value ?? throw NullValueException<T>(expression);
 			}
 
 		/// <typeparam name="T">The type of the caller.</typeparam>

@@ -1,4 +1,4 @@
-using System;
+using Mikita.Objects.Tokens;
 
 namespace Mikita.Math.Sizes;
 
@@ -8,13 +8,18 @@ partial class Size2D<T>
 			(
 				object? @object
 			)
-			=> @object is ISize2D<T> other
-				&& Equals(other);
-
-		private bool Equals(ISize2D<T> other)
-			=> x.Equals(other.X)
-				&& y.Equals(other.Y);
+			=> Object.Equals(@object);
 
 		public override int GetHashCode()
-			=> HashCode.Combine(x, y);
+			=> Object.GetHashCode();
+
+		private ObjectToken<ISize2D<T>> Object
+			=> ObjectToken.Of(this, Members);
+
+		private static readonly MemberToken<ISize2D<T>>[] Members
+			=
+				[
+					ISize2D<T>.Member(x => x.X),
+					ISize2D<T>.Member(x => x.Y)
+				];
 	}

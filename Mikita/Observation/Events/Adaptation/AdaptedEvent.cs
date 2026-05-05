@@ -6,7 +6,7 @@ namespace Mikita.Observation.Events.Adaptation;
 public sealed class AdaptedEvent<TFrom, TTo>
 	(
 		IEvent<TFrom> source,
-		Func<TTo, TFrom> wrap,
+		EventWrapPattern<TFrom, TTo> wrap,
 		IDictionary<TTo, TFrom> map
 	)
 	: IEvent<TTo> where TTo: notnull

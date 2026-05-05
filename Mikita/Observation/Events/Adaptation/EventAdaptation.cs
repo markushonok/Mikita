@@ -5,15 +5,18 @@ namespace Mikita.Observation.Events.Adaptation;
 
 public static class EventAdaptation
 	{
-		extension<TFrom, TTo>(IEvent<TFrom> source)
-			where TFrom : Delegate
-			where TTo : Delegate
+		extension<TFrom, TTo>
+			(
+				IEvent<TFrom> source
+			)
+			where TFrom: Delegate
+			where TTo: Delegate
 			{
-				public AdaptedEvent<TFrom, TTo> Adapted
+				public IEvent<TTo> Adapted
 					(
-						Func<TTo, TFrom> wrap
+						EventWrapPattern<TFrom, TTo> wrap
 					)
-					=> new
+					=> new AdaptedEvent<TFrom, TTo>
 						(
 							source,
 							wrap,

@@ -1,3 +1,4 @@
+using Mikita.Observation.Events.Raising;
 using System;
 using System.Collections.Generic;
 
@@ -19,6 +20,14 @@ public static class EventInstancing
 						Action<T> remove
 					)
 					=> new(add, remove);
+
+				public static EventSourcePattern<T> Pattern<T>
+					(
+						Action<T> add,
+						Action<T> remove,
+						EventRaise<T> raise
+					)
+					=> new(add, remove, raise);
 
 				public static Event<Action> NewEmpty
 					=> new([]);

@@ -8,7 +8,7 @@ public static class MemberTokenInstancing
 	{
 		extension<T>(T type)
 			{
-				public static MemberToken<T> TokenOf
+				public static MemberToken<T> Member
 					(
 						Func<T, object?> member,
 						[CallerArgumentExpression("member")] string? expression = null

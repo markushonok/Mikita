@@ -19,7 +19,7 @@ partial class Path
 		private static readonly MemberToken<IPath>[] Members
 			=
 				[
-					IPath.TokenOf(x => x.Elements),
-					IPath.TokenOf(x => x.Ascends)
+					IPath.Member(x => x.Elements),
+					IPath.Member(x => x.Ascends)
 				];
 	}

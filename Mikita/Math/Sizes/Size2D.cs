@@ -6,7 +6,6 @@ public sealed partial class Size2D<T>
 		T y
 	)
 	: ISize2D<T>
-	where T: notnull
 	{
 		public T X => x;
 
