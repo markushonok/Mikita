@@ -14,8 +14,18 @@ public static class AsyncForwardStepping
 					)
 					=> new
 						(
+							() => @do(),
+							undo: () => Task.CompletedTask
+						);
+
+				public static AsyncStep Forward
+					(
+						Func<Task> @do
+					)
+					=> new
+						(
 							@do,
-							undo: cancel => Task.CompletedTask
+							undo: () => Task.CompletedTask
 						);
 			}
 		

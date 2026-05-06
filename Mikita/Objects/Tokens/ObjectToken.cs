@@ -17,7 +17,7 @@ public readonly ref struct ObjectToken<T>
 				object? @object
 			)
 			=> @object is T other
-				&& source.Equals(other);
+				&& Equals(other);
 
 		public bool Equals
 			(

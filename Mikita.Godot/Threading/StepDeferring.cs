@@ -9,8 +9,8 @@ public static class StepDeferring
 				public AsyncStep Deferred()
 					=> new
 						(
-							@do: cancel => step.Defer(x => x.Do(cancel), cancel),
-							undo: cancel => step.Defer(x => x.Undo(cancel), cancel)
+							@do: () => step.Defer(x => x.Do()),
+							undo: () => step.Defer(x => x.Undo())
 						);
 			}
 	}

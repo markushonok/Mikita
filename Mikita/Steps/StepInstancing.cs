@@ -1,5 +1,6 @@
 using Mikita.Routines;
 using System;
+using System.Threading.Tasks;
 
 namespace Mikita.Steps;
 
@@ -16,8 +17,8 @@ public static class StepInstancing
 
 				public static AsyncStep That
 					(
-						CancellableTask @do,
-						CancellableTask undo
+						Func<Task> @do,
+						Func<Task> undo
 					)
 					=> new(@do, undo);
 			}

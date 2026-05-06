@@ -1,7 +1,6 @@
 using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps;
@@ -12,27 +11,19 @@ public sealed class AsyncWalk
 	)
 	: IAsyncStep
 	{
-		public Task Do
-			(
-				CancellationToken cancel
-			)
+		public Task Do()
 			=> steps.ForEachAsync
 				(
-					action: x => x.Do(cancel),
-					counteraction: x => x.Undo(cancel),
-					cancel
+					action: x => x.Do(),
+					counteraction: x => x.Undo()
 				);
 
-		public Task Undo
-			(
-				CancellationToken cancel
-			)
+		public Task Undo()
 			=> steps
 				.Reverse()
 				.ForEachAsync
 					(
-						action: x => x.Undo(cancel),
-						counteraction: x => x.Do(cancel),
-						cancel
+						action: x => x.Undo(),
+						counteraction: x => x.Do()
 					);
 	}

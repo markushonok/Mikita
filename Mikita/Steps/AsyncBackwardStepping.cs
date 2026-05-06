@@ -1,4 +1,3 @@
-using Mikita.Routines;
 using System;
 using System.Threading.Tasks;
 
@@ -10,11 +9,11 @@ public static class AsyncBackwardStepping
 			{
 				public static AsyncStep Backward
 					(
-						CancellableTask undo
+						Func<Task> undo
 					)
 					=> new
 						(
-							@do: cancel => Task.CompletedTask,
+							@do: () => Task.CompletedTask,
 							undo
 						);
 			}

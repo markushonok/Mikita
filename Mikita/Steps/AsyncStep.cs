@@ -1,25 +1,18 @@
-using Mikita.Routines;
-using System.Threading;
+using System;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps;
 
 public sealed class AsyncStep
 	(
-		CancellableTask @do,
-		CancellableTask undo
+		Func<Task> @do,
+		Func<Task> undo
 	)
 	: IAsyncStep
 	{
-		public Task Do
-			(
-				CancellationToken cancel
-			)
-			=> @do(cancel);
+		public Task Do()
+			=> @do();
 
-		public Task Undo
-			(
-				CancellationToken cancel
-			)
-			=> undo(cancel);
+		public Task Undo()
+			=> undo();
 	}
