@@ -10,13 +10,20 @@ public readonly ref struct ObjectToken<T>
 		T source,
 		ReadOnlySpan<MemberToken<T>> members
 	)
+	where T: notnull
 	{
 		public override bool Equals
 			(
 				object? @object
 			)
 			=> @object is T other
-				&& source.EqualsBy(other, members);
+				&& source.Equals(other);
+
+		public bool Equals
+			(
+				T? @object
+			)
+			=> source.EqualsBy(@object, members);
 
 		public override int GetHashCode()
 			{

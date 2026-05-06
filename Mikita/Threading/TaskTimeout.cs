@@ -25,7 +25,10 @@ public static class TaskTimeout
 				var completedTask = await Task.WhenAny(task, timeoutTask);
 
 				if (completedTask == timeoutTask)
-					throw TimeoutException(timeout);
+					{
+						cancel.ThrowIfCancellationRequested();
+						throw TimeoutException(timeout);
+					}
 
 				await timeoutCancelSource.CancelAsync();
 				return await task;
