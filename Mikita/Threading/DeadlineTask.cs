@@ -23,7 +23,8 @@ public static class DeadlineTask
 					{
 						return await task(deadline.Token);
 					}
-				catch (OperationCanceledException) when (!cancel.IsCancellationRequested)
+				catch (OperationCanceledException)
+					when (!cancel.IsCancellationRequested)
 					{
 						throw TimeoutException(duration);
 					}
