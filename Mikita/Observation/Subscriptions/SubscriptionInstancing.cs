@@ -1,8 +1,9 @@
+using Mikita.Observation.Events;
 using Mikita.Routines;
 using Mikita.Threading.Pools;
 using System;
 
-namespace Mikita.Observation.Events.Subscriptions;
+namespace Mikita.Observation.Subscriptions;
 
 public static class SubscriptionInstancing
 	{

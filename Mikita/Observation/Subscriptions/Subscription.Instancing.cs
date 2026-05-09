@@ -2,7 +2,7 @@ using Mikita.Steps;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mikita.Observation.Events.Subscriptions;
+namespace Mikita.Observation.Subscriptions;
 
 partial class Subscription
 	{

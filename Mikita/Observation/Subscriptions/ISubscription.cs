@@ -1,4 +1,4 @@
-namespace Mikita.Observation.Events.Subscriptions;
+namespace Mikita.Observation.Subscriptions;
 
 public interface ISubscription
 	{

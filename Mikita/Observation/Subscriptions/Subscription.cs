@@ -1,6 +1,6 @@
 using System;
 
-namespace Mikita.Observation.Events.Subscriptions;
+namespace Mikita.Observation.Subscriptions;
 
 public sealed partial class Subscription
 	(

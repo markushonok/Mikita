@@ -1,6 +1,6 @@
 using Mikita.Steps;
 
-namespace Mikita.Observation.Events.Subscriptions;
+namespace Mikita.Observation.Subscriptions;
 
 public static class SubscriptionStep
 	{
