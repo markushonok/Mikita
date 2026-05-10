@@ -12,7 +12,7 @@ public static class TomlPathAccess
 				public IRef<T> RefTo<T>(IPath path)
 					{
 						var table = root.SubTableAt(path.HigherBy(1));
-						var property = path.Elements.Last();
+						var property = path.Elements[^1];
 						return new TomlRef<T>(table, property);
 					}
 
