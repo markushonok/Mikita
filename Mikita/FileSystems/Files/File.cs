@@ -44,6 +44,17 @@ public sealed partial class File
 					cancel
 				);
 
+		public Task MoveTo
+			(
+				IPath destination,
+				CancellationToken cancel = default
+			)
+			=> Task.Run
+				(
+					() => SystemFile.Move(PathString, destination.ToDefaultString()),
+					cancel
+				);
+
 		public Task Delete
 			(
 				CancellationToken cancel = default
@@ -63,9 +74,6 @@ public sealed partial class File
 					() => SystemFile.Exists(PathString),
 					cancel
 				);
-
-		public IPath Path
-			=> path;
 
 		private string PathString
 			=> path.ToDefaultString();

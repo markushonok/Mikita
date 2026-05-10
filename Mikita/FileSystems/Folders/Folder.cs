@@ -37,6 +37,17 @@ public sealed class Folder
 					cancel
 				);
 
+		public Task MoveTo
+			(
+				IPath destination,
+				CancellationToken cancel = default
+			)
+			=> Task.Run
+				(
+					() => Directory.Move(PathString, destination.ToDefaultString()),
+					cancel
+				);
+
 		public Task Delete
 			(
 				CancellationToken cancel = default
@@ -56,9 +67,6 @@ public sealed class Folder
 					() => Directory.Exists(PathString),
 					cancel
 				);
-
-		public IPath Path
-			=> path;
 
 		private string PathString
 			=> path.ToDefaultString();

@@ -11,6 +11,12 @@ public interface ILocatedEntry
 				CancellationToken cancel = default
 			);
 
+		Task MoveTo
+			(
+				IPath destination,
+				CancellationToken cancel = default
+			);
+
 		Task Delete
 			(
 				CancellationToken cancel = default
@@ -20,6 +26,4 @@ public interface ILocatedEntry
 			(
 				CancellationToken cancel = default
 			);
-
-		IPath Path { get; }
 	}
