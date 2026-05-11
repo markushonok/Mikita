@@ -38,7 +38,10 @@ public sealed class EventSourceTable
 				TKey key,
 				Action<TReaction> pattern
 			)
-			=> events[key].ForEach(pattern);
+			{
+				if (events.TryGetValue(key, out var reactions))
+					reactions.ForEach(pattern);
+			}
 
 		private void Add
 			(

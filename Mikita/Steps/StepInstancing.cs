@@ -1,4 +1,4 @@
-using Mikita.Routines;
+using Mikita.Structs.Referring;
 using System;
 using System.Threading.Tasks;
 
@@ -8,6 +8,18 @@ public static class StepInstancing
 	{
 		extension(Step)
 			{
+				public static IStep Set<T>
+					(
+						IRef<T> reference,
+						Func<T> initialize,
+						T deinitialize
+					)
+					=> Step.That
+						(
+							@do: () => reference.SetTo(initialize()),
+							undo: () => reference.SetTo(deinitialize)
+						);
+
 				public static Step That
 					(
 						Action @do,
