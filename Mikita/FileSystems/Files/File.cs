@@ -7,7 +7,7 @@ using SystemFile = System.IO.File;
 
 namespace Mikita.FileSystems.Files;
 
-public sealed partial class File
+public sealed class File
 	(
 		IPath path
 	)
