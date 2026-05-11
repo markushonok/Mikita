@@ -20,6 +20,15 @@ public static class MemberCreation
 
 						foreach (var reference in typeof(T).AllProperties(Flags))
 							type.CreatePropertyWith(reference, field);
+
+						type.CreateObjectOverridesWith<T>(field);
+					}
+
+				public void CreateObjectOverridesWith<T>(FieldInfo field)
+					{
+						type.CreateMethodWith<T>(typeof(object).GetMethod(nameof(ToString), [])!, field);
+						type.CreateMethodWith<T>(typeof(object).GetMethod(nameof(GetHashCode), [])!, field);
+						type.CreateMethodWith<T>(typeof(object).GetMethod(nameof(Equals), [typeof(object)])!, field);
 					}
 
 				public FieldBuilder DefineField<T>()

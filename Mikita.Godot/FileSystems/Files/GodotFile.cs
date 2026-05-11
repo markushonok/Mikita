@@ -2,9 +2,6 @@ using Godot;
 using Mikita.FileSystems.Files;
 using Mikita.FileSystems.Paths;
 using Mikita.FileSystems.Paths.Formats;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Mikita.Godot.FileSystems.Files;
 

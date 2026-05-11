@@ -52,6 +52,17 @@ public static class SubscriptionInstancing
 		public static ISubscription SubscriptionOf<T>
 			(
 				this IEvent<T> @event,
+				Func<T> reaction
+			)
+			=> new Subscription
+				(
+					activate: () => @event.Add(reaction()),
+					deactivate: () => @event.Remove(reaction())
+				);
+
+		public static ISubscription SubscriptionOf<T>
+			(
+				this IEvent<T> @event,
 				T reaction
 			)
 			=> new Subscription

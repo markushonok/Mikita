@@ -14,6 +14,7 @@ public sealed class EventSourceTable
 		IDictionary<TKey, IList<TReaction>> events
 	)
 	: IEventSourceTable<TKey, TReaction>
+	where TReaction: notnull
 	{
 		IEvent<TReaction> IEventTable<TKey, TReaction>.Of
 			(
@@ -63,9 +64,25 @@ public sealed class EventSourceTable
 			)
 			{
 				var subEvent = events[key];
-				subEvent.Remove(reaction);
 
-				if (subEvent is [])
-					events.Remove(key);
+				if (!subEvent.Remove(reaction))
+					throw ReactionRemovalException(key);
+
+				if (subEvent is [] && !events.Remove(key))
+					throw EventRemovalException(key);
 			}
+
+		private static Exception ReactionRemovalException(TKey key)
+			=> new KeyNotFoundException
+				(
+					$"The reaction for the key '{key}' was not found"
+					+ $" in the event source table, so it cannot be released."
+				);
+
+		private static Exception EventRemovalException(TKey key)
+			=> new KeyNotFoundException
+				(
+					$"The event source with the key '{key}' was not found"
+					+ $" in the event source table, so it cannot be removed."
+				);
 	}
