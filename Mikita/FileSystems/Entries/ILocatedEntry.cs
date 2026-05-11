@@ -26,4 +26,6 @@ public interface ILocatedEntry
 			(
 				CancellationToken cancel = default
 			);
+
+		IPath Path { get; }
 	}

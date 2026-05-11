@@ -11,6 +11,6 @@ public static class EntryPicking
 					(
 						string name
 					)
-					=> folder.EntryAt(Path.From(name));
+					=> folder.EntryAt(SingleElementPath.From(name));
 			}
 	}

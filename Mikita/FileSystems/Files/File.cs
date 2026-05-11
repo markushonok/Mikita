@@ -75,6 +75,9 @@ public sealed partial class File
 					cancel
 				);
 
+		public IPath Path
+			=> path;
+
 		private string PathString
 			=> path.ToDefaultString();
 	}

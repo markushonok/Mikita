@@ -6,6 +6,9 @@ public static class PathAscending
 	{
 		extension(IPath path)
 			{
+				public Path Parent
+					=> path.HigherBy(1);
+
 				public Path HigherBy(int steps)
 					=> new
 						(

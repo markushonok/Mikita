@@ -68,6 +68,9 @@ public sealed class Folder
 					cancel
 				);
 
+		public IPath Path
+			=> path;
+
 		private string PathString
 			=> path.ToDefaultString();
 	}
