@@ -29,6 +29,7 @@ public static class FileWriting
 					)
 					{
 						await using var stream = await file.Open(cancel: cancel);
+						if (stream.CanWrite && stream.CanSeek) stream.SetLength(0);
 						await using var reader = new StreamWriter(stream, encoding);
 						await reader.WriteAsync(@string);
 					}
