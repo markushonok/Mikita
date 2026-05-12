@@ -55,9 +55,8 @@ public static class RefInstancing
 			}
 
 		extension<T>(Ref<T>)
-			where T: struct
 			{
-				public static IRef<T> Default
-					=> Ref.To<T>(default);
+				public static IRef<T?> Default
+					=> Ref.To<T?>(default);
 			}
 	}
