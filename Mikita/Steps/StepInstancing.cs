@@ -8,6 +8,18 @@ public static class StepInstancing
 	{
 		extension(Step)
 			{
+				public static IAsyncStep NewScoped<T>
+					(
+						Func<T, IAsyncStep> pattern,
+						IRef<T?> value
+					)
+					=> new AsyncScopedStep<T>
+						(
+							pattern,
+							current: Ref<IAsyncStep>.Null,
+							value
+						);
+
 				public static IStep Set<T>
 					(
 						IRef<T> reference,
