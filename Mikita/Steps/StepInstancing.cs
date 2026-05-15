@@ -22,6 +22,17 @@ public static class StepInstancing
 
 				public static IStep Set<T>
 					(
+						IRef<T?> reference,
+						Func<T> initialize
+					)
+					=> Step.That
+						(
+							@do: () => reference.SetTo(initialize()),
+							undo: () => reference.SetTo(default)
+						);
+
+				public static IStep Set<T>
+					(
 						IRef<T> reference,
 						Func<T> initialize,
 						T deinitialize

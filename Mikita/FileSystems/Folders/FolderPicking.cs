@@ -1,3 +1,4 @@
+using Mikita.FileSystems.Paths;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -33,5 +34,11 @@ public static class FolderPicking
 					=> folder
 						.EntryWithName(name)
 						.AsFolder;
+
+				public IFolder SubFolderAt
+					(
+						IPath path
+					)
+					=> folder.EntryAt(path).AsFolder;
 			}
 	}
