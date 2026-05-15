@@ -5,10 +5,7 @@ namespace Mikita.Threading.Pools;
 
 public interface ITaskPool
 	{
-		void Put
-			(
-				CancellableTask task
-			);
+		void Put(CancellableTask task);
 
 		Task Stop();
 	}

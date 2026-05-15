@@ -1,20 +1,21 @@
 using Mikita.Logging;
+using Mikita.Structs.Referring;
 using System.Threading;
 
 namespace Mikita.Threading.Pools;
 
-public static class InstantTaskPoolInstancing
+public static class TaskPoolInstancing
 	{
-		extension(InstantTaskPool)
+		extension(TaskPool)
 			{
 				public static ITaskPool NewWith
 					(
 						ILog log
 					)
-					=> new InstantTaskPool
+					=> new TaskPool
 						(
 							tasks: [],
-							new CancellationTokenSource(),
+							cancelSource: Ref<CancellationTokenSource>.Null,
 							log
 						);
 			}

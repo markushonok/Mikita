@@ -3,19 +3,20 @@ using Mikita.Structs.Referring;
 
 namespace Mikita.Threading.Pools;
 
-public static class ReusableTaskPoolInstancing
+public static class NonStopTaskPoolInstancing
 	{
-		extension(ReusableTaskPool)
+		extension(NonStopTaskPool)
 			{
 				public static ITaskPool NewWith
 					(
 						ILog log
 					)
-					=> new ReusableTaskPool
+					=> new NonStopTaskPool
 						(
 							deadPools: [],
+							freePools: [],
 							lastPool: Ref<ITaskPool>.Null,
-							nextPool: () => InstantTaskPool.NewWith(log)
+							newPool: () => TaskPool.NewWith(log)
 						);
 			}
 	}
