@@ -2,7 +2,7 @@ using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mikita.Steps;
+namespace Mikita.Steps.Walking;
 
 public sealed class Walk
 	(

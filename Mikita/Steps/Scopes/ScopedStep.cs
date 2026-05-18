@@ -3,9 +3,9 @@ using Mikita.Structs.Referring;
 using System;
 using System.Threading.Tasks;
 
-namespace Mikita.Steps;
+namespace Mikita.Steps.Scopes;
 
-public sealed class AsyncScopedStep<T>
+public sealed class ScopedStep<T>
 	(
 		Func<T, IAsyncStep> pattern,
 		IRef<IAsyncStep?> current,

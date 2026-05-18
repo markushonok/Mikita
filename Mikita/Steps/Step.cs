@@ -2,7 +2,7 @@ using System;
 
 namespace Mikita.Steps;
 
-public sealed partial class Step
+public sealed class Step
 	(
 		Action @do,
 		Action undo

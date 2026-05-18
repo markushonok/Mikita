@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mikita.Steps;
+namespace Mikita.Steps.Walking;
 
 public sealed class AsyncWalk
 	(

@@ -1,4 +1,5 @@
 using Mikita.Steps;
+using Mikita.Steps.Walking;
 using System.Collections.Generic;
 using System.Linq;
 

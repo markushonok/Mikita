@@ -6,7 +6,7 @@ public static class SubscriptionStep
 	{
 		extension(ISubscription subscription)
 			{
-				public AsyncStep AsAsyncStep
+				public IAsyncStep AsAsyncStep
 					=> subscription.AsStep.AsAsync;
 
 				public Step AsStep
