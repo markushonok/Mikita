@@ -2,6 +2,7 @@ using Mikita.Routines;
 using Mikita.Steps.Walking;
 using Mikita.Structs.Referring;
 using System;
+using System.Threading.Tasks;
 
 namespace Mikita.Steps.Scopes;
 
@@ -11,56 +12,67 @@ public static class ScopedStepInstancing
 			{
 				public static IAsyncStep NewScoped<T>
 					(
-						Func<T, IAsyncStep> pattern,
-						CancellableTask<T> initialize
+						CancellableTask<T> initialize,
+						Func<T, IAsyncStep> pattern
 					)
 					=> Step.NewScoped
 						(
-							pattern,
-							initialize,
-							value: Ref<T>.Default
+							() => initialize(),
+							pattern
 						);
 
 				public static IAsyncStep NewScoped<T>
 					(
-						Func<T, IAsyncStep> pattern,
-						CancellableTask<T> initialize,
-						IRef<T?> value
+						Func<Task<T>> initialize,
+						Func<T, IAsyncStep> pattern
+					)
+					=> Step.NewScoped
+						(
+							initialize,
+							value: Ref<T>.Default,
+							pattern
+						);
+
+				public static IAsyncStep NewScoped<T>
+					(
+						Func<Task<T>> initialize,
+						IRef<T?> value,
+						Func<T, IAsyncStep> pattern
 					)
 					=> Walk.Of
 						([
 							value.SetOf(initialize),
-							Step.NewScoped(pattern, value)
+							Step.NewScoped(value, pattern)
 						]);
 
 				public static IAsyncStep NewScoped<T>
 					(
-						Func<T, IAsyncStep> pattern,
-						Func<T> initialize
+						Func<T> initialize,
+						Func<T, IAsyncStep> pattern
 					)
 					=> Step.NewScoped
 						(
-							pattern,
 							initialize,
-							value: Ref<T>.Default
+							value: Ref<T>.Default,
+							pattern
 						);
 
 				public static IAsyncStep NewScoped<T>
 					(
-						Func<T, IAsyncStep> pattern,
 						Func<T> initialize,
-						IRef<T?> value
+						IRef<T?> value,
+						Func<T, IAsyncStep> pattern
 					)
 					=> Walk.Of
 						([
 							value.SetOf(initialize).AsAsync,
-							Step.NewScoped(pattern, value)
+							Step.NewScoped(value, pattern)
 						]);
 
 				public static IAsyncStep NewScoped<T>
 					(
-						Func<T, IAsyncStep> pattern,
-						IRef<T?> value
+						IRef<T?> value,
+						Func<T, IAsyncStep> pattern
 					)
 					=> new ScopedStep<T>
 						(
