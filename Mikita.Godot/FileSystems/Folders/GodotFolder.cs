@@ -113,26 +113,15 @@ public sealed class GodotFolder
 		private static void DeleteRecursive(string folderPath)
 			{
 				using var dir = DirAccess.Open(folderPath);
-				if (dir is null)
-					return;
+				if (dir == null) return;
 
-				dir.ListDirBegin();
-				while (true)
-					{
-						var name = dir.GetNext();
-						if (string.IsNullOrEmpty(name))
-							break;
+				dir.IncludeHidden = true;
 
-						if (name is "." or "..")
-							continue;
+				foreach (var name in dir.GetDirectories())
+					DeleteRecursive(folderPath.PathJoin(name));
 
-						var entryPath = $"{folderPath.TrimEnd('/')}/{name}";
-						if (dir.CurrentIsDir())
-							DeleteRecursive(entryPath);
-						else
-							DirAccess.RemoveAbsolute(entryPath);
-					}
-				dir.ListDirEnd();
+				foreach (var name in dir.GetFiles())
+					DirAccess.RemoveAbsolute(folderPath.PathJoin(name));
 
 				DirAccess.RemoveAbsolute(folderPath);
 			}
