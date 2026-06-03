@@ -1,7 +1,7 @@
 using Mikita.Structs.Referring;
 using Tomlyn.Model;
 
-namespace Mikita.FileSystems.Files.Formats.Toml;
+namespace Mikita.FileSystems.Files.Toml;
 
 public sealed class TomlRef<T>
 	(

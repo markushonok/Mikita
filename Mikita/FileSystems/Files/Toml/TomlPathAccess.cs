@@ -3,7 +3,7 @@ using Mikita.Structs.Referring;
 using System.Linq;
 using Tomlyn.Model;
 
-namespace Mikita.FileSystems.Files.Formats.Toml;
+namespace Mikita.FileSystems.Files.Toml;
 
 public static class TomlPathAccess
 	{
