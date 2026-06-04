@@ -1,3 +1,4 @@
+using Mikita.Evaluation.Liveness;
 using Mikita.FileSystems.Paths.Formats;
 using System;
 
@@ -12,6 +13,10 @@ public static class PathInstancing
 				/// </summary>
 				public static Path Current
 					=> Current;
+
+				/// <inheritdoc cref="PathInstancing.From(string)"/>
+				public static IPath From(Func<string> @string)
+					=> Live.ResultOf(() => Path.From(@string()));
 
 				/// <summary>
 				/// Creates a path using the first supported format from the list.
