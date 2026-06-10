@@ -16,6 +16,13 @@ public static class TomlPathAccess
 						return new TomlRef<T>(table, property);
 					}
 
+				public TomlTable TableAt(IPath path)
+					{
+						var table = root.SubTableAt(path.HigherBy(1));
+						var property = path.Elements[^1];
+						return (TomlTable) table[property];
+					}
+
 				public T ValueAt<T>(IPath path)
 					{
 						var table = root.SubTableAt(path.HigherBy(1));
