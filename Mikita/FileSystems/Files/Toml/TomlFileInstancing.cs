@@ -4,12 +4,9 @@ namespace Mikita.FileSystems.Files.Toml;
 
 public static class TomlFileInstancing
 	{
-		extension(TomlFileIO)
+		extension(IFile file)
 			{
-				public static IFileIO<TomlTable> On
-					(
-						IFile file
-					)
+				public IFileIO<TomlTable> AsTomlIO
 					=> new TomlFileIO(file);
 			}
 	}
