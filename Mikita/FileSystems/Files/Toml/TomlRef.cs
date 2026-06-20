@@ -1,18 +1,18 @@
 using Mikita.Structs.Referring;
-using Tomlyn.Model;
 
 namespace Mikita.FileSystems.Files.Toml;
 
 public sealed class TomlRef<T>
 	(
-		TomlTable table,
+		ITomlTable table,
 		string property
 	)
 	: IRef<T>
+	where T: notnull
 	{
 		public T Value
 			{
-				get => (T) table[property];
-				set => table[property] = value!;
+				get => (T) table.Value[property];
+				set => table.Value[property] = value;
 			}
 	}
