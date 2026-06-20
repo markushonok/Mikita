@@ -1,17 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
 		<RootNamespace>Mikita.Godot</RootNamespace>
-		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="GodotSharp" Version="4.4.1" />
+		<PackageReference Include="GodotSharp" Version="4.7.0"/>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Mikita\Mikita.csproj" />
+		<ProjectReference Include="..\Mikita\Mikita.csproj"/>
 	</ItemGroup>
 </Project>

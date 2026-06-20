@@ -11,12 +11,9 @@ public static class FilePicking
 		extension(IFolder folder)
 			{
 				public IAsyncEnumerable<IFile> Files
-					(
-						CancellationToken cancel = default
-					)
 					=> folder.Entries
 						.Select(x => x.AsFile)
-						.WhereAwait(async x => await x.Exists(cancel));
+						.Where(async (x, cancel) => await x.Exists(cancel));
 
 				public Task<bool> ContainsFileWithName
 					(

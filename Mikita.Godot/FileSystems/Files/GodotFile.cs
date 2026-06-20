@@ -2,6 +2,10 @@ using Godot;
 using Mikita.FileSystems.Files;
 using Mikita.FileSystems.Paths;
 using Mikita.FileSystems.Paths.Formats;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using FileAccess = System.IO.FileAccess;
 
 namespace Mikita.Godot.FileSystems.Files;
 
@@ -15,7 +19,7 @@ public sealed class GodotFile
 		public async Task<Stream> Open
 			(
 				FileMode mode = FileMode.Open,
-				System.IO.FileAccess access = System.IO.FileAccess.ReadWrite,
+				FileAccess access = FileAccess.ReadWrite,
 				FileShare share = FileShare.Read,
 				CancellationToken cancel = default
 			)

@@ -11,12 +11,9 @@ public static class FolderPicking
 		extension(IFolder folder)
 			{
 				public IAsyncEnumerable<IFolder> SubFolders
-					(
-						CancellationToken cancel
-					)
 					=> folder.Entries
 						.Select(x => x.AsFolder)
-						.WhereAwait(async x => await x.Exists(cancel));
+						.Where(async (x, cancel) => await x.Exists(cancel));
 
 				public Task<bool> ContainsSubFolderWithName
 					(

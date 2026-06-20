@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 namespace Mikita.Godot.Nodes.Cameras3D;
 

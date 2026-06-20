@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 namespace Mikita.Godot.Nodes.Childhood;
 

@@ -1,6 +1,7 @@
 using Godot;
 using Mikita.Observation.Events;
 using Mikita.Structs.Referring;
+using System;
 using GuiInputReaction = Godot.Control.GuiInputEventHandler;
 
 namespace Mikita.Godot.Nodes.Controls;

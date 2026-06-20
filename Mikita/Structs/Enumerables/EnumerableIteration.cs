@@ -79,4 +79,16 @@ public static class ForEachDoing
 							}
 					}
 			}
+
+		extension<T>(IAsyncEnumerable<T> enumerable)
+			{
+				public async Task ForEach
+					(
+						Func<T, Task> action
+					)
+					{
+						await foreach (var element in enumerable)
+							await action(element);
+					}
+			}
 	}

@@ -2,6 +2,8 @@ using Godot;
 using Mikita.Godot.Threading;
 using Mikita.Structs.Enumerables;
 using Mikita.Threading;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Mikita.Godot.Nodes;
 
