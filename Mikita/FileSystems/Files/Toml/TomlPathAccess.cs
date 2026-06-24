@@ -18,11 +18,7 @@ public static class TomlPathAccess
 
 				public IRef<T> RefTo<T>(IPath path)
 					where T: notnull
-					{
-						var table = root.SubTableAt(path.HigherBy(1));
-						var property = path.Elements[^1];
-						return new TomlRef<T>(table, property);
-					}
+					=> new TomlRef<T>(root, path);
 
 				public TomlTable TableAt(IPath path)
 					{

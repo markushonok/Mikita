@@ -16,7 +16,7 @@ public static class PathConcat
 
 		extension(IPath path)
 			{
-				public static Path operator /
+				public static IPath operator /
 					(
 						IPath left,
 						IPath right
@@ -25,18 +25,18 @@ public static class PathConcat
 						? right.BaseHigherBy(left.Ascends - left.Elements.Count)
 						: left.TrimThenAppend(right);
 
-				public static Path operator /
+				public static IPath operator /
 					(
 						IPath left,
 						string right
 					)
-					=> new
+					=> new Path
 						(
 							left.Elements.Append(right).ToArray(),
 							left.Ascends
 						);
 
-				public Path TrimThenAppend
+				public IPath TrimThenAppend
 					(
 						IPath right
 					)

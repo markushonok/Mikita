@@ -8,40 +8,40 @@ public static class RefInstancing
 	{
 		extension(Ref)
 			{
-				public static RelayRef<T> That<T>
+				public static IRef<T> That<T>
 					(
 						Func<T> returns,
 						Assign<T> assigns
 					)
-					=> new(returns, assigns);
+					=> new RelayRef<T>(returns, assigns);
 
-				public static Ref<T> To<T>
+				public static IRef<T> To<T>
 					(
 						T referent
 					)
-					=> new(referent);
+					=> new Ref<T>(referent);
 
-				public static JsonObjectRef<T> To<T>
+				public static IRef<T?> To<T>
 					(
 						JsonObject container,
 						string path
 					)
-					=> new(container, path);
+					=> new JsonObjectRef<T>(container, path);
 			}
 
 		extension<T>(IRef<T> reference)
 			{
-				public BackCallingRef<T> WithCallback
+				public IRef<T> WithCallback
 					(
 						Action<T> callback
 					)
-					=> new(reference, () => callback(reference.Value));
+					=> new BackCallingRef<T>(reference, () => callback(reference.Value));
 
-				public BackCallingRef<T> WithCallback
+				public IRef<T> WithCallback
 					(
 						Action callback
 					)
-					=> new(reference, callback);
+					=> new BackCallingRef<T>(reference, callback);
 			}
 
 		extension<T>(Ref<T>)
