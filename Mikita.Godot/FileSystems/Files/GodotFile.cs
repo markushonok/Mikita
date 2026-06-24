@@ -32,7 +32,7 @@ public sealed class GodotFile
 							access,
 							share,
 							bufferSize: 4096,
-							options: FileOptions.Asynchronous
+							FileOptions.Asynchronous
 						),
 					cancel
 				);
