@@ -34,6 +34,17 @@ public static class TomlPathAccess
 						return (T) table.Value[property];
 					}
 
+				public void SetValueAt<T>(IPath path, T value)
+					where T: notnull
+					{
+						var table = root.EnsuredSubTableAt(path.HigherBy(1));
+						var field = path.Elements[^1];
+						table.Value.Add(field, value);
+					}
+
+				public ITomlTable EnsuredSubTableAt(IPath path)
+					=> new EnsuredSubTomlTable(root, path);
+
 				public ITomlTable SubTableAt(IPath path)
 					=> new SubTomlTable(root, path);
 			}

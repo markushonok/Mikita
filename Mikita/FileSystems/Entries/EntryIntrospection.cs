@@ -19,4 +19,13 @@ public static class EntryIntrospection
 					)
 					=> entry.AsFolder.Exists(cancel);
 			}
+
+		extension(ILocatedEntry entry)
+			{
+				public async Task<bool> NotExists
+					(
+						CancellationToken cancel = default
+					)
+					=> !(await entry.Exists(cancel));
+			}
 	}

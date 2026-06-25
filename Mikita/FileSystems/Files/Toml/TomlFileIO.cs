@@ -10,9 +10,9 @@ public sealed class TomlFileIO
 	(
 		IFile file
 	)
-	: IFileIO<TomlTable>
+	: IFileIO<ITomlTable>
 	{
-		public async Task<TomlTable> Load
+		public async Task<ITomlTable> Load
 			(
 				CancellationToken cancel = default
 			)
@@ -22,20 +22,23 @@ public sealed class TomlFileIO
 				return table;
 			}
 
-		private static Task<TomlTable> TomlFrom
+		private static Task<ITomlTable> TomlFrom
 			(
 				string @string,
 				CancellationToken cancel
 			)
 			=> Task.Run
 				(
-					() => TomlSerializer.Deserialize<TomlTable>(@string).NotNull(),
+					() => TomlSerializer
+						.Deserialize<TomlTable>(@string)
+						.NotNull()
+						.AsAbstract,
 					cancel
 				);
 
 		public async Task Save
 			(
-				TomlTable target,
+				ITomlTable target,
 				CancellationToken cancel = default
 			)
 			{
@@ -45,12 +48,12 @@ public sealed class TomlFileIO
 
 		private static Task<string> StringFrom
 			(
-				TomlTable table,
+				ITomlTable table,
 				CancellationToken cancel
 			)
 			=> Task.Run
 				(
-					() => TomlSerializer.Serialize(table),
+					() => TomlSerializer.Serialize(table.Value),
 					cancel
 				);
 	}
