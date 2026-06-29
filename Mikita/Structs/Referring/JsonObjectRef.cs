@@ -46,7 +46,7 @@ public sealed class JsonObjectRef<T>
 
 		public void SetTo
 			(
-				T value
+				T? value
 			)
 			{
 				var parts = path.Split('.');

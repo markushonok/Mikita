@@ -4,7 +4,7 @@ namespace Mikita.Objects.Tokens;
 
 public static class ObjectTokenInstancing
 	{
-		extension<T>(ObjectToken)
+		extension<T>(ObjectToken) where T: notnull
 			{
 				public static ObjectToken<T> Of
 					(

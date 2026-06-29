@@ -8,27 +8,27 @@ namespace Mikita.Nulls;
 public static class NullAssert
 	{
 		/// <summary>
-		///		Asserts that <paramref name="value"/> is not null.
+		///		Asserts that <paramref name="task"/> returns not null result.
 		/// </summary>
 		///
-		/// <returns>Non-null <paramref name="value"/>.</returns>
+		/// <returns>Non-null <paramref name="task"/>.</returns>
 		///
 		/// <exception cref="ArgumentNullException">
-		///		Thrown if <paramref name="value"/> or
+		///		Thrown if <paramref name="task"/> or
 		///		<paramref name="expression"/> is null.
 		/// </exception>
 		[StackTraceHidden, DebuggerHidden]
-		public static async Task<T> NotNull<T>
+		public static async Task<T> WithNotNullResult<T>
 			(
-				this Task<T?> value,
-				[CallerArgumentExpression("value")] string? expression = null
+				this Task<T?> task,
+				[CallerArgumentExpression("task")] string? expression = null
 			)
 			{
 				if (expression is null) throw NullExpressionException<T>();
-				return await value ?? throw NullValueException<T>(expression);
+				return await task ?? throw NullValueException<T>(expression);
 			}
 
-		/// <inheritdoc cref="NotNull{T}(System.Threading.Tasks.Task{T?},string?)" />
+		/// <inheritdoc cref="NotNull{T}(Nullable{T},string?)" />
 		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
@@ -40,7 +40,16 @@ public static class NullAssert
 				return value ?? throw NullValueException<T>(expression);
 			}
 
-		/// <inheritdoc cref="NotNull{T}(T?,string?)" />
+		/// <summary>
+		///		Asserts that <paramref name="value"/> is not null.
+		/// </summary>
+		///
+		/// <returns>Non-null <paramref name="value"/>.</returns>
+		///
+		/// <exception cref="ArgumentNullException">
+		///		Thrown if <paramref name="value"/> or
+		///		<paramref name="expression"/> is null.
+		/// </exception>
 		[StackTraceHidden, DebuggerHidden]
 		public static T NotNull<T>
 			(
