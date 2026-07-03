@@ -2,12 +2,12 @@ using Mikita.Observation.Events;
 
 namespace Mikita.Observation.Tables;
 
-public interface IEventSourceTable
+public interface IEventSourceMap
 	<
 		in TKey,
 		TReaction
 	>
-	: IEventTable<TKey, TReaction>
+	: IEventMap<TKey, TReaction>
 	{
 		new IEventSource<TReaction> Of(TKey key);
 	}

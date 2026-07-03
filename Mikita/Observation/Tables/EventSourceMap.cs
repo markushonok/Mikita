@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Mikita.Observation.Tables;
 
-public sealed class EventSourceTable
+public sealed class EventSourceMap
 	<
 		TKey,
 		TReaction
@@ -13,10 +13,10 @@ public sealed class EventSourceTable
 	(
 		IDictionary<TKey, IList<TReaction>> events
 	)
-	: IEventSourceTable<TKey, TReaction>
+	: IEventSourceMap<TKey, TReaction>
 	where TReaction: notnull
 	{
-		IEvent<TReaction> IEventTable<TKey, TReaction>.Of
+		IEvent<TReaction> IEventMap<TKey, TReaction>.Of
 			(
 				TKey key
 			)

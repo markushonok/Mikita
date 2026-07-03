@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Mikita.Observation.Tables;
 
-public static class EventTableInstancing
+public static class EventMapInstancing
 	{
 		extension
 			<
@@ -10,13 +10,13 @@ public static class EventTableInstancing
 				TReaction
 			>
 			(
-				EventSourceTable<TKey, TReaction>
+				EventSourceMap<TKey, TReaction>
 			)
 			where TKey: notnull
 			where TReaction: notnull
 			{
-				public static IEventSourceTable<TKey, TReaction> NewEmpty
-					=> new EventSourceTable<TKey, TReaction>
+				public static IEventSourceMap<TKey, TReaction> NewEmpty
+					=> new EventSourceMap<TKey, TReaction>
 						(
 							new Dictionary<TKey, IList<TReaction>>()
 						);
