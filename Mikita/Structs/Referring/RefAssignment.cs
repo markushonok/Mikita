@@ -1,8 +1,6 @@
 using Mikita.Nulls;
 using Mikita.Routines.Assignment;
-using Mikita.Threading;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Structs.Referring;
@@ -25,16 +23,6 @@ public static class RefAssignment
 						T value
 					)
 					=> reference.Value = value;
-
-				public void SetTo
-					(
-						T value,
-						CancellationToken cancel
-					)
-					{
-						cancel.ThrowIfRequested();
-						reference.Value = value;
-					}
 			}
 
 		extension<T>(IRef<T?> reference)
