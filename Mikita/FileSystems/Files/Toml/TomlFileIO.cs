@@ -1,4 +1,5 @@
 using Mikita.Nulls;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Tomlyn;
@@ -6,7 +7,7 @@ using Tomlyn.Model;
 
 namespace Mikita.FileSystems.Files.Toml;
 
-public sealed class TomlFileIO
+public sealed partial class TomlFileIO
 	(
 		IFile file
 	)
@@ -42,8 +43,9 @@ public sealed class TomlFileIO
 				CancellationToken cancel = default
 			)
 			{
-				var @string = await StringFrom(target, cancel);
-				await file.Write(@string, cancel);
+				var plain = await StringFrom(target, cancel);
+				var pretty = PrettyRegex.Replace(plain, "\n\n");
+				await file.Write(pretty, cancel);
 			}
 
 		private static Task<string> StringFrom
@@ -56,4 +58,7 @@ public sealed class TomlFileIO
 					() => TomlSerializer.Serialize(table.Value),
 					cancel
 				);
-	}
+
+    [GeneratedRegex(@"\n(?=\[)")]
+    private static partial Regex PrettyRegex { get; }
+}
