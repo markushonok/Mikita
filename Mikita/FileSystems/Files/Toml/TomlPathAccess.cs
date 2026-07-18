@@ -1,5 +1,6 @@
 using Mikita.FileSystems.Paths;
 using Mikita.Structs.Referring;
+using System;
 using Tomlyn.Model;
 
 namespace Mikita.FileSystems.Files.Toml;
@@ -8,10 +9,22 @@ public static class TomlPathAccess
 	{
 		extension(ITomlTable root)
 			{
+				public IRef<TResult> RefTo<TSource, TResult>
+					(
+						IPath path,
+						Func<TSource, TResult> resultFrom,
+						Func<TResult, TSource> sourceFrom,
+						TResult @default
+					)
+					where TSource: notnull
+					=> root
+						.RefTo(path, sourceFrom(@default))
+						.Converted(resultFrom, sourceFrom);
+
 				public IRef<T> RefTo<T>(IPath path, T @default)
 					where T: notnull
 					{
-						var table = root.SubTableAt(path.HigherBy(1));
+						var table = root.EnsuredSubTableAt(path.HigherBy(1));
 						var property = path.Elements[^1];
 						return new ImplicitTomlRef<T>(table, property, @default);
 					}

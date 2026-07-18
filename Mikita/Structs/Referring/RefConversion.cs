@@ -16,4 +16,20 @@ public static class RefConversion
 				public Func<T> AsFunction
 					=> () => reference.Value;
 			}
+
+		extension<TSource, TResult>(IRef<TSource> source)
+			where TSource: notnull
+			{
+				public IRef<TResult> Converted
+					(
+						Func<TSource, TResult> resultFrom,
+						Func<TResult, TSource> sourceFrom
+					)
+					=> new ConversionRef<TSource, TResult>
+						(
+							source,
+							resultFrom,
+							sourceFrom
+						);
+			}
 	}
