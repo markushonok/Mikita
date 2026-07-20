@@ -1,4 +1,3 @@
-using Mikita.Nulls;
 using Mikita.Structs.Referring;
 using System;
 using System.Threading.Tasks;
@@ -9,13 +8,13 @@ public sealed class ScopedStep<T>
 	(
 		Func<T, IAsyncStep> pattern,
 		IRef<IAsyncStep?> current,
-		IRef<T?> value
+		Func<T> value
 	)
 	: IAsyncStep
 	{
 		public Task Do()
 			{
-				current.SetTo(pattern(value.Value.NotNull()));
+				current.SetTo(pattern(value()));
 				return current.Value!.Do();
 			}
 

@@ -78,7 +78,7 @@ public static class ScopedStepInstancing
 						(
 							pattern,
 							current: Ref<IAsyncStep>.Null,
-							value
+							value.NotNull().AsFunction
 						);
 			}
 	}
