@@ -1,5 +1,6 @@
 using Mikita.Observation.Events;
 using Mikita.Routines;
+using Mikita.Structs.Referring;
 using Mikita.Threading.Pools;
 using System;
 
@@ -35,6 +36,13 @@ public static class SubscriptionInstancing
 									action();
 									source.Deactivate();
 								}
+						);
+
+				public ISubscription Counted
+					=> new CountedSubscription
+						(
+							source,
+							number: Ref.To(0)
 						);
 			}
 
