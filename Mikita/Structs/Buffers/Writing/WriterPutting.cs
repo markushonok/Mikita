@@ -21,6 +21,9 @@ public static class WriterPutting
 				public void Put(byte value)
 					=> writer.Put([value]);
 
+				public void Put(DateTime value)
+					=> writer.Put(value.ToBinary());
+
 				public void Put(string value)
 					=> writer.Put(value.AsSpan());
 

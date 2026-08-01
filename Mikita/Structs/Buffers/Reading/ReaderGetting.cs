@@ -21,6 +21,9 @@ public static class ReaderGetting
 				public byte GetByte()
 					=> reader.GetBytes(sizeof(byte))[0];
 
+				public DateTime GetDateTime()
+					=> DateTime.FromBinary(reader.GetLong());
+
 				public ReadOnlySpan<byte> GetBytes()
 					=> reader.GetBytes(reader.GetInt());
 
