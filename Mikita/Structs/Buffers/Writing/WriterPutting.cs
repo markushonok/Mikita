@@ -22,13 +22,13 @@ public static class WriterPutting
 					=> writer.Put([value]);
 
 				public void Put(string value)
-					{
-						writer.Put(value.Length);
-						writer.Put(value.AsSpan());
-					}
+					=> writer.Put(value.AsSpan());
 
 				public void Put(ReadOnlySpan<char> values)
-					=> writer.Put(MemoryMarshal.AsBytes(values));
+					{
+						writer.Put(values.Length);
+						writer.Put(MemoryMarshal.AsBytes(values));
+					}
 
 				public void Put<TInteger>(TInteger value)
 					where TInteger: struct, IBinaryInteger<TInteger>
