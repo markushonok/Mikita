@@ -11,7 +11,7 @@ public static class PathInstancing
 				/// <summary>
 				/// Represents the current directory path (`./`).
 				/// </summary>
-				public static Path Current
+				public static IPath Current
 					=> Current;
 
 				/// <inheritdoc cref="PathInstancing.From(string)"/>
