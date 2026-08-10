@@ -27,5 +27,8 @@ public static class EntryIntrospection
 						CancellationToken cancel = default
 					)
 					=> !(await entry.Exists(cancel));
+
+				public string Name
+					=> entry.Path.Elements[^1];
 			}
 	}
