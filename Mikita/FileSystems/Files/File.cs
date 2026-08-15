@@ -13,11 +13,23 @@ public sealed class File
 	)
 	: IFile
 	{
+		public Task<Stream> Open
+			(
+				CancellationToken cancel = default
+			)
+			=> Open
+				(
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read,
+					cancel
+				);
+
 		public async Task<Stream> Open
 			(
-				FileMode mode = FileMode.Open,
-				FileAccess access = FileAccess.ReadWrite,
-				FileShare share = FileShare.Read,
+				FileMode mode,
+				FileAccess access,
+				FileShare share,
 				CancellationToken cancel = default
 			)
 			=> await Task.Run
@@ -40,7 +52,7 @@ public sealed class File
 			)
 			=> Task.Run
 				(
-					() => SystemFile.Create(PathString).DisposeAsync(),
+					() => SystemFile.Create(PathString).DisposeAsync().AsTask(),
 					cancel
 				);
 

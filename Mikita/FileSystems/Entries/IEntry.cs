@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Entries;
 
-public interface ILocatedEntry
+public interface IEntry: IReadOnlyEntry
 	{
 		Task Create
 			(
@@ -21,11 +21,4 @@ public interface ILocatedEntry
 			(
 				CancellationToken cancel = default
 			);
-
-		Task<bool> Exists
-			(
-				CancellationToken cancel = default
-			);
-
-		IPath Path { get; }
 	}

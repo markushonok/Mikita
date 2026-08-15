@@ -1,8 +1,8 @@
+using Mikita.FileSystems.Entries;
 using Mikita.FileSystems.Paths;
+using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Folders;
 
@@ -13,29 +13,12 @@ public static class FolderPicking
 				public IAsyncEnumerable<IFolder> SubFolders
 					=> folder.Entries
 						.Select(x => x.AsFolder)
-						.Where(async (x, cancel) => await x.Exists(cancel));
-
-				public Task<bool> ContainsSubFolderWithName
-					(
-						string name,
-						CancellationToken cancel
-					)
-					=> folder
-						.SubFolderWithName(name)
-						.Exists(cancel);
+						.WhereNotNull();
 
 				public IFolder SubFolderWithName
 					(
 						string name
 					)
-					=> folder
-						.EntryWithName(name)
-						.AsFolder;
-
-				public IFolder SubFolderAt
-					(
-						IPath path
-					)
-					=> folder.EntryAt(path).AsFolder;
+					=> folder.SubFolderAt(SingleElementPath.From(name));
 			}
 	}

@@ -28,7 +28,14 @@ public static class FileWriting
 						CancellationToken cancel = default
 					)
 					{
-						await using var stream = await file.Open(cancel: cancel);
+						await using var stream = await file.Open
+							(
+								FileMode.Open,
+								FileAccess.Write,
+								FileShare.None,
+								cancel
+							);
+
 						if (stream.CanWrite && stream.CanSeek) stream.SetLength(0);
 						await using var reader = new StreamWriter(stream, encoding);
 						await reader.WriteAsync(@string);

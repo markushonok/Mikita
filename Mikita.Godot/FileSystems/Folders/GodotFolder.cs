@@ -1,11 +1,11 @@
 using Godot;
 using Mikita.FileSystems.Entries;
+using Mikita.FileSystems.Files;
 using Mikita.FileSystems.Folders;
 using Mikita.FileSystems.Paths;
 using Mikita.FileSystems.Paths.Formats;
-using Mikita.Godot.FileSystems.Entries;
+using Mikita.Godot.FileSystems.Files;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,13 +18,23 @@ public sealed class GodotFolder
 	)
 	: IFolder
 	{
-		public IUnspecifiedEntry EntryAt(IPath subpath)
-			=> new UserEntry(path / subpath, scheme);
+		IReadOnlyFile IReadOnlyFolder.FileAt(IPath subpath)
+			=> FileAt(subpath);
 
-		public IAsyncEnumerable<IUnspecifiedEntry> Entries
-			=> EnumerateNames()
-				.Select(this.EntryWithName)
-				.ToAsyncEnumerable();
+		public IFile FileAt(IPath subpath)
+			=> new GodotFile(path / subpath, scheme);
+
+		IReadOnlyFolder IReadOnlyFolder.SubFolderAt(IPath subpath)
+			=> SubFolderAt(subpath);
+
+		public IFolder SubFolderAt(IPath subpath)
+			=> new GodotFolder(path / subpath, scheme);
+
+		IAsyncEnumerable<IFoundReadOnlyEntry> IReadOnlyFolder.Entries
+			=> Entries;
+
+		public IAsyncEnumerable<IFoundEntry> Entries
+			=> this.EntriesWith(EntryInfos());
 
 		public Task Create
 			(
@@ -89,29 +99,37 @@ public sealed class GodotFolder
 					: $"{normalizedScheme}{relative}";
 			}
 
-		private IEnumerable<string> EnumerateNames()
+		private IEnumerable<FoundEntryInfo> EntryInfos()
 			{
 				using var dir = DirAccess.Open(SchemePathString);
 				if (dir is null)
-					return [];
-
-				var names = new List<string>();
+					yield break;
 
 				dir.ListDirBegin();
-				while (true)
+				try
 					{
-						var name = dir.GetNext();
-						if (string.IsNullOrEmpty(name))
-							break;
+						while (true)
+							{
+								var name = dir.GetNext();
+								if (string.IsNullOrEmpty(name))
+									break;
 
-						if (name is "." or "..")
-							continue;
+								if (name is "." or "..")
+									continue;
 
-						names.Add(name);
+								yield return new FoundEntryInfo
+									(
+										name,
+										dir.CurrentIsDir()
+											? EntryType.Folder
+											: EntryType.File
+									);
+							}
 					}
-				dir.ListDirEnd();
-
-				return names;
+				finally
+					{
+						dir.ListDirEnd();
+					}
 			}
 
 		private static void DeleteRecursive(string folderPath)

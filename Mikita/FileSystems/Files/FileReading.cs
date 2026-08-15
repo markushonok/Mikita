@@ -7,7 +7,7 @@ namespace Mikita.FileSystems.Files;
 
 public static class FileReading
 	{
-		extension(IFile file)
+		extension(IReadOnlyFile file)
 			{
 				public Task<string> ReadString
 					(
@@ -21,7 +21,7 @@ public static class FileReading
 						CancellationToken cancel = default
 					)
 					{
-						await using var stream = await file.Open(cancel: cancel);
+						await using var stream = await file.Open(cancel);
 						using var reader = new StreamReader(stream, encoding);
 						return await reader.ReadToEndAsync(cancel);
 					}

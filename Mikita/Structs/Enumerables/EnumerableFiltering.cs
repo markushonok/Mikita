@@ -22,4 +22,22 @@ public static class Filtering
 					.Where(x => x.HasValue)
 					.Select(x => x!.Value);
 			}
+
+		public static IAsyncEnumerable<T> WhereNotNull<T>
+			(
+				this IAsyncEnumerable<T?> source
+			)
+			where T: class
+			=> source.Where(x => x != null)!;
+
+		public static IAsyncEnumerable<T> WhereNotNull<T>
+			(
+				this IAsyncEnumerable<T?> source
+			)
+			where T: struct
+			{
+				return source
+					.Where(x => x.HasValue)
+					.Select(x => x!.Value);
+			}
 	}

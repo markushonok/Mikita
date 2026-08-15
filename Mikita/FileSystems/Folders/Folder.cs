@@ -1,12 +1,13 @@
 using Mikita.FileSystems.Entries;
+using Mikita.FileSystems.Files;
 using Mikita.FileSystems.Paths;
 using Mikita.FileSystems.Paths.Formats;
-using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.IO.Enumeration;
 using System.Threading;
 using System.Threading.Tasks;
+using File = Mikita.FileSystems.Files.File;
 
 namespace Mikita.FileSystems.Folders;
 
@@ -16,16 +17,39 @@ public sealed class Folder
 	)
 	: IFolder
 	{
-		public IUnspecifiedEntry EntryAt(IPath subpath)
-			=> new Entry(path / subpath);
+		IReadOnlyFile IReadOnlyFolder.FileAt(IPath subpath)
+			=> FileAt(subpath);
 
-		public IAsyncEnumerable<IUnspecifiedEntry> Entries
-			=> Directory
-				.EnumerateFileSystemEntries(PathString)
-				.Select(System.IO.Path.GetFileName)
-				.WhereNotNull()
-				.Select(this.EntryWithName)
-				.ToAsyncEnumerable();
+		public IFile FileAt(IPath subpath)
+			=> new File(path / subpath);
+
+		IReadOnlyFolder IReadOnlyFolder.SubFolderAt(IPath subpath)
+			=> SubFolderAt(subpath);
+
+		public IFolder SubFolderAt(IPath subpath)
+			=> new Folder(path / subpath);
+
+		IAsyncEnumerable<IFoundReadOnlyEntry> IReadOnlyFolder.Entries
+			=> Entries;
+
+		public IAsyncEnumerable<IFoundEntry> Entries
+			=> this.EntriesWith(EnumerateEntries());
+
+		private IEnumerable<FoundEntryInfo> EnumerateEntries()
+			=> new FileSystemEnumerable<FoundEntryInfo>
+				(
+					PathString,
+					FoundEntryInfo.From,
+					EnumerationOptions
+				);
+
+		private static readonly EnumerationOptions EnumerationOptions
+			= new()
+				{
+					RecurseSubdirectories = false,
+					AttributesToSkip = FileAttributes.None,
+					IgnoreInaccessible = false
+				};
 
 		public Task Create
 			(

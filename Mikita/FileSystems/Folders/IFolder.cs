@@ -1,12 +1,15 @@
 using Mikita.FileSystems.Entries;
+using Mikita.FileSystems.Files;
 using Mikita.FileSystems.Paths;
 using System.Collections.Generic;
 
 namespace Mikita.FileSystems.Folders;
 
-public interface IFolder: ILocatedEntry
+public interface IFolder: IReadOnlyFolder, IEntry
 	{
-		IUnspecifiedEntry EntryAt(IPath path);
+		new IFile FileAt(IPath path);
 
-		IAsyncEnumerable<IUnspecifiedEntry> Entries { get; }
+		new IFolder SubFolderAt(IPath path);
+
+		new IAsyncEnumerable<IFoundEntry> Entries { get; }
 	}

@@ -16,11 +16,23 @@ public sealed class GodotFile
 	)
 	: IFile
 	{
+		public Task<Stream> Open
+			(
+				CancellationToken cancel = default
+			)
+			=> Open
+				(
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read,
+					cancel
+				);
+
 		public async Task<Stream> Open
 			(
-				FileMode mode = FileMode.Open,
-				FileAccess access = FileAccess.ReadWrite,
-				FileShare share = FileShare.Read,
+				FileMode mode,
+				FileAccess access,
+				FileShare share,
 				CancellationToken cancel = default
 			)
 			=> await Task.Run

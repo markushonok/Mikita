@@ -6,7 +6,7 @@ namespace Mikita.FileSystems.Entries;
 
 public static class EntryRenaming
 	{
-		extension(ILocatedEntry entry)
+		extension(IEntry entry)
 			{
 				public Task RenameTo
 					(

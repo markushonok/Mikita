@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace Mikita.FileSystems.Files;
 
-public interface IFile: IReadOnlyFile, IEntry
+public interface IReadOnlyFile: IReadOnlyEntry
 	{
 		Task<Stream> Open
 			(
-				FileMode mode,
-				FileAccess access,
-				FileShare share,
 				CancellationToken cancel = default
 			);
 	}
