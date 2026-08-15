@@ -1,0 +1,26 @@
+using System.Linq;
+
+namespace Mikita.IO.Paths;
+
+public static class PathAscending
+	{
+		extension(IPath path)
+			{
+				public Path Parent
+					=> path.HigherBy(1);
+
+				public Path HigherBy(int steps)
+					=> new
+						(
+							path.Elements.ToArray()[..^steps],
+							path.Ascends
+						);
+
+				public Path BaseHigherBy(int steps)
+					=> new
+						(
+							path.Elements.ToArray(),
+							path.Ascends + steps
+						);
+			}
+	}
