@@ -1,4 +1,5 @@
-using Mikita.Objects.Tokens;
+using System;
+using System.Linq;
 
 namespace Mikita.IO.Paths;
 
@@ -8,18 +9,18 @@ partial class Path
 			(
 				object? other
 			)
-			=> Object.Equals(other);
+			=> other is IPath path
+				&& Ascends == path.Ascends
+				&& Elements.SequenceEqual(path.Elements);
 
 		public override int GetHashCode()
-			=> Object.GetHashCode();
+			{
+				var hash = new HashCode();
+				hash.Add(Ascends);
 
-		private ObjectToken<IPath> Object
-			=> ObjectToken.Of(this, Members);
+				foreach (var element in Elements)
+					hash.Add(element, StringComparer.Ordinal);
 
-		private static readonly MemberToken<IPath>[] Members
-			=
-				[
-					IPath.Member(x => x.Elements),
-					IPath.Member(x => x.Ascends)
-				];
+				return hash.ToHashCode();
+			}
 	}
