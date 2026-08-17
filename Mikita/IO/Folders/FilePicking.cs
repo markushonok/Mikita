@@ -9,6 +9,21 @@ namespace Mikita.IO.Folders;
 
 public static class FilePicking
 	{
+		extension(IReadOnlyFolder folder)
+			{
+				public IAsyncEnumerable<IReadOnlyFile> Files
+					=> folder
+						.Entries
+						.Select(x => x.AsFile)
+						.WhereNotNull();
+
+				public IReadOnlyFile FileWithName
+					(
+						string name
+					)
+					=> folder.FileAt(SingleElementPath.From(name));
+			}
+
 		extension(IFolder folder)
 			{
 				public IAsyncEnumerable<IFile> Files
