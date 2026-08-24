@@ -11,21 +11,24 @@ partial class Subscription
 			(
 				IEnumerable<ISubscription> subscriptions
 			)
-			=> Subscription.From(subscriptions.Select(x => x.AsStep));
+			=> From(subscriptions.Select(x => x.AsStep));
 
 		public static Subscription From
 			(
 				IEnumerable<IStep> steps
 			)
-			=> Subscription.From(Walk.Of(steps));
+			=> From(Walk.Of(steps));
 
 		public static Subscription From
 			(
 				IStep step
 			)
-			=> new
+			=> new(step.Do, step.Undo);
+
+		public static ISubscription Idle { get; }
+			= new Subscription
 				(
-					step.Do,
-					step.Undo
+					activate: delegate {},
+					deactivate: delegate {}
 				);
 	}
