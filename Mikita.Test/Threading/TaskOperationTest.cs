@@ -14,7 +14,7 @@ public static class TaskOperationTest
 						TaskCreationOptions.RunContinuationsAsynchronously
 					);
 
-				async Task<Action<object>> Outcome()
+				async Task<Match<object>> Outcome()
 					{
 						executions++;
 						await release.Task;

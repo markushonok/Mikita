@@ -28,7 +28,7 @@ public static class TaskAwaitingTest
 		public static async Task PropagatesFailure()
 			{
 				var failure = new ExpectedException();
-				var outcome = Task.FromException<Action<object>>(failure);
+				var outcome = Task.FromException<Match<object>>(failure);
 				var operation = MatchTask.From(outcome);
 
 				var observed = await Should.ThrowAsync<ExpectedException>
@@ -43,7 +43,7 @@ public static class TaskAwaitingTest
 		public static async Task PropagatesCancellation()
 			{
 				var cancellation = new CancellationToken(canceled: true);
-				var outcome = Task.FromCanceled<Action<object>>(cancellation);
+				var outcome = Task.FromCanceled<Match<object>>(cancellation);
 				var operation = MatchTask.From(outcome);
 
 				await Should.ThrowAsync<OperationCanceledException>
@@ -52,7 +52,7 @@ public static class TaskAwaitingTest
 					);
 			}
 
-		private static TaskCompletionSource<Action<object>> PendingOutcome()
+		private static TaskCompletionSource<Match<object>> PendingOutcome()
 			=> new(TaskCreationOptions.RunContinuationsAsynchronously);
 
 		private sealed class ExpectedException: Exception;

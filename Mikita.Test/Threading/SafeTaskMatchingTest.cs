@@ -11,7 +11,7 @@ public static class SafeTaskMatchingTest
 				var failure = new ExpectedException("Operation failed.");
 				var origin = MatchTask.From
 					(
-						Task.FromException<Action<IFailureHook>>(failure)
+						Task.FromException<Match<IFailureHook>>(failure)
 					);
 				var operation = origin.With
 					(
@@ -32,7 +32,7 @@ public static class SafeTaskMatchingTest
 			{
 				var origin = MatchTask.From
 					(
-						Task.FromException<Action<IFailureHook>>
+						Task.FromException<Match<IFailureHook>>
 							(
 								new ExpectedException("Operation failed.")
 							)
@@ -51,7 +51,7 @@ public static class SafeTaskMatchingTest
 				var cancellation = new CancellationToken(canceled: true);
 				var origin = MatchTask.From
 					(
-						Task.FromCanceled<Action<IFailureHook>>(cancellation)
+						Task.FromCanceled<Match<IFailureHook>>(cancellation)
 					);
 				var operation = origin.With("Unavailable.");
 				var outcomes = new Outcomes();

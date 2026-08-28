@@ -60,7 +60,7 @@ public static class TaskMatchingTest
 		public static async Task PropagatesFailureWithoutDispatch()
 			{
 				var failure = new ExpectedException();
-				var outcome = Task.FromException<Action<IOutcomes>>(failure);
+				var outcome = Task.FromException<Match<IOutcomes>>(failure);
 				var operation = MatchTask.From(outcome);
 				var outcomes = new Outcomes();
 
@@ -77,7 +77,7 @@ public static class TaskMatchingTest
 		public static async Task PropagatesCancellationWithoutDispatch()
 			{
 				var cancellation = new CancellationToken(canceled: true);
-				var outcome = Task.FromCanceled<Action<IOutcomes>>(cancellation);
+				var outcome = Task.FromCanceled<Match<IOutcomes>>(cancellation);
 				var operation = MatchTask.From(outcome);
 				var outcomes = new Outcomes();
 
@@ -107,7 +107,7 @@ public static class TaskMatchingTest
 				await operation;
 			}
 
-		private static TaskCompletionSource<Action<IOutcomes>> PendingOutcome()
+		private static TaskCompletionSource<Match<IOutcomes>> PendingOutcome()
 			=> new(TaskCreationOptions.RunContinuationsAsynchronously);
 
 		private interface IOutcomes
