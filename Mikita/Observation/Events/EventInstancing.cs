@@ -1,6 +1,8 @@
+using Mikita.Logging;
 using Mikita.Observation.Events.Raising;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Mikita.Observation.Events;
 
@@ -37,5 +39,28 @@ public static class EventInstancing
 						ICollection<T> reactions
 					)
 					=> new(reactions);
+			}
+
+		extension<T>(IEventSource<T> source)
+			{
+				/// <summary>
+				/// Adds serialized access. The source must no longer be accessed
+				/// directly.
+				/// </summary>
+				public IEventSource<T> WithSerialAccess
+					=> new SerialAccessEvent<T>
+						(
+							source,
+							new Lock()
+						);
+
+				/// <summary>
+				/// Logs a failed reaction and continues raising the event.
+				/// </summary>
+				public IEventSource<T> WithSafeRaise
+					(
+						ILog log
+					)
+					=> new RaiseSafeEvent<T>(source, log);
 			}
 	}
