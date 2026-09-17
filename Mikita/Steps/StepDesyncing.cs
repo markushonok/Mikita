@@ -2,6 +2,9 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps;
 
+/// <summary>
+/// Adapts synchronous steps to the asynchronous step contract.
+/// </summary>
 public static class StepDesyncing
 	{
 		extension(IStep step)

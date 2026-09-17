@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps.Walking;
 
+/// <summary>
+/// Performs its steps in order and undoes them in reverse order.
+/// </summary>
+/// <remarks>
+/// A failed <see cref="Do"/> undoes the steps it has already performed, and a
+/// failed <see cref="Undo"/> re-performs the steps it has already undone.
+/// </remarks>
 public sealed class AsyncWalk
 	(
 		IEnumerable<IAsyncStep> steps

@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps.Direct;
 
+/// <summary>
+/// Provides steps that perform an operation without reversing it.
+/// </summary>
 public static class ForwardStepping
 	{
 		extension(Step)

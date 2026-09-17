@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps.Scopes;
 
+/// <summary>Provides scoped step compositions.</summary>
+/// <remarks>
+/// An initializing scope sets its value before performing the inner step and
+/// resets it when undone.
+/// </remarks>
 public static class ScopedStepInstancing
 	{
 		extension(Step)

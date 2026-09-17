@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps;
 
+/// <summary>
+/// Provides steps that assign a reference and reset it when undone.
+/// </summary>
+/// <remarks>
+/// Undo resets the reference to a provided value, or to its default when none
+/// is given.
+/// </remarks>
 public static class RefAssignmentStep
 	{
 		public static IAsyncStep SetOf<T>

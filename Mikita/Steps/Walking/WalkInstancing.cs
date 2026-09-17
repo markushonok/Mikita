@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace Mikita.Steps.Walking;
 
+/// <summary>Provides standard walk compositions.</summary>
 public static class WalkInstancing
 	{
 		extension(Walk)

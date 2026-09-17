@@ -4,6 +4,10 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps.Scopes;
 
+/// <summary>
+/// Creates its inner step on <see cref="Do"/> and clears it on
+/// <see cref="Undo"/>.
+/// </summary>
 public sealed class ScopedStep<T>
 	(
 		Func<T, IAsyncStep> pattern,

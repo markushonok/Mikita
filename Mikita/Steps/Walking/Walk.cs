@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Mikita.Steps.Walking;
 
+/// <summary>
+/// Performs its steps in order and undoes them in reverse order.
+/// </summary>
 public sealed class Walk
 	(
 		IEnumerable<IStep> steps

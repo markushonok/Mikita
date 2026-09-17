@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps.Direct;
 
+/// <summary>
+/// Provides steps that reverse an operation without performing it.
+/// </summary>
 public static class BackwardStepping
 	{
 		extension(Step)

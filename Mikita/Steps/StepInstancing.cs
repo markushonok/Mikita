@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace Mikita.Steps;
 
+/// <summary>Provides standard step compositions.</summary>
 public static class StepInstancing
 	{
 		extension(Step)
