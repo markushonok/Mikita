@@ -40,5 +40,16 @@ public static class TaskPoolInstancing
 							stopping: Ref<Task>.Null,
 							access: new Lock()
 						);
+
+				/// <summary>
+				/// Rejects work after the first stop. The source must no longer be
+				/// accessed directly.
+				/// </summary>
+				public ITaskPool WithSingleUse
+					=> new SingleUseTaskPool
+						(
+							source: tasks,
+							released: Ref.To(false)
+						);
 			}
 	}
