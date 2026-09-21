@@ -9,7 +9,7 @@ public static class Log
 
 		public static MultiLog With
 			(
-				IEnumerable<ILog> logs
+				ICollection<ILog> logs
 			)
 			=> new(logs);
 	}

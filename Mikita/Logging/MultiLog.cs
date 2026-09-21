@@ -5,10 +5,16 @@ namespace Mikita.Logging;
 
 public sealed class MultiLog
 	(
-		IEnumerable<ILog> logs
+		ICollection<ILog> logs
 	)
-	: ILog
+	: IMultiLog
 	{
 		public void Write(string @string)
 			=> logs.ForEach(x => x.Write(@string));
+
+		public void Add(ILog log)
+			=> logs.Add(log);
+
+		public void Remove(ILog log)
+			=> logs.Remove(log);
 	}
