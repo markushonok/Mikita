@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace Mikita.Godot.Threading;
 
-// todo добавить отмену
 public static class Deferred
 	{
 		public static Task<T> ResultOf<T>
@@ -20,6 +19,12 @@ public static class Deferred
 				Callable
 					.From(() =>
 						{
+							if (cancellation.IsCancellationRequested)
+								{
+									completion.SetCanceled(cancellation);
+									return;
+								}
+
 							try
 								{
 									completion.SetResult(action());
@@ -46,6 +51,12 @@ public static class Deferred
 				Callable
 					.From(async void () =>
 						{
+							if (cancellation.IsCancellationRequested)
+								{
+									completion.SetCanceled(cancellation);
+									return;
+								}
+
 							try
 								{
 									var value = await action().ConfigureAwait(false);
@@ -73,6 +84,12 @@ public static class Deferred
 				Callable
 					.From(() =>
 						{
+							if (cancellation.IsCancellationRequested)
+								{
+									completion.SetCanceled(cancellation);
+									return;
+								}
+
 							try
 								{
 									action();
@@ -100,6 +117,12 @@ public static class Deferred
 				Callable
 					.From(async void () =>
 						{
+							if (cancellation.IsCancellationRequested)
+								{
+									completion.SetCanceled(cancellation);
+									return;
+								}
+
 							try
 								{
 									await action().ConfigureAwait(false);
