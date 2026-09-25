@@ -1,6 +1,7 @@
 using Mikita.Routines.Assignment;
 using System;
 using System.Text.Json.Nodes;
+using System.Threading;
 
 namespace Mikita.Structs.Referring;
 
@@ -42,6 +43,9 @@ public static class RefInstancing
 						Action callback
 					)
 					=> new BackCallingRef<T>(reference, callback);
+
+				public IRef<T> WithSerialAccess
+					=> new SerialRef<T>(reference, new Lock());
 			}
 
 		extension<T>(Ref<T>)
