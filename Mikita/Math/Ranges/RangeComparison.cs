@@ -8,6 +8,6 @@ public static class RangeComparison
 			where T: INumber<T>
 			{
 				public bool Includes(T number)
-					=> range.Min >= number && number >= range.Max;
+					=> range.Min <= number && number <= range.Max;
 			}
 	}
