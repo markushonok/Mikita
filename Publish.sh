@@ -22,13 +22,13 @@ fail()
 for project in "${projects[@]}"; do
 	printf 'Packing %s\n' "$project"
 	dotnet pack "$root/$project" -c Release
-done
 
-find "$root" \( -name '*.nupkg' -o -name '*.snupkg' \) -path '*/bin/Release/*' -print0 \
-	| while IFS= read -r -d '' package; do
+	for package in "$root/$(dirname "$project")"/bin/Release/*.nupkg; do
+		[[ "$package" == *.snupkg ]] && continue
 		printf 'Pushing %s\n' "$package"
 		dotnet nuget push "$package" \
 			--api-key "$NUGET_API_KEY" \
 			--source "$source" \
 			--skip-duplicate
 	done
+done
