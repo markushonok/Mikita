@@ -1,10 +1,12 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godot", "Godot\Godot.csproj", "{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}"
-EndProject
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita", "Mikita\Mikita.csproj", "{223FF6ED-71BD-4045-B0EB-C2079854D9A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuild.Targets", "MSBuild.Targets\MSBuild.Targets.csproj", "{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita.Godot", "Mikita.Godot\Mikita.Godot.csproj", "{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mikita.Test", "Mikita.Test\Mikita.Test.csproj", "{747027F5-70A0-4EB4-9D86-A67B68BD7FE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,19 +14,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{223FF6ED-71BD-4045-B0EB-C2079854D9A8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{804AD8EE-3194-4BA3-9210-2B7E141CE0C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC8B91F-AA1B-4AB3-99B0-5F1323FB80B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747027F5-70A0-4EB4-9D86-A67B68BD7FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747027F5-70A0-4EB4-9D86-A67B68BD7FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747027F5-70A0-4EB4-9D86-A67B68BD7FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747027F5-70A0-4EB4-9D86-A67B68BD7FE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
