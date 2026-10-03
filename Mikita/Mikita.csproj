@@ -8,9 +8,5 @@
 	<ItemGroup>
 		<PackageReference Include="NetFabric.Hyperlinq" Version="3.0.0-beta48" />
 		<PackageReference Include="Tomlyn" Version="1.2.0" />
-		
-		<ProjectReference
-				Include="..\Mikita.Generation\Mikita.Generation.csproj"
-				OutputItemType="Analyzer" />
 	</ItemGroup>
 </Project>
