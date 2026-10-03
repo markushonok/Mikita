@@ -1,6 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<RootNamespace>Mikita.Godot</RootNamespace>
+		<PackageId>Mikita.Godot</PackageId>
+		<Version>0.1.0-alpha</Version>
+		<Authors>Markushonok</Authors>
+		<Description>Godot-specific extensions and integrations for Mikita.</Description>
+		<PackageProjectUrl>https://github.com/markushonok/Mikita</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/markushonok/Mikita</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 	</PropertyGroup>
 
 	<ItemGroup>
