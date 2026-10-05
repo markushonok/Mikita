@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<PackageId>Mikita</PackageId>
-		<Version>0.1.0-alpha</Version>
+		<Version>0.1.0-alpha.2</Version>
 		<Authors>Markushonok</Authors>
 		<Description>General-purpose library used by Inkraft.</Description>
 		<PackageProjectUrl>https://github.com/markushonok/Mikita</PackageProjectUrl>
