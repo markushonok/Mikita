@@ -30,6 +30,17 @@ public static class TaskPoolInstancing
 		extension(ITaskPool tasks)
 			{
 				/// <summary>
+				/// Executes accepted tasks one at a time. The source must no longer
+				/// be accessed directly. This does not add concurrent API access.
+				/// </summary>
+				public ITaskPool WithSequentialExecution
+					=> new SequentialTaskPool
+						(
+							source: tasks,
+							execution: new SemaphoreSlim(1, 1)
+						);
+
+				/// <summary>
 				/// Adds serialized public access. The source must no longer be accessed
 				/// directly.
 				/// </summary>

@@ -8,8 +8,11 @@ namespace Mikita.Steps.Scopes;
 
 /// <summary>Provides scoped step compositions.</summary>
 /// <remarks>
-/// An initializing scope sets its value before performing the inner step and
-/// resets it when undone.
+/// Initializer overloads pass the result to the pattern without a null check.
+/// The same T preserves the result's nullability in the pattern parameter.
+/// Overloads with an explicit reference require it to hold a non-null value
+/// when the pattern is created. Initializing an explicit reference resets it
+/// when undone.
 /// </remarks>
 public static class ScopedStepInstancing
 	{
@@ -20,7 +23,7 @@ public static class ScopedStepInstancing
 						CancellableTask<T> initialize,
 						Func<T, IAsyncStep> pattern
 					)
-					=> Step.NewScoped
+					=> Step.NewScoped<T>
 						(
 							() => initialize(),
 							pattern
@@ -31,11 +34,11 @@ public static class ScopedStepInstancing
 						Func<Task<T>> initialize,
 						Func<T, IAsyncStep> pattern
 					)
-					=> Step.NewScoped
+					=> new ScopedStep<T>
 						(
-							initialize,
-							value: Ref<T>.Default,
-							pattern
+							pattern,
+							current: Ref<IAsyncStep>.Null,
+							value: initialize
 						);
 
 				public static IAsyncStep NewScoped<T>
@@ -55,10 +58,9 @@ public static class ScopedStepInstancing
 						Func<T> initialize,
 						Func<T, IAsyncStep> pattern
 					)
-					=> Step.NewScoped
+					=> Step.NewScoped<T>
 						(
-							initialize,
-							value: Ref<T>.Default,
+							() => Task.FromResult(initialize()),
 							pattern
 						);
 
@@ -83,7 +85,7 @@ public static class ScopedStepInstancing
 						(
 							pattern,
 							current: Ref<IAsyncStep>.Null,
-							value.NotNull().AsFunction
+							() => Task.FromResult(value.NotNull().Value)
 						);
 			}
 	}

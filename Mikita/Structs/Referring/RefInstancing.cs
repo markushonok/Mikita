@@ -44,8 +44,20 @@ public static class RefInstancing
 					)
 					=> new BackCallingRef<T>(reference, callback);
 
+				public IRef<T> With
+					(
+						Lock access
+					)
+					=> new SerialRef<T>(reference, access);
+
 				public IRef<T> WithSerialAccess
-					=> new SerialRef<T>(reference, new Lock());
+					=> reference.With(new Lock());
+
+				public IRef<T> WithDuplicatesIgnored
+					=> new IgnoringDuplicatesRef<T>(reference);
+
+				public IRef<T> WithDuplicatesProhibited
+					=> new ProhibitingDuplicatesRef<T>(reference);
 			}
 
 		extension<T>(Ref<T>)

@@ -8,18 +8,22 @@ namespace Mikita.Steps.Scopes;
 /// Creates its inner step on <see cref="Do"/> and clears it on
 /// <see cref="Undo"/>.
 /// </summary>
+/// <remarks>
+/// The pattern receives the initializer's result, including null when T
+/// permits it. Calls must alternate as specified by <see cref="IAsyncStep"/>.
+/// </remarks>
 public sealed class ScopedStep<T>
 	(
 		Func<T, IAsyncStep> pattern,
 		IRef<IAsyncStep?> current,
-		Func<T> value
+		Func<Task<T>> value
 	)
 	: IAsyncStep
 	{
-		public Task Do()
+		public async Task Do()
 			{
-				current.SetTo(pattern(value()));
-				return current.Value!.Do();
+				current.SetTo(pattern(await value()));
+				await current.Value!.Do();
 			}
 
 		public async Task Undo()
