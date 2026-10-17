@@ -16,7 +16,10 @@ namespace Mikita.Steps;
 /// The factory receives the cycle's execution token; its step must roll back
 /// partial execution on failure, as Walk does. Undo never receives that token,
 /// suppresses expected execution cancellation, and surfaces real execution and
-/// cleanup failures. The API is not thread-safe: the caller serializes access
+/// cleanup failures. With reportsExecutionFailure false, the owner must observe
+/// Do: Undo reports only cleanup and cancellation-callback failures, and failed
+/// rollback must be reported explicitly through RollbackException, including by
+/// leaf steps. The API is not thread-safe: the caller serializes access
 /// and issues calls in order. Each call captures its cycle, so a later Do may
 /// replace the references before an earlier Undo finishes. Never synchronously
 /// wait for Undo from work it must await.
@@ -26,7 +29,8 @@ public sealed class CancellableStep
 		Func<CancellationToken, IAsyncStep> inner,
 		IRef<CancellationTokenSource?> cancelSource,
 		IRef<IAsyncStep> current,
-		IRef<Task> execution
+		IRef<Task> execution,
+		bool reportsExecutionFailure = true
 	)
 	: IAsyncStep
 	{
@@ -35,10 +39,15 @@ public sealed class CancellableStep
 				var newCancelSource = new CancellationTokenSource();
 				cancelSource.SetTo(newCancelSource);
 
-				var step = inner(newCancelSource.Token);
-				current.SetTo(step);
-
-				var running = step.Do();
+				var running = inner.DoWithThrowAsTask
+					(
+						factory =>
+							{
+								var step = factory(newCancelSource.Token);
+								current.SetTo(step);
+								return step.Do();
+							}
+					);
 				execution.SetTo(running);
 				return running;
 			}
@@ -52,7 +61,8 @@ public sealed class CancellableStep
 					(
 						cancelSourceValue,
 						step: current.Value,
-						running: execution.Value
+						running: execution.Value,
+						reportsExecutionFailure
 					);
 			}
 
@@ -60,7 +70,8 @@ public sealed class CancellableStep
 			(
 				CancellationTokenSource source,
 				IAsyncStep step,
-				Task running
+				Task running,
+				bool reportsExecutionFailure
 			)
 			{
 				try
@@ -68,12 +79,18 @@ public sealed class CancellableStep
 						var cancelFailure = await source.CancelAsync().WaitException;
 						var executionFailure = await running.WaitException;
 
-						if (executionFailure is null)
-							await step.Undo();
-
-						var failure = executionFailure is OperationCanceledException
-							? cancelFailure
-							: executionFailure;
+						var failure = executionFailure switch
+							{
+								null => await Cleanup(step),
+								OperationCanceledException => null,
+								_ when reportsExecutionFailure => executionFailure,
+								RollbackException rollback => new AggregateException
+									(
+										rollback.RollbackFailures
+									),
+								_ => null
+							};
+						failure = Combined(failure, cancelFailure);
 
 						if (failure is not null)
 							ExceptionDispatchInfo.Capture(failure).Throw();
@@ -83,4 +100,18 @@ public sealed class CancellableStep
 						source.Dispose();
 					}
 			}
+
+		private static Task<Exception?> Cleanup(IAsyncStep step)
+			=> step
+				.DoWithThrowAsTask(static value => value.Undo())
+				.WaitException;
+
+		private static Exception? Combined
+			(
+				Exception? first,
+				Exception? second
+			)
+			=> first is null || second is null
+				? first ?? second
+				: new AggregateException(first, second);
 	}

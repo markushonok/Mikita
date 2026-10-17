@@ -15,6 +15,8 @@ namespace Mikita.Steps.Walking;
 /// With a token, <see cref="Do"/> checks cancellation before each step and
 /// after the last one, then rolls back the completed steps.
 /// <see cref="Undo"/> never receives that token.
+/// Failed rollback is reported through RollbackException, which separates
+/// the execution failure from cleanup failures across nested walks.
 /// </remarks>
 public sealed class AsyncWalk
 	(

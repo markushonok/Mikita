@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace Mikita.Steps.Marching;
 /// started operation is awaited before compensation, so no step is reversed
 /// while its own operation is still running. Failures from the operations and
 /// from their compensation are reported together.
+/// RollbackException keeps execution and cleanup failures separate, including
+/// failures from nested compositions.
 /// </remarks>
 public sealed class AsyncMarch
 	(
@@ -73,7 +76,7 @@ public sealed class AsyncMarch
 			{
 				try
 					{
-						return operation(step) ?? Task.CompletedTask;
+						return operation(step);
 					}
 				catch (Exception exception)
 					{
@@ -114,9 +117,33 @@ public sealed class AsyncMarch
 						.Capture(failures[0])
 						.Throw();
 
-				throw new AggregateException
+				var rollbackFailures = failures
+					.OfType<RollbackException>()
+					.SelectMany(failure => failure.RollbackFailures)
+					.Concat(undoFailures)
+					.ToImmutableArray();
+				var executionFailures = failures.Select
 					(
-						failures.Concat(undoFailures)
+						failure => failure is RollbackException rollback
+							? rollback.ExecutionFailure
+							: failure
+					)
+					.ToArray();
+				var executionFailure = executionFailures.Length is 1
+					? executionFailures[0]
+					: new AggregateException(executionFailures);
+
+				if (rollbackFailures.IsEmpty)
+					{
+						ExceptionDispatchInfo
+							.Capture(executionFailure)
+							.Throw();
+					}
+
+				throw new RollbackException
+					(
+						executionFailure,
+						rollbackFailures
 					);
 			}
 	}

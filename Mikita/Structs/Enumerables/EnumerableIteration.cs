@@ -1,6 +1,8 @@
+using Mikita.Steps;
 using Mikita.Threading;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -56,8 +58,11 @@ public static class ForEachDoing
 
 								if (exceptions is []) throw;
 
-								exceptions.Insert(0, exception);
-								throw new AggregateException(exceptions);
+								throw new RollbackException
+									(
+										exception,
+										exceptions.ToImmutableArray()
+									);
 							}
 					}
 			}
