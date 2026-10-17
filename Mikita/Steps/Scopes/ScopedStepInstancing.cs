@@ -59,7 +59,7 @@ public static class ScopedStepInstancing
 						CancellableTask<T> initialize,
 						Func<T, IAsyncStep> pattern
 					)
-					=> Step.NewScoped<T>
+					=> Step.NewScoped
 						(
 							() => initialize(),
 							pattern
@@ -94,7 +94,7 @@ public static class ScopedStepInstancing
 						Func<T> initialize,
 						Func<T, IAsyncStep> pattern
 					)
-					=> Step.NewScoped<T>
+					=> Step.NewScoped
 						(
 							() => Task.FromResult(initialize()),
 							pattern
