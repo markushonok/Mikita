@@ -1,6 +1,7 @@
 using Mikita.Structs.Enumerables;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps.Walking;
@@ -11,10 +12,14 @@ namespace Mikita.Steps.Walking;
 /// <remarks>
 /// A failed <see cref="Do"/> undoes the steps it has already performed, and a
 /// failed <see cref="Undo"/> re-performs the steps it has already undone.
+/// With a token, <see cref="Do"/> checks cancellation before each step and
+/// after the last one, then rolls back the completed steps.
+/// <see cref="Undo"/> never receives that token.
 /// </remarks>
 public sealed class AsyncWalk
 	(
-		IEnumerable<IAsyncStep> steps
+		IEnumerable<IAsyncStep> steps,
+		CancellationToken cancel = default
 	)
 	: IAsyncStep
 	{
@@ -22,7 +27,8 @@ public sealed class AsyncWalk
 			=> steps.ForEachAsync
 				(
 					action: x => x.Do(),
-					counteraction: x => x.Undo()
+					counteraction: x => x.Undo(),
+					cancel
 				);
 
 		public Task Undo()

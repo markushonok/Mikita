@@ -1,5 +1,6 @@
 using Mikita.Routines;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps.Direct;
@@ -11,6 +12,21 @@ public static class ForwardStepping
 	{
 		extension(Step)
 			{
+				/// <summary>
+				/// Supplies the token to forward work that reverses nothing; work
+				/// that fails must clean up its own partial effects.
+				/// </summary>
+				public static IAsyncStep Forward
+					(
+						CancellableTask @do,
+						CancellationToken cancel
+					)
+					=> new AsyncStep
+						(
+							() => @do(cancel),
+							() => Task.CompletedTask
+						);
+
 				public static IAsyncStep Forward
 					(
 						CancellableTask @do

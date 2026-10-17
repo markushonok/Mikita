@@ -1,3 +1,4 @@
+using Mikita.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +42,11 @@ public static class ForEachDoing
 							{
 								foreach (var element in enumerable)
 									{
-										cancel.ThrowIfCancellationRequested();
+										cancel.ThrowIfRequested();
 										await action(element);
 										processed.Push(element);
 									}
+								cancel.ThrowIfRequested();
 							}
 						catch (Exception exception)
 							{

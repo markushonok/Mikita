@@ -2,6 +2,7 @@ using Mikita.Routines;
 using Mikita.Steps.Walking;
 using Mikita.Structs.Referring;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps.Scopes;
@@ -18,6 +19,41 @@ public static class ScopedStepInstancing
 	{
 		extension(Step)
 			{
+				/// <summary>
+				/// Owns a cancellable acquisition, releasing its result after the
+				/// pattern is undone or fails.
+				/// </summary>
+				public static IAsyncStep NewScoped<T>
+					(
+						CancellableTask<T> initialize,
+						Func<T, Task> release,
+						Func<T, IAsyncStep> pattern,
+						CancellationToken cancel
+					)
+					{
+						var value = Ref.To<T>(default!);
+						return Walk.Of
+							(
+								[
+									Step.That
+										(
+											async token => value.SetTo
+												(
+													await initialize(token)
+												),
+											() => release(value.Value),
+											cancel
+										),
+									Step.NewScoped
+										(
+											() => Task.FromResult(value.Value),
+											pattern
+										)
+								],
+								cancel
+							);
+					}
+
 				public static IAsyncStep NewScoped<T>
 					(
 						CancellableTask<T> initialize,

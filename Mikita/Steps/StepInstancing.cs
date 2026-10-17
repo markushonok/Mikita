@@ -1,5 +1,6 @@
 using Mikita.Routines;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mikita.Steps;
@@ -9,6 +10,24 @@ public static class StepInstancing
 	{
 		extension(Step)
 			{
+				/// <summary>
+				/// A step that performs and reverses nothing.
+				/// </summary>
+				public static IAsyncStep Idle
+					=> Idle;
+
+				/// <summary>
+				/// Supplies the token to forward work, which must clean up its
+				/// own partial effects on failure. Cleanup never receives it.
+				/// </summary>
+				public static IAsyncStep That
+					(
+						CancellableTask @do,
+						Func<Task> undo,
+						CancellationToken cancel
+					)
+					=> new AsyncStep(() => @do(cancel), undo);
+
 				public static IAsyncStep That
 					(
 						CancellableTask @do,
@@ -30,4 +49,11 @@ public static class StepInstancing
 					)
 					=> new Step(@do, undo);
 			}
+
+		private static readonly IAsyncStep Idle
+			= new AsyncStep
+				(
+					() => Task.CompletedTask,
+					() => Task.CompletedTask
+				);
 	}
