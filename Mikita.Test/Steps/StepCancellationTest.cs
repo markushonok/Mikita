@@ -1,6 +1,7 @@
 using Mikita.Steps;
 using Mikita.Steps.Direct;
 using Mikita.Steps.Walking;
+using Mikita.Threading;
 using System.Collections.Concurrent;
 
 namespace Mikita.Test.Steps;
@@ -65,7 +66,7 @@ public static class StepCancellationTest
 									)
 							)
 					);
-				_ = step.Do();
+				step.Do().Forget();
 				var failure = await Should.ThrowAsync<InvalidOperationException>
 					(
 						step.Undo
