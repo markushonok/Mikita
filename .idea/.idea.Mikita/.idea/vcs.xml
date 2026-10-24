@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modules/Markushonok Code Style" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modules/Markushonok Methodology/Knowledge" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modules/Markushonok Methodology/Programming" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Modules/Markushonok Methodology/Programming/Modules/Markushonok Code Style" vcs="Git" />
   </component>
 </project>

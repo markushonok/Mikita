@@ -1,0 +1,9 @@
+[submodule "Modules/Markushonok Methodology/Programming"]
+	path = Modules/Markushonok Methodology/Programming
+	url = https://github.com/Markushonok-Methodology/Programming.git
+[submodule "Modules/Markushonok Methodology/Knowledge"]
+	path = Modules/Markushonok Methodology/Knowledge
+	url = https://github.com/markushonok-methodology/Knowledge.git
+[submodule "Modules/Markushonok Code Style"]
+	path = Modules/Markushonok Code Style
+	url = https://github.com/markushonok/code-style.git
