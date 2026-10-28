@@ -1,0 +1,7 @@
+<Solution>
+	<Project Path="Mikita.Generation.Test/Mikita.Generation.Test.csproj" />
+	<Project Path="Mikita.Generation/Mikita.Generation.csproj" />
+	<Project Path="Mikita.Godot/Mikita.Godot.csproj" />
+	<Project Path="Mikita.Test/Mikita.Test.csproj" />
+	<Project Path="Mikita/Mikita.csproj" />
+</Solution>

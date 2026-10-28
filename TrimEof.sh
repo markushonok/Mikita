@@ -11,4 +11,5 @@ exec "$root/Modules/Markushonok Methodology/Programming/TrimEof.sh" \
 	'*.md' \
 	'*.props' \
 	'*.sh' \
-	'*.sln'
+	'*.slnx' \
+	'*.toml'
