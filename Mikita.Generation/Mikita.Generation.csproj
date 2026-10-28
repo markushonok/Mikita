@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<PackageId>Mikita.Generation</PackageId>
+		<Version>0.1.0-alpha.1</Version>
+		<Authors>Markushonok</Authors>
+		<Description>Source generators for Mikita.</Description>
+		<PackageProjectUrl>https://github.com/markushonok/Mikita</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/markushonok/Mikita</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+
+		<IsRoslynComponent>true</IsRoslynComponent>
+		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference
+			Include="Microsoft.CodeAnalysis.CSharp"
+			Version="4.8.0"
+			PrivateAssets="all"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None
+			Include="$(TargetPath)"
+			Pack="true"
+			PackagePath="analyzers/dotnet/cs"
+			Visible="false"/>
+	</ItemGroup>
+</Project>

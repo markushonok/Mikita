@@ -1,41 +1,33 @@
-using Mikita.Evaluation.Liveness.Creation;
-using Mikita.Nulls;
 using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 
 namespace Mikita.Evaluation.Liveness;
 
-public static partial class Live
+public static class Live
 	{
+		/// <summary>
+		/// Represents <paramref name="function"/> through a relay for
+		/// <typeparamref name="T"/>.
+		/// </summary>
+		/// <remarks>
+		/// The relay is generated from the <c>live</c> feature of the
+		/// implementation manifest in the project that declares
+		/// <typeparamref name="T"/>.
+		/// </remarks>
+		/// <exception cref="NotSupportedException">
+		/// The declaring project has no manifest entry for
+		/// <typeparamref name="T"/>.
+		/// </exception>
 		public static T ResultOf<T>(Func<T> function)
 			where T: class
-			{
-				if (Constructors.TryGetValue(typeof(T), out var @object))
-					return ((RelayConstructor<T>) @object)(function);
+			=> LiveRelay<T>.Factory is {} relay
+				? relay(function)
+				: throw MissingRelay<T>();
 
-				var implementation = TypeCreation.Create<T>();
-				var constructor = CompileConstructorFor<T>(implementation);
-				Constructors[typeof(T)] = constructor;
-				return constructor(function);
-			}
-
-		private static RelayConstructor<T> CompileConstructorFor<T>(Type type)
-			{
-				var parameter = Expression.Parameter(typeof(Func<T>), "value");
-				var constructor = type.GetConstructor([typeof(Func<T>)]).NotNull();
-				return Expression.Lambda
-					<
-						RelayConstructor<T>
-					>
-					(
-						Expression.New(constructor, parameter),
-						parameter
-					)
-					.Compile();
-			}
-
-		private static readonly 
-			Dictionary<Type, object> Constructors
-			= new();
+		private static NotSupportedException MissingRelay<T>()
+			=> new
+				(
+					$"No live relay is generated for '{typeof(T)}'. "
+					+ "Add the type with the 'live' feature to the "
+					+ "Implementations.toml of the project that declares it."
+				);
 	}

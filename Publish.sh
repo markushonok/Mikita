@@ -7,6 +7,7 @@ source="https://api.nuget.org/v3/index.json"
 
 projects=(
 	"Mikita/Mikita.csproj"
+	"Mikita.Generation/Mikita.Generation.csproj"
 	"Mikita.Godot/Mikita.Godot.csproj"
 )
 

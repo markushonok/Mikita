@@ -1,6 +1,11 @@
-<Project>
+﻿<Project>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <!-- Implementation manifests -->
+  <ItemGroup Condition="Exists('$(MSBuildProjectDirectory)/Implementations.toml')">
+    <AdditionalFiles Include="$(MSBuildProjectDirectory)/Implementations.toml"/>
+  </ItemGroup>
 </Project>
