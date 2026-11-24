@@ -9,6 +9,7 @@ projects=(
 	"Mikita/Mikita.csproj"
 	"Mikita.Generation/Mikita.Generation.csproj"
 	"Mikita.Godot/Mikita.Godot.csproj"
+	"Mikita.Network/Mikita.Network.csproj"
 )
 
 fail()

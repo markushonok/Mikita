@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<PackageId>Mikita.Network</PackageId>
+		<Version>0.1.0-alpha</Version>
+		<Authors>Markushonok</Authors>
+		<Description>Binary peer communication over LiteNetLib.</Description>
+		<PackageProjectUrl>https://github.com/markushonok/Mikita</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/markushonok/Mikita</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="LiteNetLib" Version="2.1.0"/>
+		<ProjectReference Include="../Mikita/Mikita.csproj"/>
+		<None Update="README.md" Pack="true" PackagePath="/"/>
+	</ItemGroup>
+</Project>
